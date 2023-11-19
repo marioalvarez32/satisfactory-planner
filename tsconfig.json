@@ -20,6 +20,6 @@
     "paths": {
       "@/*": ["src/*"]
     },
-    "types": ["vite/client", "vue"]
+    "types": ["vite/client", "vue", "pinia-plugin-persist"]
   }
 }

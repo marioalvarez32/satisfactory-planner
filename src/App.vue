@@ -10,7 +10,12 @@
 </template>
 
 <script lang="ts" setup>
-  import NavigationBar from '@/Client/NavigationBar.vue'
+  import NavigationBar from "@/Client/NavigationBar.vue"
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+  html,
+  body {
+    height: 100%;
+  }
+</style>
