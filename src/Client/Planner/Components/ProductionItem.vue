@@ -21,7 +21,7 @@
       emit("update:modelValue", value)
     },
   })
-  const itemList = [{ Name: "Iron Plate" }, { Name: "Iron Ingot" }, { Name: "Screw" }, { Name: "Iron Rod" }]
+  const itemList = [{ Name: "Iron Plate" }, { Name: "Iron Ingot" }, { Name: "Screw" }, { Name: "Iron Rod" }, { Name: "Iron Ore" }]
 </script>
 
 <style lang="scss" scoped></style>
