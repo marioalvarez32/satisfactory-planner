@@ -3,6 +3,7 @@
     {
       "Product": "Iron Ingot",
       "ProductionRate": 30,
+      "Level": 1,
       "Input": [
         {
           "Product": "Iron Ore",
@@ -13,6 +14,7 @@
     {
       "Product": "Iron Plate",
       "ProductionRate": 20,
+      "Level": 3,
       "Input": [
         {
           "Product": "Iron Ingot",
@@ -23,6 +25,7 @@
     {
       "Product": "Iron Rod",
       "ProductionRate": 15,
+      "Level": 3,
       "Input": [
         {
           "Product": "Iron Ingot",
@@ -33,6 +36,7 @@
     {
       "Product": "Screw",
       "ProductionRate": 40,
+      "Level": 4,
       "Input": [
         {
           "Product": "Iron Rod",
@@ -43,7 +47,8 @@
     {
       "Product": "Iron Ore",
       "ProductionRate": 60,
-      "Input": []
+      "Input": [],
+      "Level": 1
     }
   ]
 }
