@@ -39,6 +39,11 @@
           "ProductionRate": 10
         }
       ]
+    },
+    {
+      "Product": "Iron Ore",
+      "ProductionRate": 60,
+      "Input": []
     }
   ]
 }
