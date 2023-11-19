@@ -1,0 +1,44 @@
+{
+  "products": [
+    {
+      "Product": "Iron Ingot",
+      "ProductionRate": 30,
+      "Input": [
+        {
+          "Product": "Iron Ore",
+          "ProductionRate": 30
+        }
+      ]
+    },
+    {
+      "Product": "Iron Plate",
+      "ProductionRate": 20,
+      "Input": [
+        {
+          "Product": "Iron Ingot",
+          "ProductionRate": 30
+        }
+      ]
+    },
+    {
+      "Product": "Iron Rod",
+      "ProductionRate": 15,
+      "Input": [
+        {
+          "Product": "Iron Ingot",
+          "ProductionRate": 15
+        }
+      ]
+    },
+    {
+      "Product": "Screw",
+      "ProductionRate": 40,
+      "Input": [
+        {
+          "Product": "Iron Rod",
+          "ProductionRate": 10
+        }
+      ]
+    }
+  ]
+}

@@ -1,21 +1,17 @@
-import { createRouter, createWebHistory, RouteRecordRaw, } from "vue-router"
+import { createRouter, createWebHashHistory } from 'vue-router'
+import ProductionPlanner from '@/Client/Planner/ProductionPlanner.vue'
 
-const routes: Array<RouteRecordRaw> = [
-  {
-    path: "/",
-    name: "Example",
-    component: () => import("../modules/example/pages/Example.vue")
-  },
-  {
-    path: "/about",
-    name: "About",
-    component: () => import("../modules/example/pages/About.vue")
-  }
+const Home = { template: '<div>Home</div>' }
+
+const routes = [
+  { path: '/', component: Home },
+  { path: '/planner', component: ProductionPlanner },
 ]
 
 const router = createRouter({
-  history: createWebHistory(),
-  routes,
+  // 4. Provide the history implementation to use. We are using the hash history for simplicity here.
+  history: createWebHashHistory(),
+  routes, // short for `routes: routes`
 })
 
-export default router
+export { router }
