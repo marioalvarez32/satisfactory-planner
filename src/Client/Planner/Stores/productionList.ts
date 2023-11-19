@@ -9,4 +9,7 @@ export const useProductionListStore = defineStore('production-list-store', {
   }),
   getters: {},
   actions: {},
+  persist: {
+    enabled: true,
+  },
 });

@@ -5,6 +5,7 @@
         <ProductionItem v-model="item.Name" />
         <v-text-field
           v-model="item.ItemsPerMinute"
+          variant="outlined"
           suffix="items/min"
           class="production-list__production-rate"
           label="Enter an Integer"
@@ -44,11 +45,14 @@
 
 <style lang="scss" scoped>
   .production-list {
+    grid-area: production-list;
     padding: 25px;
-    border: 1px solid red;
+    border: 1px solid #dcdcdc;
     display: flex;
     flex-direction: column;
     gap: 25px;
+    overflow-y: auto;
+    height: 100%;
   }
 
   .production-list__content {

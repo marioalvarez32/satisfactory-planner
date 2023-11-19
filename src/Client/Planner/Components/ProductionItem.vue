@@ -1,5 +1,5 @@
 <template>
-  <v-autocomplete v-model="value" class="production-item" clearable label="Autocomplete" item-title="Name" item-value="Name" :items="itemList" />
+  <v-autocomplete v-model="value" variant="outlined" class="production-item" clearable item-title="Name" item-value="Name" :items="itemList" />
 </template>
 
 <script setup lang="ts">

@@ -1,7 +1,9 @@
 <template>
-  Production Overview
-  <div v-for="(item, index) in products" :key="index">{{ item.Name }} X {{ item.Total }}</div>
-  <div ref="networkElement" style="height: 600px"></div>
+  <div class="production-overview">
+    Production Overview
+    <div v-for="(item, index) in products" :key="index">{{ item.Name }} X {{ item.Total }}</div>
+    <div ref="networkElement" class="production-overview__network"></div>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -135,4 +137,12 @@
   }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+  .production-overview {
+    grid-area: overview;
+  }
+
+  .production-overview__network {
+    height: calc(100vh - var(--v-layout-top));
+  }
+</style>
