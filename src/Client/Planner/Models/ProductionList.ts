@@ -1,15 +1,13 @@
-import Item from './Item'
-
 export type ProductionList = {
-  Items: ProductionListItem[]
-}
+  Items: ProductionListItem[];
+};
 
 export class ProductionListItem {
-  Name: Item
-  ItemsPerMinute: number
+  Name: string;
+  ItemsPerMinute: number;
 
   constructor() {
-    this.Name = new Item()
-    this.ItemsPerMinute = 0
+    this.Name = '';
+    this.ItemsPerMinute = 0;
   }
 }
