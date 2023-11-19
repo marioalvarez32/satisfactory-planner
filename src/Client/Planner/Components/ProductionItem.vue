@@ -5,7 +5,12 @@
 <script setup lang="ts">
   import { computed } from "vue"
 
-  const props = defineProps(["modelValue"])
+  const props = defineProps({
+    modelValue: {
+      type: String,
+      required: true,
+    },
+  })
   const emit = defineEmits(["update:modelValue"])
 
   const value = computed({

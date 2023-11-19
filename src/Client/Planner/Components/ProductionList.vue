@@ -3,8 +3,16 @@
     <div class="production-list__content">
       <div v-for="(item, index) in productionItems" :key="index" class="production-list__item">
         <ProductionItem v-model="item.Name" />
-        items/min
-        <v-text-field v-model="item.ItemsPerMinute" class="production-list__production-rate" label="Enter an Integer" type="number" step="1" outlined />
+        <v-text-field
+          v-model="item.ItemsPerMinute"
+          suffix="items/min"
+          class="production-list__production-rate"
+          label="Enter an Integer"
+          type="number"
+          step="1"
+          outlined
+          @input="parseNumber(index)"
+        />
         <v-btn density="default" icon="mdi-minus" @click="removeProductionItem(index)" />
       </div>
     </div>
@@ -27,6 +35,10 @@
 
   function removeProductionItem(index) {
     productionItems.value.splice(index, 1)
+  }
+
+  function parseNumber(index) {
+    productionItems.value[index].ItemsPerMinute = parseInt(`${productionItems.value[index].ItemsPerMinute}`) || 0
   }
 </script>
 
