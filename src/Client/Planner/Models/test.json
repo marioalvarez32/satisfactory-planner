@@ -49,6 +49,18 @@
       "ProductionRate": 60,
       "Input": [],
       "Level": 1
+    },
+    {
+      "Product": "Copper Ore",
+      "ProductionRate": 60,
+      "Input": [],
+      "Level": 1
+    },
+    {
+      "Product": "Limestone",
+      "ProductionRate": 60,
+      "Input": [],
+      "Level": 1
     }
   ]
 }
