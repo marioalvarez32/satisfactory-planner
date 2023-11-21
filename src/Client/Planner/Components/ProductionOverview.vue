@@ -1,8 +1,7 @@
 <template>
   <div class="production-overview">
     Production Overview
-    <div v-for="(item, index) in products" :key="index">{{ item.Name }} X {{ item.Total }}</div>
-    <div ref="networkElement" class="production-overview__network"></div>
+    <div id="cy" class="production-overview__network"></div>
   </div>
 </template>
 
@@ -14,19 +13,32 @@
   import production from "../Models/test.json"
   import Item from "../Models/Item"
   import { ProductionListItem } from "../Models/ProductionList"
-  import { Network } from "vis-network/standalone/esm/vis-network.min"
-  import * as vis from "vis-network/standalone/esm/vis-network.min"
+  import cytoscape from "cytoscape"
+  import cytoscapeDomNode from "cytoscape-dom-node"
+  import dagre from "cytoscape-dagre"
+  import cytoscapeNgraph from "cytoscape-ngraph.forcelayout"
+  import { diagramStyle } from "./styles"
 
-  const { productionItems } = storeToRefs(useProductionListStore())
+  cytoscape.use(cytoscapeDomNode)
+  cytoscape.use(dagre)
+  cytoscape.use(cytoscapeNgraph)
+
+  const { filteredItems } = storeToRefs(useProductionListStore())
+  const layoutOptions = {
+    name: "dagre",
+    avoidOverlap: true,
+    fit: true,
+    rankDir: "UL",
+    idealEdgeLength: 10,
+    padding: 200,
+    rankSep: 125,
+  }
 
   const recipes: Production[] = production.products.map(product => new Production(product))
   const products: any = computed(() => {
     const nodes = []
-    productionItems.value.forEach(productItem => {
-      if (productItem.Name != "") {
-        // Add node, using recipe, production item.
-        addNode(productItem, nodes)
-      }
+    filteredItems.value.forEach(productItem => {
+      addNode(productItem, nodes)
     })
 
     return nodes
@@ -37,9 +49,7 @@
     updateNetwork()
   })
 
-  watch(productionItems.value, () => {
-    updateNetwork()
-  })
+  watch(filteredItems, () => updateNetwork(), { deep: true })
 
   function getProductRecipe(productName: string) {
     for (let i = 0; i < recipes.length; i++) {
@@ -72,68 +82,84 @@
     return null
   }
 
-  const networkElement = ref<HTMLElement>(null)
-  let network
+  let cy
   function initializeNetwork() {
-    // Data for the network (replace with your own data)
-    const nodes = new vis.DataSet([
-      { id: 1, label: "Node 1" },
-      { id: 2, label: "Node 2" },
-      { id: 3, label: "Node 3" },
-    ])
+    if (cy) {
+      cy.destroy()
+    }
+    cy = cytoscape({
+      container: document.getElementById("cy"), // container to render in
+      elements: [],
 
-    const edges = new vis.DataSet([
-      { from: 1, to: 2 },
-      { from: 1, to: 3 },
-    ])
+      style: diagramStyle,
+      layout: layoutOptions,
+    })
+    cy.domNode()
+  }
 
-    const data = { nodes, edges }
+  function cy_node_def(product, recipe) {
+    var htmlString = `
+    <div>
+      <p class="custom-node__title">${product.Name}</p>
+      <p class="custom-node__production-rate">${product.Total} / min</p>
+    </div>`
 
-    // Options for the network (customize as needed)
-    const options = {
-      physics: false,
-      layout: {
-        hierarchical: {
-          direction: "LR",
-        },
+    let id = product.Name
+    let div = document.createElement("div")
+    //div.innerHTML = `Item: ${product.Name}`
+    div.innerHTML = htmlString
+    div.classList.add("custom-node")
+    div.style.height = `50px`
+
+    return {
+      data: {
+        id: id,
+        dom: div,
       },
     }
-
-    // Create a new network instance
-    network = new Network(networkElement.value, data, options)
   }
 
   function updateNetwork() {
-    const nodes = new vis.DataSet([])
+    initializeNetwork()
+
+    const nodes = []
     products.value.forEach(product => {
       const recipe = getProductRecipe(product.Name)
-      const newNode = {
-        id: product.Name,
-        label: `${product.Name} - ${product.Total}`,
-        Leve: recipe?.Level,
-      }
-      nodes.add(newNode)
+      const newNode = cy_node_def(product, recipe)
+      nodes.push(newNode)
     })
-    const edges = new vis.DataSet([])
+
+    // Update the network with the modified data
+    cy.add(nodes)
+
+    const edges = []
     products.value.forEach(product => {
       const recipe = getProductRecipe(product.Name)
       // I want to create edges for current product.
       const inputs = recipe?.Input
       inputs?.forEach(input => {
+        const ratio = input.ProductionRate / (recipe ? recipe.ProductionRate : 1)
         const newEdge = {
-          to: input.Product,
-          from: product.Name,
+          data: {
+            source: input.Product,
+            target: product.Name,
+            id: `${product.Name}-${input.Product}`,
+            label: `${ratio * product.Total} / min`,
+          },
         }
-        edges.add(newEdge)
+        if (cy.$id(input.Product).length > 0) {
+          edges.push(newEdge)
+        }
       })
     })
-    // Update the network with the modified data
-    const updatedData = {
-      nodes: nodes,
-      edges: edges,
-    }
 
-    network.setData(updatedData)
+    cy.add(edges)
+
+    cy.layout(layoutOptions).run()
+  }
+
+  function getNodeLabel(product, recipe) {
+    return "<b>Node 1</b><br/>Additional Info 1<br/>More Info 1"
   }
 </script>
 
@@ -144,5 +170,24 @@
 
   .production-overview__network {
     height: calc(100vh - var(--v-layout-top));
+  }
+
+  :deep(.custom-node) {
+    background-color: #bbbbbb;
+    border-radius: 8px;
+    display: flex !important;
+    justify-content: center;
+    font-size: 12px;
+    padding: 8px 10px;
+    text-wrap: nowrap;
+
+    .custom-node__title {
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .custom-node__production-rate {
+      text-align: center;
+    }
   }
 </style>
