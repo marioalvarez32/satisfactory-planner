@@ -7,9 +7,9 @@ export const useProductionListStore = defineStore('production-list-store', {
   state: () => ({
     productionItems: [new ProductionListItem()],
   }),
-  getters: {},
-  actions: {},
-  persist: {
-    enabled: true,
+  getters: {
+    filteredItems: (state) =>
+      state.productionItems.filter((productItem) => productItem.Name != ''),
   },
+  actions: {},
 });
