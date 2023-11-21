@@ -17,19 +17,34 @@
         <v-btn density="default" icon="mdi-minus" @click="removeProductionItem(index)" />
       </div>
     </div>
-    <v-btn density="default" icon="mdi-plus" @click="addProductionItem" />
+    <v-btn :disabled="shouldDisableAddButton" density="default" icon="mdi-plus" @click="addProductionItem" />
   </div>
 </template>
 
 <script setup lang="ts">
-  import { ref } from "vue"
+  import { computed, onMounted, watch, Ref } from "vue"
   import ProductionItem from "@/Client/Planner/Components/ProductionItem.vue"
   import { ProductionListItem } from "../Models/ProductionList"
   import { useProductionListStore } from "../Stores/productionList"
   import { storeToRefs } from "pinia"
+  import { useStorage } from "@vueuse/core"
 
   const { productionItems } = storeToRefs(useProductionListStore())
 
+  const shouldDisableAddButton = computed(() => productionItems.value?.at(-1)?.Name == "")
+
+  const storedItems: Ref<ProductionListItem[]> = useStorage("production-item-list", [], localStorage, { mergeDefaults: true })
+  if (storedItems.value && storedItems.value.length > 0) {
+    productionItems.value = storedItems.value
+  }
+
+  watch(
+    productionItems,
+    () => {
+      storedItems.value = productionItems.value
+    },
+    { deep: true }
+  )
   function addProductionItem() {
     productionItems.value.push(new ProductionListItem())
   }
