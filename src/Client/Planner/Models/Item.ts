@@ -3,12 +3,15 @@ export class Item {
   Input: ProductionInput[];
   ProductionRate: number;
   Level: number;
+  InputRate?: number;
+  OutputRate?: number;
 
   constructor(item: Item) {
     this.Name = item.Name;
     this.ProductionRate = item.ProductionRate;
     this.Input = item.Input.map((input) => new ProductionInput(input));
     this.Level = item.Level;
+    this.OutputRate = 0;
   }
 }
 
