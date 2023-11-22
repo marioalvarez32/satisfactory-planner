@@ -4,8 +4,9 @@
 
 <script setup lang="ts">
   import { computed } from "vue"
-  import productionItems from "../Models/test.json"
+  import itemData from "../Data/items.json"
   import { uniqBy } from "lodash"
+  import { Item } from "../Models/Item"
 
   const props = defineProps({
     modelValue: {
@@ -25,9 +26,9 @@
       }
     },
   })
-  const itemList = uniqBy(productionItems.products, "Product").map(item => {
+  const itemList = uniqBy(itemData.items, "Name").map((item: Item) => {
     return {
-      Name: item.Product,
+      Name: item.Name,
     }
   })
 

@@ -1,7 +1,7 @@
 <template>
   <div class="production-list">
     <div class="production-list__content">
-      <div v-for="(item, index) in productionItems" :key="index" class="production-list__item">
+      <div v-for="(item, index) in productionListItems" :key="index" class="production-list__item">
         <ProductionItem v-model="item.Name" />
         <v-text-field
           v-model="item.ItemsPerMinute"
@@ -22,39 +22,39 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, onMounted, watch, Ref } from "vue"
+  import { computed, watch, Ref } from "vue"
   import ProductionItem from "@/Client/Planner/Components/ProductionItem.vue"
   import { ProductionListItem } from "../Models/ProductionList"
   import { useProductionListStore } from "../Stores/productionList"
   import { storeToRefs } from "pinia"
   import { useStorage } from "@vueuse/core"
 
-  const { productionItems } = storeToRefs(useProductionListStore())
+  const { productionListItems } = storeToRefs(useProductionListStore())
 
-  const shouldDisableAddButton = computed(() => productionItems.value?.at(-1)?.Name == "")
+  const shouldDisableAddButton = computed(() => productionListItems.value?.at(-1)?.Name == "")
 
   const storedItems: Ref<ProductionListItem[]> = useStorage("production-item-list", [], localStorage, { mergeDefaults: true })
   if (storedItems.value && storedItems.value.length > 0) {
-    productionItems.value = storedItems.value
+    productionListItems.value = storedItems.value
   }
 
   watch(
-    productionItems,
+    productionListItems,
     () => {
-      storedItems.value = productionItems.value
+      storedItems.value = productionListItems.value
     },
     { deep: true }
   )
   function addProductionItem() {
-    productionItems.value.push(new ProductionListItem())
+    productionListItems.value.push(new ProductionListItem())
   }
 
   function removeProductionItem(index) {
-    productionItems.value.splice(index, 1)
+    productionListItems.value.splice(index, 1)
   }
 
   function parseNumber(index) {
-    productionItems.value[index].ItemsPerMinute = parseInt(`${productionItems.value[index].ItemsPerMinute}`) || 0
+    productionListItems.value[index].ItemsPerMinute = parseInt(`${productionListItems.value[index].ItemsPerMinute}`) || 0
   }
 </script>
 

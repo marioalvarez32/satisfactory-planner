@@ -1,34 +1,16 @@
-/*
- * Style and layout of the composition diagrams.
- */
-
 import cytoscape from 'cytoscape';
 
 // http://js.cytoscape.org/#layouts
 const diagramLayout = {
-  name: 'klay', // todo: choose between dagre and klay, check also BRANDES_KOEPF node placement
+  name: 'dagre',
+  avoidOverlap: true,
   fit: true,
-
-  // dagre - https://github.com/cytoscape/cytoscape.js-dagre
-  rankDir: 'TB',
-  nodeSep: 40,
-  rankSep: 60,
-
-  // klay - https://github.com/cytoscape/cytoscape.js-klay
-  klay: {
-    direction: 'DOWN',
-    thoroughness: 50,
-    nodePlacement: 'LINEAR_SEGMENTS',
-    cycleBreaking: 'GREEDY',
-    spacing: 8,
-    inLayerSpacingFactor: 2.0,
-    edgeSpacingFactor: 0.2,
-    borderSpacing: 10,
-  },
-  priority: (edge) => Math.round(edge.data('strength')),
+  rankDir: 'UL',
+  idealEdgeLength: 10,
+  padding: 200,
+  rankSep: 125,
 };
 
-// see http://js.cytoscape.org/#style
 const diagramStyle = cytoscape
   .stylesheet()
   .selector(':selected')
@@ -37,13 +19,13 @@ const diagramStyle = cytoscape
   })
   .selector('node:active')
   .css({
-    'overlay-color': '#e59344', // Color of the box
+    'overlay-color': '#e59344',
     'overlay-padding': '12px',
   })
   .selector('node')
   .css({
     width: 60,
-    height: 60,
+    height: 75,
     'background-opacity': '0',
     'border-width': 0,
   })
