@@ -1,5 +1,17 @@
 <template>
-  <v-autocomplete v-model="value" variant="outlined" class="production-item" item-title="Name" item-value="Name" :items="itemList" />
+  <v-autocomplete v-model="value" variant="outlined" class="production-item" item-title="Name" item-value="Name" :items="itemList">
+  
+    <template #item="{props:itemProps, item }">
+      <v-list-item
+        :key="item.value"
+        :value="item.value"
+        :title="item.title"
+        v-bind="itemProps"
+        :prepend-avatar="getImageSrc(item.title)"
+      />
+    </template>
+  
+  </v-autocomplete>
 </template>
 
 <script setup lang="ts">
@@ -32,7 +44,12 @@
     }
   })
 
-  //const itemList = [{ Name: "Iron Plate" }, { Name: "Iron Ingot" }, { Name: "Screw" }, { Name: "Iron Rod" }, { Name: "Iron Ore" }]
+  function getImageSrc(name: string){
+    const imageName = name.toLowerCase().split(' ').join('-');
+    const imagePath = `/src/assets/items/${imageName}_64.png`
+    const imageUrl = new URL(imagePath, import.meta.url)
+    return imageUrl.href
+  }
 </script>
 
 <style lang="scss" scoped></style>
