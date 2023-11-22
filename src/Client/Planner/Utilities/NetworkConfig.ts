@@ -7,8 +7,9 @@ const diagramLayout = {
   fit: true,
   rankDir: 'UL',
   idealEdgeLength: 10,
-  padding: 200,
+  padding: 150,
   rankSep: 125,
+  nodeSep: 100,
 };
 
 const diagramStyle = cytoscape
