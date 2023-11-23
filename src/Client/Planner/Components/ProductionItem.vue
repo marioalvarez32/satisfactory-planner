@@ -19,6 +19,8 @@
   import itemData from "../Data/items.json"
   import { uniqBy } from "lodash"
   import { Item } from "../Models/Item"
+import { useProductionListStore } from "../Stores/productionList";
+import { storeToRefs } from "pinia";
 
   const props = defineProps({
     modelValue: {
@@ -26,7 +28,9 @@
       default: "",
     },
   })
+  
   const emit = defineEmits(["update:modelValue"])
+  const { productionListItems } = storeToRefs(useProductionListStore())
 
   const value = computed({
     get() {
@@ -38,7 +42,10 @@
       }
     },
   })
-  const itemList = uniqBy(itemData.items, "Name").map((item: Item) => {
+
+  const itemList = uniqBy(itemData.items, "Name")
+  .filter((item: Item) => !productionListItems.value.some((selectedItem) => selectedItem.Name == item.Name))
+  .map((item: Item) => {
     return {
       Name: item.Name,
     }
