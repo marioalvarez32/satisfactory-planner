@@ -1,6 +1,13 @@
 <template>
-  <v-autocomplete v-model="value" variant="outlined" class="production-item" item-title="Name" item-value="Name" :items="itemList">
-  
+  <v-autocomplete v-model="value" density="compact" variant="outlined" class="production-item" item-title="Name" item-value="Name" :items="itemList">
+    <template #selection="{ item }">
+      <div class="input-selection">
+        <v-avatar v-if="item.title">
+          <v-img :src="getImageSrc(item.title)" />
+        </v-avatar>
+        {{ item.title ? item.title : 'Select an item' }}
+      </div>
+    </template>
     <template #item="{props:itemProps, item }">
       <v-list-item
         :key="item.value"
@@ -31,7 +38,6 @@ import { storeToRefs } from "pinia";
   
   const emit = defineEmits(["update:modelValue"])
   const { productionListItems } = storeToRefs(useProductionListStore())
-
   const value = computed({
     get() {
       return props.modelValue
@@ -59,4 +65,10 @@ import { storeToRefs } from "pinia";
   }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+  .input-selection{
+    display:flex;
+    align-items: center;
+    gap: 5px;
+  }
+</style>
