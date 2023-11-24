@@ -16,5 +16,7 @@
     grid-template: "production-list overview" 1fr / 525px auto;
     height: calc(100vh - var(--v-layout-top));
     overflow: hidden;
+    gap: 15px;
+    padding: 15px;
   }
 </style>
