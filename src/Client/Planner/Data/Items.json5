@@ -1,0 +1,166 @@
+{
+  "items": [
+    /***** Iron *******/
+    {
+      "Name": "Iron Ore",
+      "ProductionRate": 60,
+      "Input": [],
+      "EdgeType": "iron", 
+      "Level": 1
+    },
+    {
+      "Name": "Iron Ingot",
+      "ProductionRate": 30,
+      "Level": 1,
+      "EdgeType": "iron", 
+      "Input": [
+        {
+          "Name": "Iron Ore",
+          "ProductionRate": 30
+        }
+      ]
+    },
+    {
+      "Name": "Iron Plate",
+      "ProductionRate": 20,
+      "Level": 3,
+      "EdgeType": "iron", 
+      "Input": [
+        {
+          "Name": "Iron Ingot",
+          "ProductionRate": 30
+        }
+      ]
+    },
+    {
+      "Name": "Iron Rod",
+      "ProductionRate": 15,
+      "Level": 3,
+      "EdgeType": "iron", 
+      "Input": [
+        {
+          "Name": "Iron Ingot",
+          "ProductionRate": 15
+        }
+      ]
+    },
+    {
+      "Name": "Screw",
+      "ProductionRate": 40,
+      "Level": 4,
+      "EdgeType": "iron", 
+      "Input": [
+        {
+          "Name": "Iron Rod",
+          "ProductionRate": 10
+        }
+      ]
+    },
+    {
+      "Name": "Reinforced Iron Plate",
+      "ProductionRate": 5,
+      "Level": 5,
+      "EdgeType": "iron", 
+      "Input": [
+        {
+          "Name": "Screw",
+          "ProductionRate": 60
+        },
+        {
+          "Name": "Iron Plate",
+          "ProductionRate": 30
+        }
+      ]
+    },
+    {
+      "Name": "Modular Frame",
+      "ProductionRate": 2,
+      "Level": 6,
+      "EdgeType": "iron", 
+      "Input": [
+        {
+          "Name": "Iron Rod",
+          "ProductionRate": 12
+        },
+        {
+          "Name": "Reinforced Iron Plate",
+          "ProductionRate": 3
+        }
+      ]
+    },
+    /***** Copper *******/
+    {
+      "Name": "Copper Ore",
+      "ProductionRate": 60,
+      "Input": [],
+      "Level": 1
+    },
+    {
+      "Name": "Copper Ingot",
+      "ProductionRate": 30,
+      "Level": 2,
+      "EdgeType": "copper", 
+      "Input": [
+        {
+          "Name": "Copper Ore",
+          "ProductionRate": 30
+        }
+      ]
+    },
+    {
+      "Name": "Wire",
+      "ProductionRate": 30,
+      "Level": 3,
+      "EdgeType": "copper", 
+      "Input": [
+        {
+          "Name": "Copper Ingot",
+          "ProductionRate": 15
+        }
+      ]
+    },
+    {
+      "Name": "Cable",
+      "ProductionRate": 30,
+      "Level": 4,
+      "EdgeType": "copper", 
+      "Input": [
+        {
+          "Name": "Wire",
+          "ProductionRate": 60
+        }
+      ]
+    },
+    {
+      "Name": "Copper Sheet",
+      "ProductionRate": 10,
+      "Level": 3,
+      "EdgeType": "copper", 
+      "Input": [
+        {
+          "Name": "Copper Ingot",
+          "ProductionRate": 20
+        }
+      ]
+    },
+    /***** Limestone *******/
+    {
+      "Name": "Limestone",
+      "ProductionRate": 60,
+      "Input": [],
+      "Level": 1
+    },
+    {
+      "Name": "Concrete",
+      "ProductionRate": 15,
+      "Level": 2,
+      "EdgeType": "limestone", 
+      "Input": [
+        {
+          "Name": "Limestone",
+          "ProductionRate": 45
+        }
+      ]
+    }
+  ]
+}

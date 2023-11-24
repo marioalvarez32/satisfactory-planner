@@ -23,7 +23,7 @@
 
 <script setup lang="ts">
   import { computed } from "vue"
-  import itemData from "../Data/items.json"
+  import itemData from "../Data/items.json5"
   import { uniqBy } from "lodash"
   import { Item } from "../Models/Item"
 import { useProductionListStore } from "../Stores/productionList";
