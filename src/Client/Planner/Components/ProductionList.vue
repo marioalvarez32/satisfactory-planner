@@ -1,5 +1,5 @@
 <template>
-  <div class="production-list">
+  <v-card elevation="5" rounded="lg" class="production-list">
     <div class="production-list__content">
       <div v-for="(item, index) in productionListItems" :key="index" class="production-list__item">
         <ProductionItem v-model="item.Name" />
@@ -11,14 +11,15 @@
           label="Enter an Integer"
           type="number"
           step="1"
+          density="compact"
           outlined
           @input="parseNumber(index)"
         />
-        <v-btn density="default" icon="mdi-minus" @click="removeProductionItem(index)" />
+        <v-btn density="default" color="error" icon="mdi-minus" size="x-small" @click="removeProductionItem(index)" />
       </div>
     </div>
-    <v-btn :disabled="shouldDisableAddButton" density="default" icon="mdi-plus" @click="addProductionItem" />
-  </div>
+    <v-btn :disabled="shouldDisableAddButton" color="primary" density="default" icon="mdi-plus"  @click="addProductionItem" />
+  </v-card>
 </template>
 
 <script setup lang="ts">
@@ -62,7 +63,6 @@
   .production-list {
     grid-area: production-list;
     padding: 25px;
-    border: 1px solid #dcdcdc;
     display: flex;
     flex-direction: column;
     gap: 25px;
