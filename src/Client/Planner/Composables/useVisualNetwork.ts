@@ -3,7 +3,6 @@ import cytoscapeDomNode from 'cytoscape-dom-node';
 import dagre from 'cytoscape-dagre';
 
 import cytoscapeNgraph from 'cytoscape-ngraph.forcelayout';
-import { diagramStyle, diagramLayout } from '../Utilities/NetworkConfig';
 
 type Config = {
   elementId: string;
@@ -31,6 +30,9 @@ export function useVisualNetwork(elementId: string) {
     initializeNetwork();
     networkInstance.add(nodes);
     networkInstance.add(edges.filter((edge) =>  (networkInstance.$id(edge.data.source).length > 0)))
+    networkInstance.edges().forEach(edge => {
+      edge.addClass(`edge--${edge.data.EdgeColor}`);
+    });
     networkInstance.layout(diagramLayout).run();
   }
 
@@ -39,3 +41,70 @@ export function useVisualNetwork(elementId: string) {
     updateNetwork,
   };
 }
+
+const diagramLayout = {
+  name: 'dagre',
+  avoidOverlap: true,
+  fit: true,
+  rankDir: 'UL',
+  idealEdgeLength: 10,
+  padding: 150,
+  rankSep: 175,
+  nodeSep: 100,
+};
+
+const diagramStyle = cytoscape
+  .stylesheet()
+  .selector(':selected')
+  .css({
+    'background-color': '#2FC25B',
+  })
+  .selector('node:active')
+  .css({
+    'overlay-color': '#e59344',
+    'overlay-padding': '12px',
+  })
+  .selector('node')
+  .css({
+    width: 60,
+    height: 75,
+    'background-opacity': '0',
+    'border-width': 0,
+  })
+  .selector('edge')
+  .css({
+    'curve-style': 'bezier',
+    'control-point-step-size': 100,
+    'target-arrow-shape': 'triangle',
+    'arrow-scale': 1.7,
+    'target-arrow-color': (ele) => {
+      return getEdgeColor(ele._private.data.edgeColor);
+    },
+    'line-color': (ele) => {
+      return getEdgeColor(ele._private.data.edgeColor);
+    },
+    width: 3,
+    'text-wrap': 'wrap',
+    color: 'white',
+    'text-rotation': 'autorotate',
+    'text-background-opacity': 1,
+    'text-background-color': '#202c3d',
+    label: 'data(label)',
+  })
+  .selector('edge:active')
+  .css({
+    'overlay-color': '#e59344', // Color of the box
+    'overlay-opacity': '0',
+  });
+
+
+  function getEdgeColor(edgeType){
+    switch(edgeType){
+      case 'iron': 
+        return '#fa6a17';
+      case 'copper': 
+        return '#B87333';
+      default: 
+        return 'red';
+    }
+  }
