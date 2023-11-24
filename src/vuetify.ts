@@ -15,6 +15,24 @@ const vuetify = createVuetify({
       mdi,
     },
   },
+  theme: {
+    themes: {
+      dark: {
+        colors: {
+          background: '#021720',//'#111a24', // Dark charcoal for the main background, matching the dark areas of the image
+          surface: '#202c3d',//'#16212d', 
+          primary: '#236fc1',
+          secondary: '#CCCCCC',
+          accent: '#FFD700',
+          error: '#FF5252',
+          info: '#2196F3',
+          success: '#4CAF50',
+          warning: '#FB8C00'
+        },
+      },
+    },
+    defaultTheme: 'dark',
+  },
 })
 
 export { vuetify }
