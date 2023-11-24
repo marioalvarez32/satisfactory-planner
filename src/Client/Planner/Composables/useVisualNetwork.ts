@@ -78,12 +78,12 @@ const diagramStyle = cytoscape
     'target-arrow-shape': 'triangle',
     'arrow-scale': 1.7,
     'target-arrow-color': (ele) => {
-      return getEdgeColor(ele._private.data.edgeColor);
+      return getEdgeColor(ele._private.data.EdgeType);
     },
     'line-color': (ele) => {
-      return getEdgeColor(ele._private.data.edgeColor);
+      return getEdgeColor(ele._private.data.EdgeType);
     },
-    width: 3,
+    width: 4,
     'text-wrap': 'wrap',
     color: 'white',
     'text-rotation': 'autorotate',
@@ -101,10 +101,10 @@ const diagramStyle = cytoscape
   function getEdgeColor(edgeType){
     switch(edgeType){
       case 'iron': 
-        return '#fa6a17';
-      case 'copper': 
         return '#B87333';
+      case 'copper': 
+        return '#fa6a17';
       default: 
-        return 'red';
+        return 'gray';
     }
   }

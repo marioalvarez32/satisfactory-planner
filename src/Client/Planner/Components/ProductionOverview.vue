@@ -57,7 +57,7 @@
             target: item.Name,
             id: `${item.Name}-${input.Name}`,
             label: `${ratio * item.InputRate} / min`,
-            edgeColor: 'iron',
+            EdgeType: item.EdgeType,
           },
         }
         edges.push(newEdge);

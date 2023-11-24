@@ -4,6 +4,7 @@
       "Name": "Iron Ingot",
       "ProductionRate": 30,
       "Level": 1,
+      "EdgeType": "iron", 
       "Input": [
         {
           "Name": "Iron Ore",
@@ -15,6 +16,7 @@
       "Name": "Iron Plate",
       "ProductionRate": 20,
       "Level": 3,
+      "EdgeType": "iron", 
       "Input": [
         {
           "Name": "Iron Ingot",
@@ -26,6 +28,7 @@
       "Name": "Iron Rod",
       "ProductionRate": 15,
       "Level": 3,
+      "EdgeType": "iron", 
       "Input": [
         {
           "Name": "Iron Ingot",
@@ -37,6 +40,7 @@
       "Name": "Screw",
       "ProductionRate": 40,
       "Level": 4,
+      "EdgeType": "iron", 
       "Input": [
         {
           "Name": "Iron Rod",
@@ -48,6 +52,7 @@
       "Name": "Iron Ore",
       "ProductionRate": 60,
       "Input": [],
+      "EdgeType": "iron", 
       "Level": 1
     },
     {
@@ -55,6 +60,18 @@
       "ProductionRate": 60,
       "Input": [],
       "Level": 1
+    },
+    {
+      "Name": "Copper Ingot",
+      "ProductionRate": 30,
+      "Level": 1,
+      "EdgeType": "copper", 
+      "Input": [
+        {
+          "Name": "Copper Ore",
+          "ProductionRate": 30
+        }
+      ]
     },
     {
       "Name": "Limestone",

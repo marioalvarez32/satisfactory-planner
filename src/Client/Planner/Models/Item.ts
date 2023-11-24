@@ -5,6 +5,7 @@ export class Item {
   Level: number;
   InputRate?: number;
   OutputRate?: number;
+  EdgeType: string;
 
   constructor(item: Item) {
     this.Name = item.Name;
@@ -12,6 +13,7 @@ export class Item {
     this.Input = item.Input.map((input) => new ProductionInput(input));
     this.Level = item.Level;
     this.OutputRate = 0;
+    this.EdgeType = item.EdgeType;
   }
 }
 
