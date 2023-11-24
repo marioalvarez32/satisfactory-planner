@@ -66,8 +66,8 @@ const diagramStyle = cytoscape
   })
   .selector('node')
   .css({
-    width: 60,
-    height: 75,
+    width: 75,
+    height: 60,
     'background-opacity': '0',
     'border-width': 0,
   })

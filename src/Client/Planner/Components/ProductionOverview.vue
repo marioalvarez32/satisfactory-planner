@@ -29,15 +29,16 @@
     <div>
         <div class="custom-node__image"><img src="${getImageSrc(item.Name)}" /></div>
         <p class="custom-node__title">${item.Name}</p>
-        <p class="custom-node__production-rate"><i class="mdi mdi-debug-step-into"></i>${item.InputRate} / min</p>
-        <p class="custom-node__output-rate custom-node__output-rate${getOutputColorClass(item)}"><i class="mdi mdi-debug-step-out"></i><span class="custom-node__output-rate-value">${item.OutputRate} / min </span></p>
+          <div class="custom-node__details-container">
+            <p class="custom-node__production-rate" title="Input Rate"><i class="mdi mdi-debug-step-into"></i>${item.InputRate} / min</p>
+            <p class="custom-node__output-rate custom-node__output-rate${getOutputColorClass(item)}" title="Output Rate"><i class="mdi mdi-debug-step-out"></i><span class="custom-node__output-rate-value">${item.OutputRate} / min </span></p>
+          </div>
         </div>`
 
     let div = document.createElement("div")
     //div.innerHTML = `Item: ${product.Name}`
     div.innerHTML = htmlString
     div.classList.add("custom-node")
-    div.style.height = `65px`
 
     return {
       data: {
@@ -141,8 +142,10 @@
       font-weight: 600;
     }
 
-    .custom-node__production-rate {
-      text-align: center;
+    .custom-node__details-container{
+      display:flex;
+      flex-direction: row;
+      gap: 5px;
     }
 
     .custom-node__output-rate {
@@ -150,13 +153,17 @@
       span {
         font-weight: 600;
       }
+
+      .mdi-debug-step-out::before{
+        transform: rotateX(180deg);
+      }
     }
     .custom-node__output-rate--good .custom-node__output-rate-value {
-      color: #028702;
+      color: #1abe1a;
     }
 
     .custom-node__output-rate--bad .custom-node__output-rate-value {
-      color: #ff8787bf;
+      color: rgb(221, 21, 21);
     }
 
     .ribbon {
