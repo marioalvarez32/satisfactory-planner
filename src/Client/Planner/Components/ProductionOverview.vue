@@ -1,7 +1,7 @@
 <template>
-  <div class="production-overview">
+  <v-card elevation="5" rounded="lg" class="production-overview">
     <div id="production-overview" class="production-overview__network"></div>
-  </div>
+  </v-card>
 </template>
 
 <script setup lang="ts">
@@ -27,10 +27,11 @@
   function createNode(item: Item) {
     var htmlString = `
     <div>
+        <div class="custom-node__image"><img src="${getImageSrc(item.Name)}" /></div>
         <p class="custom-node__title">${item.Name}</p>
-        <p class="custom-node__production-rate">${item.InputRate} / min</p>
-        <p class="custom-node__output-rate custom-node__output-rate${getOutputColorClass(item)}"><span>Output:</span> <span class="custom-node__output-rate-value">${item.OutputRate} / min </span></p>
-    </div>`
+        <p class="custom-node__production-rate"><i class="mdi mdi-debug-step-into"></i>${item.InputRate} / min</p>
+        <p class="custom-node__output-rate custom-node__output-rate${getOutputColorClass(item)}"><i class="mdi mdi-debug-step-out"></i><span class="custom-node__output-rate-value">${item.OutputRate} / min </span></p>
+        </div>`
 
     let div = document.createElement("div")
     //div.innerHTML = `Item: ${product.Name}`
@@ -56,6 +57,7 @@
             target: item.Name,
             id: `${item.Name}-${input.Name}`,
             label: `${ratio * item.InputRate} / min`,
+            edgeColor: 'iron',
           },
         }
         edges.push(newEdge);
@@ -87,12 +89,18 @@
     }
   }
 
+  function getImageSrc(name: string){
+    const imageName = name.toLowerCase().split(' ').join('-');
+    const imagePath = `/src/assets/items/${imageName}_256.png`
+    const imageUrl = new URL(imagePath, import.meta.url)
+    return imageUrl.href
+  }
+
 </script>
 
 <style lang="scss" scoped>
   .production-overview {
     grid-area: overview;
-    border:1px solid red;
   }
 
   .production-overview__network {
@@ -100,14 +108,33 @@
   }
 
   :deep(.custom-node) {
-    background-color: #bbbbbb;
-    border-radius: 8px;
+    background-color: #004ea3;
+    border-radius: 15px;
     display: flex !important;
     justify-content: center;
     font-size: 12px;
     padding: 8px 10px;
     text-wrap: nowrap;
     position: relative;
+    color: #f3f2f2;
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+
+    .custom-node__image{
+      width:100%;
+      position:absolute; 
+      left:0;
+      top: -50px;
+      display:flex;
+      justify-content: center;
+      
+
+      img{
+        height:65px;
+        width:65px;
+        -webkit-filter: drop-shadow(2px 2px 2px #222);
+        filter: drop-shadow(2px 2px 2px #222);
+      }
+    }
 
     .custom-node__title {
       text-align: center;
@@ -129,7 +156,7 @@
     }
 
     .custom-node__output-rate--bad .custom-node__output-rate-value {
-      color: #cf0404;
+      color: #ff8787bf;
     }
 
     .ribbon {
