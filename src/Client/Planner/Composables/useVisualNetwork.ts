@@ -106,6 +106,18 @@ const diagramStyle = cytoscape
         return '#B87333';
       case 'copper': 
         return '#fa6a17';
+      case 'quartz': 
+        return '#f5aad7 ';
+      case 'coal': 
+        return '#333333 ';
+      case 'oil': 
+        return '#1C1C1C ';
+      case 'steel': 
+        return '#5A7D9A ';
+      case 'limestone': 
+        return '#EDE7D9 ';
+      case 'caterium': 
+        return '#FFD700 ';
       default: 
         return 'gray';
     }

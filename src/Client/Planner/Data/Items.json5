@@ -5,14 +5,12 @@
       "Name": "Iron Ore",
       "ProductionRate": 60,
       "Input": [],
-      "EdgeType": "iron", 
       "Level": 1
     },
     {
       "Name": "Iron Ingot",
       "ProductionRate": 30,
       "Level": 1,
-      "EdgeType": "iron", 
       "Input": [
         {
           "Name": "Iron Ore",
@@ -24,7 +22,6 @@
       "Name": "Iron Plate",
       "ProductionRate": 20,
       "Level": 3,
-      "EdgeType": "iron", 
       "Input": [
         {
           "Name": "Iron Ingot",
@@ -36,7 +33,6 @@
       "Name": "Iron Rod",
       "ProductionRate": 15,
       "Level": 3,
-      "EdgeType": "iron", 
       "Input": [
         {
           "Name": "Iron Ingot",
@@ -48,7 +44,6 @@
       "Name": "Screw",
       "ProductionRate": 40,
       "Level": 4,
-      "EdgeType": "iron", 
       "Input": [
         {
           "Name": "Iron Rod",
@@ -60,7 +55,6 @@
       "Name": "Reinforced Iron Plate",
       "ProductionRate": 5,
       "Level": 5,
-      "EdgeType": "iron", 
       "Input": [
         {
           "Name": "Screw",
@@ -76,7 +70,6 @@
       "Name": "Modular Frame",
       "ProductionRate": 2,
       "Level": 6,
-        "EdgeType": "iron", 
         "Input": [
           {
           "Name": "Iron Rod",
@@ -99,7 +92,6 @@
       "Name": "Copper Ingot",
       "ProductionRate": 30,
       "Level": 1,
-      "EdgeType": "copper", 
       "Input": [
         {
           "Name": "Copper Ore",
@@ -111,7 +103,6 @@
       "Name": "Wire",
       "ProductionRate": 30,
       "Level": 3,
-      "EdgeType": "copper", 
       "Input": [
         {
           "Name": "Copper Ingot",
@@ -123,7 +114,6 @@
       "Name": "Cable",
       "ProductionRate": 30,
       "Level": 4,
-      "EdgeType": "copper", 
       "Input": [
         {
           "Name": "Wire",
@@ -135,7 +125,6 @@
       "Name": "Copper Sheet",
       "ProductionRate": 10,
       "Level": 3,
-      "EdgeType": "copper", 
       "Input": [
         {
           "Name": "Copper Ingot",
@@ -148,13 +137,12 @@
       "Name": "Limestone",
       "ProductionRate": 60,
       "Input": [],
-      "Level": 1
+      "Level": 1,
     },
     {
       "Name": "Concrete",
       "ProductionRate": 15,
       "Level": 2,
-      "EdgeType": "limestone", 
       "Input": [
         {
           "Name": "Limestone",
@@ -173,7 +161,6 @@
       "Name": "Quartz Crystal",
       "ProductionRate": 22.5,
       "Level": 2,
-      "EdgeType": "quartz", 
       "Input": [
         {
           "Name": "Raw Quartz",
@@ -192,7 +179,6 @@
     {
       "Name": "Steel Ingot",
       "ProductionRate": 45,
-      "EdgeType": "steel", 
       "Input": [
         {
           "Name": "Iron Ore",
@@ -208,7 +194,6 @@
     {
       "Name": "Steel Beam",
       "ProductionRate": 15,
-      "EdgeType": "steel", 
       "Input": [
         {
           "Name": "Steel Ingot",
@@ -219,8 +204,7 @@
     },
     {
       "Name": "Steel Pipe",
-      "ProductionRate": 20,
-      "EdgeType": "steel", 
+      "ProductionRate": 20, 
       "Input": [
         {
           "Name": "Steel Ingot",
@@ -234,8 +218,7 @@
     {
       "Name": "Caterium Ore",
       "ProductionRate": 60,
-      "Input": [],
-      "EdgeType": "caterium", 
+      "Input": [], 
       "Level": 1
     },
     {
@@ -260,7 +243,6 @@
           "ProductionRate": 12
         }
       ],
-      "EdgeType": "caterium",
       "Level": 1
     },
     /***** Crude Oil *******/
@@ -268,7 +250,6 @@
       "Name": "Crude Oil",
       "ProductionRate": 120,
       "Input": [],
-      "EdgeType": "oil",
       "Level": 1
     },
     {
@@ -280,7 +261,6 @@
           "ProductionRate": 30
         }
       ],
-      "EdgeType": "oil",
       "Level": 1
     },
     {
@@ -292,7 +272,6 @@
           "ProductionRate": 30
         }
       ],
-      "EdgeType": "oil",
       "Level": 1
     },
     {
@@ -304,7 +283,6 @@
           "ProductionRate": 60
         }
       ],
-      "EdgeType": "oil",
       "Level": 1
     },
 
@@ -319,8 +297,7 @@
     {
       "Name": "Encased Industrial Beam",
       "ProductionRate": 6,
-      "Level": 2,
-      "EdgeType": "none", 
+      "Level": 2, 
       "Input": [
         {
           "Name": "Concrete",
@@ -335,8 +312,7 @@
     {
       "Name": "Rotor",
       "ProductionRate": 5,
-      "Level": 2,
-      "EdgeType": "none", 
+      "Level": 2, 
       "Input": [
         {
           "Name": "Steel Pipe",
@@ -351,8 +327,7 @@
     {
       "Name": "Stator",
       "ProductionRate": 5,
-      "Level": 2,
-      "EdgeType": "none", 
+      "Level": 2, 
       "Input": [
         {
           "Name": "Steel Pipe",
@@ -368,7 +343,6 @@
       "Name": "Motor",
       "ProductionRate": 5,
       "Level": 2,
-      "EdgeType": "none", 
       "Input": [
         {
           "Name": "Rotor",
@@ -384,7 +358,6 @@
       "Name": "Circuit Board",
       "ProductionRate": 7.5,
       "Level": 2,
-      "EdgeType": "none", 
       "Input": [
         {
           "Name": "Copper Sheet",
@@ -400,7 +373,6 @@
       "Name": "AI Limiter",
       "ProductionRate": 5,
       "Level": 2,
-      "EdgeType": "none", 
       "Input": [
         {
           "Name": "Copper Sheet",

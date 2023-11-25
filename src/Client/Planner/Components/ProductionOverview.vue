@@ -11,6 +11,7 @@
   import { Item } from "../Models/Item"
   import { useVisualNetwork } from "../Composables/useVisualNetwork"
   import { formatNumber } from '../Utilities/ItemUtility'; 
+  import colorGroupData from "../Data/itemColorGroup.json5"
 
   const { productionListItems, items } = storeToRefs(useProductionListStore())
 
@@ -58,7 +59,7 @@
             target: item.Name,
             id: `${item.Name}-${input.Name}`,
             label: `${(ratio * item.InputRate).toFixed(2)} / min`,
-            EdgeType: item.EdgeType,
+            EdgeType: colorGroupData[input.Name],
           },
         }
         edges.push(newEdge);
