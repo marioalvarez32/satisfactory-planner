@@ -147,7 +147,7 @@
       "Name": "Limestone",
       "ProductionRate": 60,
       "Input": [],
-      "Level": 1,
+      "Level": 1
     },
     {
       "Id": "concrete",
