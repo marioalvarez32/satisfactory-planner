@@ -11,7 +11,7 @@
   import { Item } from "../Models/Item"
   import { useVisualNetwork } from "../Composables/useVisualNetwork"
   import { formatNumber } from '../Utilities/ItemUtility'; 
-  import colorGroupData from "../Data/itemColorGroup.json5"
+  import colorGroupData from "../Data/itemColorGroup.json"
 
   const { productionListItems, items } = storeToRefs(useProductionListStore())
 

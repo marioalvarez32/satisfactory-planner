@@ -1,4 +1,4 @@
-import ItemData from '../Data/Items.json5'; 
+import ItemData from '../Data/Items.json'; 
 import { Item } from '../Models/Item';
 import { useProductionListStore } from '../Stores/productionList';
 

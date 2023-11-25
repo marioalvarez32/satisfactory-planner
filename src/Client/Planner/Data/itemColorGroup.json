@@ -1,6 +1,4 @@
 {
-    
-      /***** Iron *******/
       "Iron Ore" :  "iron",
       "Iron Ingot" :  "iron",
       "Iron Plate" :  "iron",
@@ -9,34 +7,25 @@
       "Reinforced Iron Plate" :  "iron",
       "Modular Frame" :  "iron",
       "Iron" :  "iron",
-      /***** Copper *******/
       "Copper Ore" :  "copper",
       "Copper Ingot" :  "copper",
       "Wire" :  "copper",
       "Cable" :  "copper",
       "Copper Sheet" :  "copper",
-      /***** Limestone *******/
       "Limestone" :  "limestone",
       "Concrete" :  "limestone",
-      /***** Quartz *******/
       "Raw Quartz" :  "quartz",
       "Raw Crystal" :  "quartz",
-      /***** Coal *******/
       "Coal" :  "coal",
-      /***** Steel *******/
       "Steel Ingot" :  "steel",
       "Steel Beam" :  "steel",
       "Steel Pipe" :  "steel",  
-      /***** Caterium *******/
       "Caterium Ore" :  "caterium", 
       "Caterium Ingot" :  "caterium", 
       "Quickwire" :  "caterium",  
-      /***** Crude Oil *******/
       "Crude Oil" :  "oil",
       "Plastic" :  "oil",
       "Rubber" :  "oil",
-      "Fuel" :  "oil",
-      /***** Heavy Oil Residue *******/
-      /***** Assembler *******/
+      "Fuel" :  "oil"
   }
   

@@ -1,5 +1,5 @@
 <template>
-  <v-autocomplete v-model="value" density="compact" variant="outlined" class="production-item" item-title="Name" item-value="Name" :items="itemList">
+  <v-autocomplete v-model="value" density="compact" variant="outlined" class="production-item" item-title="Name" item-value="Id" :items="itemList">
     <template #selection="{ item }">
       <div class="input-selection">
         <v-avatar v-if="item.title">
@@ -23,7 +23,7 @@
 
 <script setup lang="ts">
   import { computed } from "vue"
-  import itemData from "../Data/items.json5"
+  import itemData from "../Data/items.json"
   import { uniqBy } from "lodash"
   import { Item } from "../Models/Item"
 import { useProductionListStore } from "../Stores/productionList";
@@ -49,10 +49,11 @@ import { storeToRefs } from "pinia";
     },
   })
 
-  const itemList = uniqBy(itemData.items, "Name")
-  .filter((item: Item) => !productionListItems.value.some((selectedItem) => selectedItem.Name == item.Name))
+  const itemList = uniqBy(itemData.items, "id")
+  .filter((item: Item) => !productionListItems.value.some((selectedItem) => selectedItem.Id == item.Id))
   .map((item: Item) => {
     return {
+      Id: item.Id,
       Name: item.Name,
     }
   })
