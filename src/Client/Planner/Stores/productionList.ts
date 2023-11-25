@@ -18,7 +18,7 @@ export const useProductionListStore = defineStore('production-list-store', {
       return this.filteredProductionListItems.map((listItem: ProductionListItem) => {
         const item = getItemFromName(listItem.Name);
         item.OutputRate = getOutputTotal(item);
-        item.InputRate = listItem.ItemsPerMinute;
+        item.InputRate = parseFloat(`${listItem.ItemsPerMinute}`);
         return item;
       });
     },

@@ -9,8 +9,8 @@
   import { storeToRefs } from "pinia"
   import { useProductionListStore } from "../Stores/productionList"
   import { Item } from "../Models/Item"
-  import itemData from "../Data/items.json"
   import { useVisualNetwork } from "../Composables/useVisualNetwork"
+  import { formatNumber } from '../Utilities/ItemUtility'; 
 
   const { productionListItems, items } = storeToRefs(useProductionListStore())
 
@@ -30,8 +30,8 @@
         <div class="custom-node__image"><img src="${getImageSrc(item.Name)}" /></div>
         <p class="custom-node__title">${item.Name}</p>
           <div class="custom-node__details-container">
-            <p class="custom-node__production-rate" title="Input Rate"><i class="mdi mdi-debug-step-into"></i>${item.InputRate} / min</p>
-            <p class="custom-node__output-rate custom-node__output-rate${getOutputColorClass(item)}" title="Output Rate"><i class="mdi mdi-debug-step-out"></i><span class="custom-node__output-rate-value">${item.OutputRate} / min </span></p>
+            <p class="custom-node__production-rate" title="Input Rate"><i class="mdi mdi-debug-step-into"></i>${formatNumber(item.InputRate)} / min</p>
+            <p class="custom-node__output-rate custom-node__output-rate${getOutputColorClass(item)}" title="Output Rate"><i class="mdi mdi-debug-step-out"></i><span class="custom-node__output-rate-value">${formatNumber(item.OutputRate)} / min </span></p>
           </div>
         </div>`
 
@@ -57,7 +57,7 @@
             source: input.Name,
             target: item.Name,
             id: `${item.Name}-${input.Name}`,
-            label: `${ratio * item.InputRate} / min`,
+            label: `${(ratio * item.InputRate).toFixed(2)} / min`,
             EdgeType: item.EdgeType,
           },
         }
@@ -81,7 +81,7 @@
   function getOutputColorClass(item: Item){
     if (item.OutputRate == 0) return;
     const difference = item.InputRate - item.OutputRate;
-    if(difference > 0){
+    if(difference >= 0){
       return '--good';
     } else if (difference < 0){
       return '--bad'

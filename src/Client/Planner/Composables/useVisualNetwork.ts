@@ -46,11 +46,13 @@ const diagramLayout = {
   name: 'dagre',
   avoidOverlap: true,
   fit: true,
-  rankDir: 'UL',
+  rankDir: 'UD',
   idealEdgeLength: 10,
   padding: 150,
   rankSep: 175,
   nodeSep: 100,
+  ranker: 'longest-path',
+  acyclicer: 'greedy'
 };
 
 const diagramStyle = cytoscape
@@ -73,7 +75,7 @@ const diagramStyle = cytoscape
   })
   .selector('edge')
   .css({
-    'curve-style': 'bezier',
+    'curve-style': 'bezier', // taxi for hierarchy. bezier for straight lines. unbundled-bezier for curved lines.
     'control-point-step-size': 100,
     'target-arrow-shape': 'triangle',
     'arrow-scale': 1.7,

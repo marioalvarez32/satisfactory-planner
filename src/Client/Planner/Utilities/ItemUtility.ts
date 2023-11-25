@@ -28,3 +28,10 @@ export function getOutputTotal(item: Item) {
     });
     return count;
 }
+
+export function formatNumber(num) {
+  let str = num.toFixed(2);
+  str = str.replace(/\.00$/, '');
+  str = str.replace(/(\.\d)0$/, '$1');
+  return str;
+}
