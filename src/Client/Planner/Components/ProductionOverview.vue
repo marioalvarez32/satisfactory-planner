@@ -10,20 +10,24 @@
   import { useProductionListStore } from "../Stores/productionList"
   import { Item } from "../Models/Item"
   import { useVisualNetwork } from "../Composables/useVisualNetwork"
-  import { formatNumber } from '../Utilities/ItemUtility'; 
+  import { formatNumber, getItemFromId } from "../Utilities/ItemUtility"
   import colorGroupData from "../Data/itemColorGroup.json"
 
-  const { productionListItems, items } = storeToRefs(useProductionListStore())
+  const { items } = storeToRefs(useProductionListStore())
 
   const { initializeNetwork, updateNetwork } = useVisualNetwork("production-overview")
-  onMounted(() => { 
+  onMounted(() => {
     initializeNetwork()
-    updateNetwork(nodes.value, edges.value);
+    updateNetwork(nodes.value, edges.value)
   })
 
-  watch(items, () =>{
-    updateNetwork(nodes.value, edges.value)
-  }, { deep: true })
+  watch(
+    items,
+    () => {
+      updateNetwork(nodes.value, edges.value)
+    },
+    { deep: true }
+  )
 
   function createNode(item: Item) {
     var htmlString = `
@@ -32,7 +36,9 @@
         <p class="custom-node__title">${item.Name}</p>
           <div class="custom-node__details-container">
             <p class="custom-node__production-rate" title="Input Rate"><i class="mdi mdi-debug-step-into"></i>${formatNumber(item.InputRate)} / min</p>
-            <p class="custom-node__output-rate custom-node__output-rate${getOutputColorClass(item)}" title="Output Rate"><i class="mdi mdi-debug-step-out"></i><span class="custom-node__output-rate-value">${formatNumber(item.OutputRate)} / min </span></p>
+            <p class="custom-node__output-rate custom-node__output-rate${getOutputColorClass(
+              item
+            )}" title="Output Rate"><i class="mdi mdi-debug-step-out"></i><span class="custom-node__output-rate-value">${formatNumber(item.OutputRate)} / min </span></p>
           </div>
         </div>`
 
@@ -49,55 +55,57 @@
     }
   }
 
-  function createEdge(item: Item): Array<any>{
-    const edges = [];
-      item.Input.forEach(input => {
-        const ratio = input.ProductionRate / item.ProductionRate;
-        const newEdge = {
-          data: {
-            source: input.Name,
-            target: item.Name,
-            id: `${item.Name}-${input.Name}`,
-            label: `${(ratio * item.InputRate).toFixed(2)} / min`,
-            EdgeType: colorGroupData[input.Name],
-          },
-        }
-        edges.push(newEdge);
+  function createEdge(item: Item): Array<any> {
+    const edges = []
+    item.Input.forEach(input => {
+      const inputItem = getItemFromId(input.Id)
+      const ratio = input.ProductionRate / item.ProductionRate
+      const newEdge = {
+        data: {
+          source: inputItem.Name,
+          target: item.Name,
+          id: `${item.Name}-${inputItem.Name}`,
+          label: `${(ratio * item.InputRate).toFixed(2)} / min`,
+          EdgeType: colorGroupData[inputItem.Name],
+        },
+      }
+      edges.push(newEdge)
     })
-    return edges;
+    return edges
   }
 
-  const nodes = computed(()=>{
-    return items.value.map((item)=>{
-      return createNode(item);
-    });
-  }); 
+  const nodes = computed(() => {
+    return items.value.map(item => {
+      return createNode(item)
+    })
+  })
 
-  const edges = computed(()=>{
-    return items.value.map((item)=>{
-      return createEdge(item);
-    }).flat();
-  }); 
+  const edges = computed(() => {
+    return items.value
+      .map(item => {
+        return createEdge(item)
+      })
+      .flat()
+  })
 
-  function getOutputColorClass(item: Item){
-    if (item.OutputRate == 0) return;
-    const difference = item.InputRate - item.OutputRate;
-    if(difference >= 0){
-      return '--good';
-    } else if (difference < 0){
-      return '--bad'
+  function getOutputColorClass(item: Item) {
+    if (item.OutputRate == 0) return
+    const difference = item.InputRate - item.OutputRate
+    if (difference >= 0) {
+      return "--good"
+    } else if (difference < 0) {
+      return "--bad"
     } else {
-      return '--warn'
+      return "--warn"
     }
   }
 
-  function getImageSrc(name: string){
-    const imageName = name.toLowerCase().split(' ').join('-');
+  function getImageSrc(name: string) {
+    const imageName = name.toLowerCase().split(" ").join("-")
     const imagePath = `/src/assets/items/${imageName}_256.png`
     const imageUrl = new URL(imagePath, import.meta.url)
     return imageUrl.href
   }
-
 </script>
 
 <style lang="scss" scoped>

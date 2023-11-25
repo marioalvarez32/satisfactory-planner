@@ -2,7 +2,7 @@
   <v-card elevation="5" rounded="lg" class="production-list">
     <div class="production-list__content">
       <div v-for="(item, index) in productionListItems" :key="index" class="production-list__item">
-        <ProductionItem v-model="item.Name" />
+        <ProductionItem v-model="item.Id" />
         <v-text-field
           v-model="item.ItemsPerMinute"
           variant="outlined"
@@ -17,7 +17,7 @@
         <v-btn density="default" color="error" icon="mdi-minus" size="x-small" @click="removeProductionItem(index)" />
       </div>
     </div>
-    <v-btn :disabled="shouldDisableAddButton" color="primary" density="default" icon="mdi-plus"  @click="addProductionItem" />
+    <v-btn :disabled="shouldDisableAddButton" color="primary" density="default" icon="mdi-plus" @click="addProductionItem" />
   </v-card>
 </template>
 
@@ -31,7 +31,7 @@
 
   const { productionListItems } = storeToRefs(useProductionListStore())
 
-  const shouldDisableAddButton = computed(() => productionListItems.value?.at(-1)?.Name == "")
+  const shouldDisableAddButton = computed(() => productionListItems.value?.at(-1)?.Id == "")
 
   const storedItems: Ref<ProductionListItem[]> = useStorage("production-item-list", [], localStorage, { mergeDefaults: true })
   if (storedItems.value && storedItems.value.length > 0) {

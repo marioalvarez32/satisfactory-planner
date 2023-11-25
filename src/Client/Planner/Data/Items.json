@@ -14,7 +14,7 @@
       "Level": 1,
       "Input": [
         {
-          "Name": "Iron Ore",
+          "Id": "iron_ore",
           "ProductionRate": 30
         }
       ]
@@ -26,7 +26,7 @@
       "Level": 3,
       "Input": [
         {
-          "Name": "Iron Ingot",
+          "Id": "iron_ingot",
           "ProductionRate": 30
         }
       ]
@@ -38,7 +38,7 @@
       "Level": 3,
       "Input": [
         {
-          "Name": "Iron Ingot",
+          "Id": "iron_ingot",
           "ProductionRate": 15
         }
       ]
@@ -50,7 +50,7 @@
       "Level": 4,
       "Input": [
         {
-          "Name": "Iron Rod",
+          "Id": "iron_rod",
           "ProductionRate": 10
         }
       ]
@@ -62,11 +62,11 @@
       "Level": 5,
       "Input": [
         {
-          "Name": "Screw",
+          "Id": "screw",
           "ProductionRate": 60
         },
         {
-          "Name": "Iron Plate",
+          "Id": "iron_plate",
           "ProductionRate": 30
         }
       ]
@@ -76,13 +76,13 @@
       "Name": "Modular Frame",
       "ProductionRate": 2,
       "Level": 6,
-        "Input": [
-          {
-          "Name": "Iron Rod",
+      "Input": [
+        {
+          "Id": "iron_rod",
           "ProductionRate": 12
         },
         {
-          "Name": "Reinforced Iron Plate",
+          "Id": "reinforced_iron_plate",
           "ProductionRate": 3
         }
       ]
@@ -101,7 +101,7 @@
       "Level": 1,
       "Input": [
         {
-          "Name": "Copper Ore",
+          "Id": "copper_ore",
           "ProductionRate": 30
         }
       ]
@@ -113,7 +113,7 @@
       "Level": 3,
       "Input": [
         {
-          "Name": "Copper Ingot",
+          "Id": "copper_ingot",
           "ProductionRate": 15
         }
       ]
@@ -125,7 +125,7 @@
       "Level": 4,
       "Input": [
         {
-          "Name": "Wire",
+          "Id": "wire",
           "ProductionRate": 60
         }
       ]
@@ -137,7 +137,7 @@
       "Level": 3,
       "Input": [
         {
-          "Name": "Copper Ingot",
+          "Id": "copper_ingot",
           "ProductionRate": 20
         }
       ]
@@ -156,7 +156,7 @@
       "Level": 2,
       "Input": [
         {
-          "Name": "Limestone",
+          "Id": "limestone",
           "ProductionRate": 45
         }
       ]
@@ -175,7 +175,7 @@
       "Level": 2,
       "Input": [
         {
-          "Name": "Raw Quartz",
+          "Id": "raw_quartz",
           "ProductionRate": 37.5
         }
       ]
@@ -193,11 +193,11 @@
       "ProductionRate": 45,
       "Input": [
         {
-          "Name": "Iron Ore",
+          "Id": "iron_ore",
           "ProductionRate": 45
         },
         {
-          "Name": "Coal",
+          "Id": "coal",
           "ProductionRate": 45
         }
       ],
@@ -209,7 +209,7 @@
       "ProductionRate": 15,
       "Input": [
         {
-          "Name": "Steel Ingot",
+          "Id": "steel_ingot",
           "ProductionRate": 60
         }
       ],
@@ -218,10 +218,10 @@
     {
       "Id": "steel_pipe",
       "Name": "Steel Pipe",
-      "ProductionRate": 20, 
+      "ProductionRate": 20,
       "Input": [
         {
-          "Name": "Steel Ingot",
+          "Id": "steel_ingot",
           "ProductionRate": 30
         }
       ],
@@ -231,7 +231,7 @@
       "Id": "caterium_ore",
       "Name": "Caterium Ore",
       "ProductionRate": 60,
-      "Input": [], 
+      "Input": [],
       "Level": 1
     },
     {
@@ -240,13 +240,11 @@
       "ProductionRate": 15,
       "Input": [
         {
-          "Name": "Caterium Ore",
+          "Id": "caterium_ore",
           "ProductionRate": 45
         }
       ],
-      "EdgeType": "caterium",
       "Level": 1
-      
     },
     {
       "Id": "quickwire",
@@ -254,7 +252,7 @@
       "ProductionRate": 60,
       "Input": [
         {
-          "Name": "Caterium Ingot",
+          "Id": "caterium_ingot",
           "ProductionRate": 12
         }
       ],
@@ -273,7 +271,7 @@
       "ProductionRate": 20,
       "Input": [
         {
-          "Name": "Crude Oil",
+          "Id": "crude_oil",
           "ProductionRate": 30
         }
       ],
@@ -285,7 +283,7 @@
       "ProductionRate": 20,
       "Input": [
         {
-          "Name": "Crude Oil",
+          "Id": "crude_oil",
           "ProductionRate": 30
         }
       ],
@@ -297,7 +295,7 @@
       "ProductionRate": 40,
       "Input": [
         {
-          "Name": "Crude Oil",
+          "Id": "crude_oil",
           "ProductionRate": 60
         }
       ],
@@ -314,14 +312,14 @@
       "Id": "encased_industrial_beam",
       "Name": "Encased Industrial Beam",
       "ProductionRate": 6,
-      "Level": 2, 
+      "Level": 2,
       "Input": [
         {
-          "Name": "Concrete",
+          "Id": "concrete",
           "ProductionRate": 30
         },
         {
-          "Name": "Steel Beam",
+          "Id": "steel_beam",
           "ProductionRate": 24
         }
       ]
@@ -330,14 +328,14 @@
       "Id": "rotor",
       "Name": "Rotor",
       "ProductionRate": 5,
-      "Level": 2, 
+      "Level": 2,
       "Input": [
         {
-          "Name": "Steel Pipe",
+          "Id": "steel_pipe",
           "ProductionRate": 10
         },
         {
-          "Name": "Wire",
+          "Id": "wire",
           "ProductionRate": 30
         }
       ]
@@ -346,14 +344,14 @@
       "Id": "stator",
       "Name": "Stator",
       "ProductionRate": 5,
-      "Level": 2, 
+      "Level": 2,
       "Input": [
         {
-          "Name": "Steel Pipe",
+          "Id": "steel_pipe",
           "ProductionRate": 15
         },
         {
-          "Name": "Wire",
+          "Id": "wire",
           "ProductionRate": 40
         }
       ]
@@ -365,11 +363,11 @@
       "Level": 2,
       "Input": [
         {
-          "Name": "Rotor",
+          "Id": "rotor",
           "ProductionRate": 10
         },
         {
-          "Name": "Stator",
+          "Id": "stator",
           "ProductionRate": 10
         }
       ]
@@ -381,11 +379,11 @@
       "Level": 2,
       "Input": [
         {
-          "Name": "Copper Sheet",
+          "Id": "copper_sheet",
           "ProductionRate": 15
         },
         {
-          "Name": "Plastic",
+          "Id": "plastic",
           "ProductionRate": 30
         }
       ]
@@ -397,11 +395,11 @@
       "Level": 2,
       "Input": [
         {
-          "Name": "Copper Sheet",
+          "Id": "ai_limiter",
           "ProductionRate": 25
         },
         {
-          "Name": "Quickwire",
+          "Id": "quickwire",
           "ProductionRate": 100
         }
       ]

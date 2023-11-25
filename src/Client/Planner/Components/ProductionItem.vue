@@ -5,29 +5,21 @@
         <v-avatar v-if="item.title">
           <v-img :src="getImageSrc(item.title)" />
         </v-avatar>
-        {{ item.title ? item.title : 'Select an item' }}
+        {{ item.title ? item.title : "Select an item" }}
       </div>
     </template>
-    <template #item="{props:itemProps, item }">
-      <v-list-item
-        :key="item.value"
-        :value="item.value"
-        :title="item.title"
-        v-bind="itemProps"
-        :prepend-avatar="getImageSrc(item.title)"
-      />
+    <template #item="{ props: itemProps, item }">
+      <v-list-item :key="item.value" :value="item.value" :title="item.title" v-bind="itemProps" :prepend-avatar="getImageSrc(item.title)" />
     </template>
-  
   </v-autocomplete>
 </template>
 
 <script setup lang="ts">
   import { computed } from "vue"
-  import itemData from "../Data/items.json"
-  import { uniqBy } from "lodash"
   import { Item } from "../Models/Item"
-import { useProductionListStore } from "../Stores/productionList";
-import { storeToRefs } from "pinia";
+  import { useProductionListStore } from "../Stores/productionList"
+  import { storeToRefs } from "pinia"
+  import { itemDictionary } from "../Utilities/ItemUtility"
 
   const props = defineProps({
     modelValue: {
@@ -35,12 +27,12 @@ import { storeToRefs } from "pinia";
       default: "",
     },
   })
-  
+
   const emit = defineEmits(["update:modelValue"])
   const { productionListItems } = storeToRefs(useProductionListStore())
   const value = computed({
     get() {
-      return props.modelValue
+      return itemDictionary[props.modelValue] ? itemDictionary[props.modelValue] : ""
     },
     set(value) {
       if (value) {
@@ -49,17 +41,17 @@ import { storeToRefs } from "pinia";
     },
   })
 
-  const itemList = uniqBy(itemData.items, "id")
-  .filter((item: Item) => !productionListItems.value.some((selectedItem) => selectedItem.Id == item.Id))
-  .map((item: Item) => {
-    return {
-      Id: item.Id,
-      Name: item.Name,
-    }
-  })
+  const itemList = Object.values(itemDictionary)
+    .filter((item: Item) => !productionListItems.value.some(selectedItem => selectedItem.Id == item.Id))
+    .map((item: Item) => {
+      return {
+        Id: item.Id,
+        Name: item.Name,
+      }
+    })
 
-  function getImageSrc(name: string){
-    const imageName = name.toLowerCase().split(' ').join('-');
+  function getImageSrc(name: string) {
+    const imageName = name.toLowerCase().split(" ").join("-")
     const imagePath = `/src/assets/items/${imageName}_64.png`
     const imageUrl = new URL(imagePath, import.meta.url)
     return imageUrl.href

@@ -1,4 +1,5 @@
 export class Item {
+  Id: string;
   Name: string;
   Input: ProductionInput[];
   ProductionRate: number;
@@ -8,6 +9,7 @@ export class Item {
   EdgeType: string;
 
   constructor(item: Item) {
+    this.Id = item.Id;
     this.Name = item.Name;
     this.ProductionRate = item.ProductionRate;
     this.Input = item.Input.map((input) => new ProductionInput(input));
@@ -18,11 +20,11 @@ export class Item {
 }
 
 export class ProductionInput {
-  Name: string;
+  Id: string;
   ProductionRate: number;
 
   constructor(productionInput: ProductionInput) {
-    this.Name = productionInput.Name;
+    this.Id = productionInput.Id;
     this.ProductionRate = productionInput.ProductionRate;
   }
 }
