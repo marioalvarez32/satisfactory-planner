@@ -8,12 +8,11 @@
           variant="outlined"
           suffix="items/min"
           class="production-list__production-rate"
-          label="Enter an Integer"
+          label="Enter a number"
           type="number"
           step="1"
           density="compact"
           outlined
-          @input="parseNumber(index)"
         />
         <v-btn density="default" color="error" icon="mdi-minus" size="x-small" @click="removeProductionItem(index)" />
       </div>
@@ -53,10 +52,6 @@
   function removeProductionItem(index) {
     productionListItems.value.splice(index, 1)
   }
-
-  function parseNumber(index) {
-    productionListItems.value[index].ItemsPerMinute = parseInt(`${productionListItems.value[index].ItemsPerMinute}`) || 0
-  }
 </script>
 
 <style lang="scss" scoped>
@@ -85,6 +80,7 @@
 
   .production-list__production-rate {
     max-width: 200px;
+    min-width:200px;
   }
   .production-list :deep(.v-input__details) {
     display: none;
