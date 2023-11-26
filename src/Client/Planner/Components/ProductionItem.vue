@@ -5,11 +5,17 @@
         <v-avatar v-if="item.title">
           <v-img :src="getImageSrc(item.title)" />
         </v-avatar>
-        {{ item.title ? item.title : "Select an item" }}
+        {{ item.title ? item.raw.AlternateName ?? item.title : "Select an item" }}
       </div>
     </template>
     <template #item="{ props: itemProps, item }">
-      <v-list-item :key="item.value" :value="item.value" :title="item.title" v-bind="itemProps" :prepend-avatar="getImageSrc(item.title)" />
+      <v-list-item :key="item.value" v-bind="itemProps" title="test" :prepend-avatar="getImageSrc(item.title)">
+        <template #title>
+          <div class="input-selection">
+            {{ item.raw.AlternateName ?? item.title }}
+          </div>
+        </template>
+      </v-list-item>
     </template>
   </v-autocomplete>
 </template>
@@ -47,6 +53,7 @@
       return {
         Id: item.Id,
         Name: item.Name,
+        AlternateName: item.AlternateName,
       }
     })
 
