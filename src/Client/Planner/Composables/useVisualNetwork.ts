@@ -29,7 +29,7 @@ export function useVisualNetwork(elementId: string) {
   function updateNetwork(nodes, edges) {
     initializeNetwork();
     networkInstance.add(nodes);
-    networkInstance.add(edges.filter((edge) => networkInstance.$id(edge.data.source).length > 0));
+    networkInstance.add(edges.filter((edge) => networkInstance.$id(edge.data.source).length > 0 && networkInstance.$id(edge.data.target).length > 0));
     networkInstance.edges().forEach((edge) => {
       edge.addClass(`edge--${edge.data.EdgeColor}`);
     });
