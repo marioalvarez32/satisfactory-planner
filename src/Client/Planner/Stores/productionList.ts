@@ -29,5 +29,9 @@ export const useProductionListStore = defineStore('production-list-store', {
         return find(state.productionListItems, (listItem) => listItem.Id == id);
       },
   },
-  actions: {},
+  actions: {
+    updateListItem(index: number, newValue: ProductionListItem) {
+      this.productionListItems[index] = newValue;
+    },
+  },
 });

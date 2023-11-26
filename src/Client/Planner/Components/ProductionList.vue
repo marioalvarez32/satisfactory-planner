@@ -1,21 +1,7 @@
 <template>
   <v-card elevation="5" rounded="lg" class="production-list">
     <div class="production-list__content">
-      <div v-for="(item, index) in productionListItems" :key="index" class="production-list__item">
-        <ProductionItem v-model="item.Id" />
-        <v-text-field
-          v-model="item.ItemsPerMinute"
-          variant="outlined"
-          suffix="items/min"
-          class="production-list__production-rate"
-          label="Enter a number"
-          type="number"
-          step="1"
-          density="compact"
-          outlined
-        />
-        <v-btn density="default" color="error" icon="mdi-minus" size="x-small" @click="removeProductionItem(index)" />
-      </div>
+      <ProductionItem v-for="(item, index) in productionListItems" :key="index" :list-item="item" @update:list-item="handleItemUpdate($event, index)" @remove:list-item="removeProductionItem(index)" />
     </div>
     <v-btn :disabled="shouldDisableAddButton" color="primary" density="default" icon="mdi-plus" @click="addProductionItem" />
   </v-card>
@@ -28,8 +14,8 @@
   import { useProductionListStore } from "../Stores/productionList"
   import { storeToRefs } from "pinia"
   import { useStorage } from "@vueuse/core"
-
-  const { productionListItems } = storeToRefs(useProductionListStore())
+  const productionListStore = useProductionListStore()
+  const { productionListItems } = storeToRefs(productionListStore)
 
   const shouldDisableAddButton = computed(() => productionListItems.value?.at(-1)?.Id == "")
 
@@ -52,6 +38,10 @@
   function removeProductionItem(index) {
     productionListItems.value.splice(index, 1)
   }
+
+  function handleItemUpdate(newValue: ProductionListItem, index: number) {
+    productionListStore.updateListItem(index, newValue)
+  }
 </script>
 
 <style lang="scss" scoped>
@@ -69,20 +59,5 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
-  }
-
-  .production-list__item {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .production-list__production-rate {
-    max-width: 200px;
-    min-width:200px;
-  }
-  .production-list :deep(.v-input__details) {
-    display: none;
   }
 </style>
