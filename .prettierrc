@@ -7,11 +7,11 @@
   "trailingComma": "es5",
   "arrowParens": "always",
   "bracketSpacing": true,
+  "printWidth": 240,
   "overrides": [
     {
       "files": "*.vue",
       "options": {
-        "printWidth": 180,
         "tabWidth": 2,
         "useTabs": false,
         "singleQuote": false,
