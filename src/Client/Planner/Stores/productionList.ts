@@ -2,6 +2,7 @@ import { defineStore } from 'pinia';
 import { ProductionListItem } from '../Models/ProductionList';
 import { Item } from '../Models/Item';
 import { getInputTotal, getItemFromId, getOutputTotal } from '../Utilities/ItemUtility';
+import { find } from 'lodash';
 
 type State = {
   productionListItems: ProductionListItem[];
@@ -22,6 +23,11 @@ export const useProductionListStore = defineStore('production-list-store', {
         return item;
       });
     },
+    getListItemById:
+      (state) =>
+      (id: string): ProductionListItem => {
+        return find(state.productionListItems, (listItem) => listItem.Id == id);
+      },
   },
   actions: {},
 });

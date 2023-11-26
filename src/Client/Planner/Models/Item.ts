@@ -6,7 +6,9 @@ export class Item {
   Level: number;
   InputRate?: number;
   OutputRate?: number;
-  EdgeType: string;
+  AlternateName?: string;
+  Byproduct: ProductionInput[];
+  CanBeByproduct: boolean;
 
   constructor(item: Item) {
     this.Id = item.Id;
@@ -15,7 +17,9 @@ export class Item {
     this.Input = item.Input.map((input) => new ProductionInput(input));
     this.Level = item.Level;
     this.OutputRate = 0;
-    this.EdgeType = item.EdgeType;
+    this.AlternateName = item.AlternateName ?? '';
+    this.Byproduct = item.Byproduct;
+    this.CanBeByproduct = !!item.CanBeByproduct;
   }
 }
 

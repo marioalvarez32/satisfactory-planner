@@ -299,7 +299,34 @@
           "ProductionRate": 60
         }
       ],
+      "Byproduct": [
+        {
+          "Id": "polymer_resin",
+          "ProductionRate": 30
+        }
+      ],
       "Level": 1
+    },
+    {
+      "Id": "residue_fuel",
+      "Name": "Fuel",
+      "AlternateName": "Residue Fuel",
+      "ProductionRate": 40,
+      "Input": [
+        {
+          "Id": "heavy_oil_residue",
+          "ProductionRate": 60
+        }
+      ],
+      "Level": 1
+    },
+    {
+      "Id": "polymer_resin",
+      "Name": "Polymer Resin",
+      "ProductionRate": 40,
+      "Input": [],
+      "Level": 1,
+      "CanBeByproduct": true
     },
     {
       "Id": "heavy_oil_residue",
@@ -395,7 +422,7 @@
       "Level": 2,
       "Input": [
         {
-          "Id": "ai_limiter",
+          "Id": "copper_sheet",
           "ProductionRate": 25
         },
         {

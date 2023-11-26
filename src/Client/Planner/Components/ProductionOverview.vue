@@ -13,7 +13,7 @@
   import { formatNumber, getItemFromId } from "../Utilities/ItemUtility"
   import colorGroupData from "../Data/itemColorGroup.json"
 
-  const { items } = storeToRefs(useProductionListStore())
+  const { items, getListItemById } = storeToRefs(useProductionListStore())
 
   const { initializeNetwork, updateNetwork } = useVisualNetwork("production-overview")
   onMounted(() => {
@@ -31,16 +31,16 @@
 
   function createNode(item: Item) {
     var htmlString = `
-    <div>
-        <div class="custom-node__image"><img src="${getImageSrc(item.Name)}" /></div>
-        <p class="custom-node__title">${item.Name}</p>
-          <div class="custom-node__details-container">
-            <p class="custom-node__production-rate" title="Input Rate"><i class="mdi mdi-debug-step-into"></i>${formatNumber(item.InputRate)} / min</p>
-            <p class="custom-node__output-rate custom-node__output-rate${getOutputColorClass(
-              item
-            )}" title="Output Rate"><i class="mdi mdi-debug-step-out"></i><span class="custom-node__output-rate-value">${formatNumber(item.OutputRate)} / min </span></p>
-          </div>
-        </div>`
+      <div>
+          <div class="custom-node__image"><img src="${getImageSrc(item.Name)}" /></div>
+          <p class="custom-node__title">${item.Name}</p>
+            <div class="custom-node__details-container">
+              <p class="custom-node__production-rate" title="Input Rate"><i class="mdi mdi-debug-step-into"></i>${formatNumber(item.InputRate)} / min</p>
+              <p class="custom-node__output-rate custom-node__output-rate${getOutputColorClass(item)}" title="Output Rate"><i class="mdi mdi-debug-step-out"></i><span class="custom-node__output-rate-value">${formatNumber(
+                item.OutputRate
+              )} / min </span></p>
+            </div>
+          </div>`
 
     let div = document.createElement("div")
     //div.innerHTML = `Item: ${product.Name}`
@@ -66,7 +66,26 @@
           target: item.Name,
           id: `${item.Name}-${inputItem.Name}`,
           label: `${(ratio * item.InputRate).toFixed(2)} / min`,
-          EdgeType: colorGroupData[inputItem.Name],
+          EdgeColor: colorGroupData[inputItem.Name],
+          EdgeType: "Item-Relation",
+        },
+      }
+      edges.push(newEdge)
+    })
+
+    // Add ByProduct edges.
+    item.Byproduct?.forEach(byproduct => {
+      const byproductRecipe = getItemFromId(byproduct.Id)
+      const ratio = byproduct.ProductionRate / item.ProductionRate
+      // To calculate byproduct InputRate the user input for original recipe needs to be used.
+      const itemUserInput = getListItemById.value(item.Id)
+      const newEdge = {
+        data: {
+          source: item.Name,
+          target: byproductRecipe.Name,
+          id: `${item.Name}-${byproductRecipe.Name}`,
+          label: `${(ratio * itemUserInput.ItemsPerMinute).toFixed(2)} / min`,
+          EdgeType: "Byproduct-Item",
         },
       }
       edges.push(newEdge)

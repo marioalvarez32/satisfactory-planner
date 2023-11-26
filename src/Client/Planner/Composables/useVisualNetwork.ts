@@ -29,8 +29,8 @@ export function useVisualNetwork(elementId: string) {
   function updateNetwork(nodes, edges) {
     initializeNetwork();
     networkInstance.add(nodes);
-    networkInstance.add(edges.filter((edge) =>  (networkInstance.$id(edge.data.source).length > 0)))
-    networkInstance.edges().forEach(edge => {
+    networkInstance.add(edges.filter((edge) => networkInstance.$id(edge.data.source).length > 0));
+    networkInstance.edges().forEach((edge) => {
       edge.addClass(`edge--${edge.data.EdgeColor}`);
     });
     networkInstance.layout(diagramLayout).run();
@@ -52,7 +52,27 @@ const diagramLayout = {
   rankSep: 175,
   nodeSep: 100,
   ranker: 'longest-path',
-  acyclicer: 'greedy'
+  acyclicer: 'greedy',
+};
+
+const edgeCssProperties = {
+  'curve-style': 'bezier', // taxi for hierarchy. bezier for straight lines. unbundled-bezier for curved lines.
+  'control-point-step-size': 100,
+  'target-arrow-shape': 'triangle',
+  'arrow-scale': 1.7,
+  'target-arrow-color': (ele) => {
+    return getEdgeColor(ele._private.data.EdgeColor);
+  },
+  'line-color': (ele) => {
+    return getEdgeColor(ele._private.data.EdgeColor);
+  },
+  width: 4,
+  'text-wrap': 'wrap',
+  color: 'white',
+  'text-rotation': 'autorotate',
+  'text-background-opacity': 1,
+  'text-background-color': '#202c3d',
+  label: 'data(label)',
 };
 
 const diagramStyle = cytoscape
@@ -73,25 +93,12 @@ const diagramStyle = cytoscape
     'background-opacity': '0',
     'border-width': 0,
   })
-  .selector('edge')
+  .selector('edge[EdgeType="Item-Relation"]')
+  .css(edgeCssProperties)
+  .selector('edge[EdgeType="Byproduct-Item"]')
   .css({
-    'curve-style': 'bezier', // taxi for hierarchy. bezier for straight lines. unbundled-bezier for curved lines.
-    'control-point-step-size': 100,
-    'target-arrow-shape': 'triangle',
-    'arrow-scale': 1.7,
-    'target-arrow-color': (ele) => {
-      return getEdgeColor(ele._private.data.EdgeType);
-    },
-    'line-color': (ele) => {
-      return getEdgeColor(ele._private.data.EdgeType);
-    },
-    width: 4,
-    'text-wrap': 'wrap',
-    color: 'white',
-    'text-rotation': 'autorotate',
-    'text-background-opacity': 1,
-    'text-background-color': '#202c3d',
-    label: 'data(label)',
+    ...edgeCssProperties,
+    'line-style': 'dashed',
   })
   .selector('edge:active')
   .css({
@@ -99,26 +106,25 @@ const diagramStyle = cytoscape
     'overlay-opacity': '0',
   });
 
-
-  function getEdgeColor(edgeType){
-    switch(edgeType){
-      case 'iron': 
-        return '#B87333';
-      case 'copper': 
-        return '#fa6a17';
-      case 'quartz': 
-        return '#f5aad7 ';
-      case 'coal': 
-        return '#333333 ';
-      case 'oil': 
-        return '#1C1C1C ';
-      case 'steel': 
-        return '#5A7D9A ';
-      case 'limestone': 
-        return '#EDE7D9 ';
-      case 'caterium': 
-        return '#FFD700 ';
-      default: 
-        return 'gray';
-    }
+function getEdgeColor(edgeColor) {
+  switch (edgeColor) {
+    case 'iron':
+      return '#B87333';
+    case 'copper':
+      return '#fa6a17';
+    case 'quartz':
+      return '#f5aad7 ';
+    case 'coal':
+      return '#333333 ';
+    case 'oil':
+      return '#1C1C1C ';
+    case 'steel':
+      return '#5A7D9A ';
+    case 'limestone':
+      return '#EDE7D9 ';
+    case 'caterium':
+      return '#FFD700 ';
+    default:
+      return 'gray';
   }
+}
