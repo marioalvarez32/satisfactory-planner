@@ -1,22 +1,32 @@
 import { defineStore } from 'pinia';
-import { ProductionListItem } from '../Models/ProductionList';
+import { ProductionList, ProductionListItem } from '../Models/ProductionList';
 import { Item } from '../Models/Item';
 import { getInputTotal, getItemFromId, getOutputTotal } from '../Utilities/ItemUtility';
-import { find } from 'lodash';
 
 type State = {
-  productionListItems: ProductionListItem[];
+  productionLists: ProductionList[];
+  selectedListId: string;
 };
 export const useProductionListStore = defineStore('production-list-store', {
-  state: () => ({
-    productionListItems: [new ProductionListItem()],
+  state: (): State => ({
+    productionLists: [],
+    selectedListId: '',
   }),
   getters: {
+    getSelectedListIndex(state): number {
+      return state.productionLists.findIndex((list) => list.Id == state.selectedListId);
+    },
+    getSelectedList(state): ProductionList {
+      return state.productionLists[this.getSelectedListIndex];
+    },
+    getSelectedListItems(state): ProductionListItem[] {
+      return state.productionLists[this.getSelectedListIndex]?.Items ?? [];
+    },
     filteredProductionListItems(state): ProductionListItem[] {
-      return state.productionListItems.filter((productItem) => productItem.Id != '');
+      return this.getSelectedList?.Items.filter((productItem) => productItem.Id != '');
     },
     items(): Item[] {
-      return this.filteredProductionListItems.map((listItem: ProductionListItem) => {
+      return this.filteredProductionListItems?.map((listItem: ProductionListItem) => {
         const item = getItemFromId(listItem.Id);
         item.OutputRate = getOutputTotal(item);
         item.InputRate = getInputTotal(item);
@@ -26,12 +36,17 @@ export const useProductionListStore = defineStore('production-list-store', {
     getListItemById:
       (state) =>
       (id: string): ProductionListItem => {
-        return find(state.productionListItems, (listItem) => listItem.Id == id);
+        // Pinia's getters with arguments can't use 'this' and access other getters.
+        const selectedList = state.productionLists.find((list) => list.Id == state.selectedListId);
+        return selectedList.Items.find((listItem) => listItem.Id == id);
       },
   },
   actions: {
     updateListItem(index: number, newValue: ProductionListItem) {
-      this.productionListItems[index] = newValue;
+      this.productionLists[this.getSelectedListIndex].Items[index] = newValue;
+    },
+    setSelectedList(id: string) {
+      this.selectedListId = id;
     },
   },
 });

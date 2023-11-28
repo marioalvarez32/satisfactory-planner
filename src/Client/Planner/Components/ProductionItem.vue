@@ -34,10 +34,6 @@
   import { watch } from "vue"
 
   const props = defineProps({
-    modelValue: {
-      type: String,
-      default: "",
-    },
     listItem: {
       type: ProductionListItem,
       default: null,
@@ -45,8 +41,8 @@
   })
 
   const emit = defineEmits(["update:listItem", "remove:listItem"])
+  const productionStore = useProductionListStore()
 
-  const { productionListItems } = storeToRefs(useProductionListStore())
   const internalValue = ref({
     Id: props.listItem.Id,
     ItemsPerMinute: props.listItem.ItemsPerMinute,
@@ -66,7 +62,7 @@
   watch(internalValue.value, emitUpdate)
 
   const itemList = Object.values(itemDictionary)
-    .filter((item: Item) => !productionListItems.value.some(selectedItem => selectedItem.Id == item.Id))
+    .filter((item: Item) => !productionStore.getSelectedList.Items.some(selectedItem => selectedItem.Id == item.Id))
     .map((item: Item) => {
       return {
         Id: item.Id,
