@@ -1,15 +1,15 @@
 <template>
   <div class="production-planner">
     <ProductionTabs />
-    <ProductionList />
+    <ProductionSidePanel />
     <ProductionOverview />
   </div>
 </template>
 
 <script setup lang="ts">
-  import ProductionList from "@/Client/Planner/Components/ProductionList.vue"
   import ProductionOverview from "./Components/ProductionOverview.vue"
   import ProductionTabs from "./Components/ProductionTabs.vue"
+  import ProductionSidePanel from "./Components/ProductionSidePanel.vue"
 </script>
 
 <style lang="scss" scoped>

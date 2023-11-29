@@ -47,13 +47,10 @@
 
 <style lang="scss" scoped>
   .production-list {
-    grid-area: production-list;
     padding: 25px;
     display: flex;
     flex-direction: column;
     gap: 25px;
-    overflow-y: auto;
-    height: 100%;
   }
 
   .production-list__content {
