@@ -12,19 +12,22 @@
   import { useVisualNetwork } from "../Composables/useVisualNetwork"
   import { formatNumber, getItemFromId } from "../Utilities/ItemUtility"
   import colorGroupData from "../Data/itemColorGroup.json"
+  import { nextTick } from "vue"
 
   const { items, getListItemById } = storeToRefs(useProductionListStore())
 
   const { initializeNetwork, updateNetwork } = useVisualNetwork("production-overview")
+
   onMounted(() => {
     initializeNetwork()
-    updateNetwork(nodes.value, edges.value)
   })
 
   watch(
     items,
     () => {
-      updateNetwork(nodes.value, edges.value)
+      nextTick().then(() => {
+        updateNetwork(nodes.value, edges.value)
+      })
     },
     { deep: true }
   )
@@ -94,14 +97,14 @@
   }
 
   const nodes = computed(() => {
-    return items.value.map(item => {
+    return items.value?.map(item => {
       return createNode(item)
     })
   })
 
   const edges = computed(() => {
     return items.value
-      .map(item => {
+      ?.map(item => {
         return createEdge(item)
       })
       .flat()
