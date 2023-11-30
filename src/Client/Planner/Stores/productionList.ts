@@ -45,8 +45,10 @@ export const useProductionListStore = defineStore('production-list-store', {
     updateListItem(index: number, newValue: ProductionListItem) {
       this.productionLists[this.getSelectedListIndex].Items[index] = newValue;
     },
-    setSelectedList(id: string) {
-      this.selectedListId = id;
+    removeSelectedList() {
+      const currentIndex = this.getSelectedListIndex;
+      this.productionLists.splice(this.getSelectedListIndex, 1);
+      this.selectedListId = this.productionLists.at(currentIndex - 1).Id;
     },
   },
 });
