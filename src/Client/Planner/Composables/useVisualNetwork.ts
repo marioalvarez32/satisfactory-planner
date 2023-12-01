@@ -3,11 +3,13 @@ import cytoscapeDomNode from 'cytoscape-dom-node';
 import dagre from 'cytoscape-dagre';
 
 import cytoscapeNgraph from 'cytoscape-ngraph.forcelayout';
+import { ref } from 'vue';
 
 type Config = {
   elementId: string;
 };
-export function useVisualNetwork(elementId: string) {
+const selectedNode = ref(null);
+export function useVisualNetwork(elementId?: string) {
   cytoscape.use(cytoscapeDomNode);
   cytoscape.use(dagre);
   cytoscape.use(cytoscapeNgraph);
@@ -24,6 +26,14 @@ export function useVisualNetwork(elementId: string) {
 
     // Initialize cytoscape plugins
     networkInstance.domNode();
+
+    networkInstance.on('select', function (event) {
+      selectedNode.value = event.target._private.data;
+    });
+
+    networkInstance.on('unselect', function (event) {
+      selectedNode.value = null;
+    });
   }
 
   function updateNetwork(nodes, edges) {
@@ -39,6 +49,7 @@ export function useVisualNetwork(elementId: string) {
   return {
     initializeNetwork,
     updateNetwork,
+    selectedNode,
   };
 }
 
@@ -71,7 +82,7 @@ const edgeCssProperties = {
   color: 'white',
   'text-rotation': 'autorotate',
   'text-background-opacity': 1,
-  'text-background-color': '#202c3d',
+  'text-background-color': '#1a2331',
   label: 'data(label)',
 };
 

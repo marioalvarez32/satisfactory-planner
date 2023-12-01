@@ -12,7 +12,7 @@
           <ProductionList />
         </v-window-item>
         <v-window-item value="options">
-          <v-card />
+          <ProductionOptions />
         </v-window-item>
       </v-window>
     </div>
@@ -22,6 +22,7 @@
 <script setup lang="ts">
   import { ref } from "vue"
   import ProductionList from "@/Client/Planner/Components/ProductionList.vue"
+  import ProductionOptions from "@/Client/Planner/Components/ProductionOptions.vue"
 
   const selectedPanelTab = ref("production-tab")
 </script>
