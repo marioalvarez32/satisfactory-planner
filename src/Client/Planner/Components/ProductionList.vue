@@ -1,6 +1,6 @@
 <template>
   <v-card elevation="5" rounded="lg" class="production-list">
-    <div v-if="getSelectedListItems" class="production-list__content">
+    <div v-if="getSelectedListItems" :key="selectedListId" class="production-list__content">
       <ProductionItem v-for="(item, index) in getSelectedListItems" :key="item.Id" :list-item="item" @update:list-item="handleItemUpdate($event, index)" @remove:list-item="removeProductionItem(index)" />
     </div>
     <v-btn :disabled="shouldDisableAddButton" color="primary" density="default" icon="mdi-plus" @click="addProductionItem" />
@@ -15,7 +15,7 @@
   import { storeToRefs } from "pinia"
   import { useStorage } from "@vueuse/core"
   const productionStore = useProductionListStore()
-  const { productionLists, getSelectedListItems } = storeToRefs(productionStore)
+  const { productionLists, getSelectedListItems, selectedListId } = storeToRefs(productionStore)
 
   const shouldDisableAddButton = computed(() => getSelectedListItems.value?.at(-1)?.Id == "")
 
@@ -41,7 +41,7 @@
   }
 
   function handleItemUpdate(newValue: ProductionListItem, index: number) {
-    productionStore.updateListItem(index, newValue)
+    productionStore.updateListItemWithIndex(index, newValue)
   }
 </script>
 

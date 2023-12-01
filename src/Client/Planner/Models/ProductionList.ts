@@ -16,10 +16,14 @@ export class ProductionListItem {
   Id: string;
   Name: string;
   ItemsPerMinute: number;
+  IsExported: boolean;
+  ExportedTo: string;
 
   constructor() {
     this.Id = '';
     this.Name = '';
     this.ItemsPerMinute = 0;
+    this.IsExported = false;
+    this.ExportedTo = null;
   }
 }

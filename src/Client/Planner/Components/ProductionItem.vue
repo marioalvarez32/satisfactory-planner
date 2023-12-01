@@ -43,9 +43,12 @@
   const emit = defineEmits(["update:listItem", "remove:listItem"])
   const productionStore = useProductionListStore()
 
-  const internalValue = ref({
+  const internalValue = ref<ProductionListItem>({
     Id: props.listItem.Id,
+    Name: props.listItem.Name,
     ItemsPerMinute: props.listItem.ItemsPerMinute,
+    IsExported: props.listItem.IsExported,
+    ExportedTo: props.listItem.ExportedTo,
   })
 
   const selectConvertedValue = computed({
