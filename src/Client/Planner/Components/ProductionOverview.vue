@@ -46,19 +46,22 @@
           </div>`
 
     let div = document.createElement("div")
-    //div.innerHTML = `Item: ${product.Name}`
     div.innerHTML = htmlString
     div.classList.add("custom-node")
 
     return {
       data: {
         id: item.Name,
+        ItemId: item.Id,
         dom: div,
+        Type: "Node",
       },
     }
   }
 
   function createEdge(item: Item): Array<any> {
+    const listItem = getListItemById.value(item.Id)
+    const itemsPerMinute = listItem?.ItemsPerMinute ?? 0
     const edges = []
     item.Input.forEach(input => {
       const inputItem = getItemFromId(input.Id)
@@ -68,7 +71,7 @@
           source: inputItem.Name,
           target: item.Name,
           id: `${item.Name}-${inputItem.Name}`,
-          label: `${(ratio * item.InputRate).toFixed(2)} / min`,
+          label: `${(ratio * itemsPerMinute).toFixed(2)} / min`,
           EdgeColor: colorGroupData[inputItem.Name],
           EdgeType: "Item-Relation",
         },

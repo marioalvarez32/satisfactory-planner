@@ -25,13 +25,53 @@ export const useProductionListStore = defineStore('production-list-store', {
     filteredProductionListItems(state): ProductionListItem[] {
       return this.getSelectedList?.Items.filter((productItem) => productItem.Id != '');
     },
-    items(): Item[] {
-      return this.filteredProductionListItems?.map((listItem: ProductionListItem) => {
+    items(state): Item[] {
+      const exportedItems: ProductionListItem[] = [...this.getExportedListItems];
+      let items = [];
+      items =
+        this.filteredProductionListItems?.map((listItem: ProductionListItem) => {
+          const item = getItemFromId(listItem.Id);
+          item.OutputRate = getOutputTotal(item);
+          item.InputRate = getInputTotal(item);
+          // Check if item is also exported.
+          const exportedItemIndex = exportedItems.findIndex((exportedListItem: ProductionListItem) => listItem.Id == exportedListItem.Id);
+          if (exportedItemIndex != -1) {
+            item.InputRate += parseFloat(`${exportedItems[exportedItemIndex].ItemsPerMinute}`);
+            exportedItems.splice(exportedItemIndex, 1);
+          }
+          return item;
+        }) ?? [];
+
+      const exportedItemsToAdd = exportedItems.map((listItem: ProductionListItem) => {
         const item = getItemFromId(listItem.Id);
         item.OutputRate = getOutputTotal(item);
-        item.InputRate = getInputTotal(item);
+        item.InputRate = parseFloat(`${listItem.ItemsPerMinute}`);
         return item;
       });
+
+      return [...items, ...exportedItemsToAdd];
+    },
+    getExportedListItems(state): ProductionListItem[] {
+      const exportedItems = [];
+      this.productionLists.forEach((list) => {
+        if (list.Id == state.selectedListId) return;
+        const exportedItemsPerList: ProductionListItem[] = list.Items.filter((item) => item.IsExported == true && item.ExportedTo == state.selectedListId);
+        exportedItems.push(...exportedItemsPerList);
+      });
+      const combinedExportedItems = exportedItems.reduce((acc: ProductionListItem[], listItem: ProductionListItem) => {
+        // listItem is reactive and will mutate data.
+        const accListItemIndex = acc?.findIndex((accListItem) => accListItem.Id == listItem.Id);
+        if (accListItemIndex != -1) {
+          acc[accListItemIndex].ItemsPerMinute = parseFloat(`${listItem.ItemsPerMinute}`) + parseFloat(`${acc[accListItemIndex].ItemsPerMinute}`);
+        } else {
+          acc.push({
+            ...listItem,
+          });
+        }
+        return acc;
+      }, []);
+
+      return combinedExportedItems;
     },
     getListItemById:
       (state) =>
@@ -42,7 +82,11 @@ export const useProductionListStore = defineStore('production-list-store', {
       },
   },
   actions: {
-    updateListItem(index: number, newValue: ProductionListItem) {
+    updateListItemWithIndex(index: number, newValue: ProductionListItem) {
+      this.productionLists[this.getSelectedListIndex].Items[index] = newValue;
+    },
+    updateListItemWithId(id: string, newValue: ProductionListItem) {
+      const index = this.productionLists[this.getSelectedListIndex].Items.findIndex((listItem) => listItem.Id == id);
       this.productionLists[this.getSelectedListIndex].Items[index] = newValue;
     },
     removeSelectedList() {
