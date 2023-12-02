@@ -181,10 +181,33 @@
       ]
     },
     {
+      "Id": "sulfur",
+      "Name": "Sulfur",
+      "ProductionRate": 60,
+      "Input": [],
+      "Level": 1
+    },
+    {
       "Id": "coal",
       "Name": "Coal",
       "ProductionRate": 60,
       "Input": [],
+      "Level": 1
+    },
+    {
+      "Id": "compacted_coal",
+      "Name": "Compacted Coal",
+      "ProductionRate": 25,
+      "Input": [
+        {
+          "Id": "coal",
+          "ProductionRate": 25
+        },
+        {
+          "Id": "sulfur",
+          "ProductionRate": 25
+        }
+      ],
       "Level": 1
     },
     {
@@ -275,6 +298,12 @@
           "ProductionRate": 30
         }
       ],
+      "Byproduct": [
+        {
+          "Id": "heavy_oil_residue",
+          "ProductionRate": 10
+        }
+      ],
       "Level": 1
     },
     {
@@ -285,6 +314,12 @@
         {
           "Id": "crude_oil",
           "ProductionRate": 30
+        }
+      ],
+      "Byproduct": [
+        {
+          "Id": "heavy_oil_residue",
+          "ProductionRate": 20
         }
       ],
       "Level": 1
@@ -333,7 +368,8 @@
       "Name": "Heavy Oil Residue",
       "ProductionRate": 60,
       "Input": [],
-      "Level": 1
+      "Level": 1,
+      "CanBeByproduct": true
     },
     {
       "Id": "encased_industrial_beam",
@@ -354,6 +390,23 @@
     {
       "Id": "rotor",
       "Name": "Rotor",
+      "ProductionRate": 4,
+      "Level": 2,
+      "Input": [
+        {
+          "Id": "iron_rod",
+          "ProductionRate": 20
+        },
+        {
+          "Id": "screw",
+          "ProductionRate": 100
+        }
+      ]
+    },
+    {
+      "Id": "steel_rotor",
+      "Name": "Rotor",
+      "AlternateName": "Alternate: Steel Rotor",
       "ProductionRate": 5,
       "Level": 2,
       "Input": [
@@ -428,6 +481,166 @@
         {
           "Id": "quickwire",
           "ProductionRate": 100
+        }
+      ]
+    },
+    {
+      "Id": "smart_plating",
+      "Name": "Smart Plating",
+      "ProductionRate": 2,
+      "Level": 2,
+      "Input": [
+        {
+          "Id": "reinforced_iron_plate",
+          "ProductionRate": 2
+        },
+        {
+          "Id": "rotor",
+          "ProductionRate": 20
+        }
+      ]
+    },
+    {
+      "Id": "versatile_framework",
+      "Name": "Versatile Framework",
+      "ProductionRate": 5,
+      "Level": 2,
+      "Input": [
+        {
+          "Id": "modular_frame",
+          "ProductionRate": 2.5
+        },
+        {
+          "Id": "steel_beam",
+          "ProductionRate": 30
+        }
+      ]
+    },
+    {
+      "Id": "automated_wiring",
+      "Name": "Automated Wiring",
+      "ProductionRate": 2.5,
+      "Level": 2,
+      "Input": [
+        {
+          "Id": "stator",
+          "ProductionRate": 2.5
+        },
+        {
+          "Id": "cable",
+          "ProductionRate": 50
+        }
+      ]
+    },
+    {
+      "Id": "computer",
+      "Name": "Computer",
+      "ProductionRate": 2.5,
+      "Level": 2,
+      "Input": [
+        {
+          "Id": "circuit_board",
+          "ProductionRate": 25
+        },
+        {
+          "Id": "cable",
+          "ProductionRate": 22.5
+        },
+        {
+          "Id": "plastic",
+          "ProductionRate": 45
+        },
+        {
+          "Id": "screw",
+          "ProductionRate": 130
+        }
+      ]
+    },
+    {
+      "Id": "heavy_modular_frame",
+      "Name": "Heavy Modular Frame",
+      "ProductionRate": 2,
+      "Level": 2,
+      "Input": [
+        {
+          "Id": "modular_frame",
+          "ProductionRate": 10
+        },
+        {
+          "Id": "steel_pipe",
+          "ProductionRate": 30
+        },
+        {
+          "Id": "encased_industrial_beam",
+          "ProductionRate": 10
+        },
+        {
+          "Id": "screw",
+          "ProductionRate": 200
+        }
+      ]
+    },
+    {
+      "Id": "crystal_oscillator",
+      "Name": "Crystal Oscillator",
+      "ProductionRate": 1,
+      "Level": 2,
+      "Input": [
+        {
+          "Id": "quartz_crystal",
+          "ProductionRate": 18
+        },
+        {
+          "Id": "cable",
+          "ProductionRate": 14
+        },
+        {
+          "Id": "reinforced_iron_plate",
+          "ProductionRate": 2.5
+        }
+      ]
+    },
+    {
+      "Id": "modular_engine",
+      "Name": "Modular Engine",
+      "ProductionRate": 1,
+      "Level": 2,
+      "Input": [
+        {
+          "Id": "motor",
+          "ProductionRate": 2
+        },
+        {
+          "Id": "rubber",
+          "ProductionRate": 15
+        },
+        {
+          "Id": "smart_plating",
+          "ProductionRate": 2
+        }
+      ]
+    },
+    {
+      "Id": "adaptive_control_unit",
+      "Name": "Modular Engine",
+      "ProductionRate": 1,
+      "Level": 2,
+      "Input": [
+        {
+          "Id": "automated_wiring",
+          "ProductionRate": 7.5
+        },
+        {
+          "Id": "circuit_board",
+          "ProductionRate": 5
+        },
+        {
+          "Id": "heavy_modular_frame",
+          "ProductionRate": 1
+        },
+        {
+          "Id": "computer",
+          "ProductionRate": 1
         }
       ]
     }
