@@ -85,16 +85,18 @@
       const ratio = byproduct.ProductionRate / item.ProductionRate
       // To calculate byproduct InputRate the user input for original recipe needs to be used.
       const itemUserInput = getListItemById.value(item.Id)
-      const newEdge = {
-        data: {
-          source: item.Name,
-          target: byproductRecipe.Name,
-          id: `${item.Name}-${byproductRecipe.Name}`,
-          label: `${(ratio * itemUserInput.ItemsPerMinute).toFixed(2)} / min`,
-          EdgeType: "Byproduct-Item",
-        },
+      if (itemUserInput) {
+        const newEdge = {
+          data: {
+            source: item.Name,
+            target: byproductRecipe.Name,
+            id: `${item.Name}-${byproductRecipe.Name}`,
+            label: `${(ratio * itemUserInput.ItemsPerMinute).toFixed(2)} / min`,
+            EdgeType: "Byproduct-Item",
+          },
+        }
+        edges.push(newEdge)
       }
-      edges.push(newEdge)
     })
     return edges
   }

@@ -622,7 +622,7 @@
     },
     {
       "Id": "adaptive_control_unit",
-      "Name": "Modular Engine",
+      "Name": "Adaptive Control Unit",
       "ProductionRate": 1,
       "Level": 2,
       "Input": [
