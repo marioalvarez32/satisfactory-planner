@@ -65,8 +65,10 @@
   watch(internalValue.value, emitUpdate)
 
   const itemList = Object.values(itemDictionary)
-    .filter((item: Item) => !productionStore.getSelectedList.Items.some(selectedItem => selectedItem.Id == item.Id))
-    .map((item: Item) => {
+    .filter(item => {
+      return !productionStore.getSelectedList.Items.some((selectedItem: ProductionListItem) => selectedItem.Id == item.Id)
+    })
+    .map(item => {
       return {
         Id: item.Id,
         Name: item.Name,

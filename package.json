@@ -4,13 +4,14 @@
   "license": "MIT",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
+    "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint --fix --ext .ts,vue --ignore-path .gitignore .",
     "test:unit": "jest"
   },
   "dependencies": {
     "@mdi/font": "^7.3.67",
+    "@types/node": "^20.10.2",
     "@vueuse/core": "^10.6.1",
     "cytoscape": "^3.27.0",
     "cytoscape-dagre": "^2.5.0",

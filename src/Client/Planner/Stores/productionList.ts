@@ -17,7 +17,7 @@ export const useProductionListStore = defineStore('production-list-store', {
       return state.productionLists.findIndex((list) => list.Id == state.selectedListId);
     },
     getSelectedList(state): ProductionList {
-      return state.productionLists[this.getSelectedListIndex];
+      return state.productionLists[this.getSelectedListIndex] ?? null;
     },
     getSelectedListItems(state): ProductionListItem[] {
       return state.productionLists[this.getSelectedListIndex]?.Items ?? [];

@@ -4,7 +4,7 @@
       <v-text-field v-if="selectedListName" v-model="selectedListName" label="Enter a tab title" variant="outlined" density="compact" hide-details />
     </div>
     <div class="production-tabs__container">
-      <v-tabs v-model="selectedListId" stacked bg-color="teal-darken-3" show-arrows slider-color="teal-lighten-3" @update:model-value="() => (selectedNode = null)">
+      <v-tabs v-model="selectedListId" bg-color="primary" show-arrows slider-color="teal-lighten-3" @update:model-value="() => (selectedNode = null)">
         <v-tab v-for="list in productionLists" :key="list.Id" :value="list.Id">{{ list.Name }}</v-tab>
       </v-tabs>
     </div>
@@ -73,4 +73,8 @@
     justify-content: center;
     align-items: center;
   }
+
+  .production-tabs__container :deep(button.v-tab){
+        text-transform: capitalize;
+    }
 </style>

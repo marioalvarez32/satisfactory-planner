@@ -3,7 +3,7 @@ import { Item } from '../Models/Item';
 import { useProductionListStore } from '../Stores/productionList';
 import { keyBy } from 'lodash';
 
-export const itemDictionary = keyBy(ItemData.items, 'Id');
+export const itemDictionary: Item[] = keyBy(ItemData.items, 'Id');
 
 export function getItemFromId(id: string): Item {
   return itemDictionary[id];
