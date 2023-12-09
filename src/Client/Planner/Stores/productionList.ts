@@ -2,6 +2,7 @@ import { defineStore } from 'pinia';
 import { ProductionList, ProductionListItem } from '../Models/ProductionList';
 import { Item } from '../Models/Item';
 import { getInputTotal, getItemFromId, getOutputTotal } from '../Utilities/ItemUtility';
+import { cloneDeep } from 'lodash';
 
 type State = {
   productionLists: ProductionList[];
@@ -56,7 +57,13 @@ export const useProductionListStore = defineStore('production-list-store', {
       this.productionLists.forEach((list) => {
         if (list.Id == state.selectedListId) return;
         const exportedItemsPerList: ProductionListItem[] = list.Items.filter((item) => item.IsExported == true && item.ExportedTo == state.selectedListId);
-        exportedItems.push(...exportedItemsPerList);
+        exportedItemsPerList.forEach((listItem) => {
+          const copiedListItem: ProductionListItem = cloneDeep(listItem);
+          const item = getItemFromId(copiedListItem.Id);
+          const exportedItemOutputRate = getOutputTotal(item, list);
+          copiedListItem.ItemsPerMinute -= exportedItemOutputRate;
+          exportedItems.push(copiedListItem);
+        });
       });
       const combinedExportedItems = exportedItems.reduce((acc: ProductionListItem[], listItem: ProductionListItem) => {
         // listItem is reactive and will mutate data.
@@ -64,9 +71,7 @@ export const useProductionListStore = defineStore('production-list-store', {
         if (accListItemIndex != -1) {
           acc[accListItemIndex].ItemsPerMinute = parseFloat(`${listItem.ItemsPerMinute}`) + parseFloat(`${acc[accListItemIndex].ItemsPerMinute}`);
         } else {
-          acc.push({
-            ...listItem,
-          });
+          acc.push(listItem);
         }
         return acc;
       }, []);
