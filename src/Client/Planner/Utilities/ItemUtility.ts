@@ -26,7 +26,7 @@ export function getOutputTotal(item: Item, list?: ProductionList) {
     if (listItem.Id == item.Id) return;
     const listItemRecipe = getItemFromId(listItem.Id);
     listItemRecipe.Input.forEach((inputItem) => {
-      if (inputItem.Id == item.Id) {
+      if (inputItem.Id == item.Id || inputItem.Id == item.OriginalId) {
         const convertionRatio = inputItem.ProductionRate / listItemRecipe.ProductionRate;
         count += listItem.ItemsPerMinute * convertionRatio;
       }

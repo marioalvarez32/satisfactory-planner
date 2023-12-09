@@ -1,5 +1,6 @@
 export class Item {
   Id: string;
+  OriginalId?: string;
   Name: string;
   Input: ProductionInput[];
   ProductionRate: number;
@@ -12,12 +13,13 @@ export class Item {
 
   constructor(item: Item) {
     this.Id = item.Id;
+    this.OriginalId = item.OriginalId ?? null;
     this.Name = item.Name;
     this.ProductionRate = item.ProductionRate;
     this.Input = item.Input.map((input) => new ProductionInput(input));
     this.Level = item.Level;
     this.OutputRate = 0;
-    this.AlternateName = item.AlternateName ?? '';
+    this.AlternateName = item.AlternateName ?? null;
     this.Byproduct = item.Byproduct;
     this.CanBeByproduct = !!item.CanBeByproduct;
   }

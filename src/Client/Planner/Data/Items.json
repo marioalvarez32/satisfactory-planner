@@ -344,6 +344,7 @@
     },
     {
       "Id": "residue_fuel",
+      "OriginalId": "fuel",
       "Name": "Fuel",
       "AlternateName": "Residue Fuel",
       "ProductionRate": 40,
@@ -434,6 +435,7 @@
     {
       "Id": "steel_rotor",
       "Name": "Rotor",
+      "OriginalId": "rotor",
       "AlternateName": "Alternate: Steel Rotor",
       "ProductionRate": 5,
       "Level": 2,
