@@ -22,7 +22,6 @@ export function useVisualNetwork(elementId?: string) {
     networkInstance = cytoscape({
       container: document.getElementById(elementId), // container to render in
       elements: [],
-      style: diagramStyle,
       layout: diagramLayout,
     });
 
@@ -36,6 +35,7 @@ export function useVisualNetwork(elementId?: string) {
     networkInstance.on('unselect', function (event) {
       selectedNode.value = null;
     });
+    updateNetworkStyle();
   }
 
   function updateNetwork(nodes, edges) {
@@ -55,11 +55,19 @@ export function useVisualNetwork(elementId?: string) {
     networkInstance.layout(networkLayout).run();
   }
 
+  function updateNetworkStyle() {
+    const { networkStyle } = useNetworkOptions();
+    if (!networkStyle) return;
+    edgeCssProperties['curve-style'] = networkStyle.curveStyle;
+    networkInstance.style(getNetworkStyles());
+  }
+
   return {
     initializeNetwork,
     updateNetwork,
     updateNetworkLayout,
     selectedNode,
+    updateNetworkStyle,
   };
 }
 
@@ -85,36 +93,40 @@ const edgeCssProperties = {
   label: 'data(label)',
 };
 
-const diagramStyle = cytoscape
-  .stylesheet()
-  .selector(':selected')
-  .css({
-    'background-color': '#2FC25B',
-  })
-  .selector('node:active')
-  .css({
-    'overlay-color': '#e59344',
-    'overlay-padding': '12px',
-  })
-  .selector('node')
-  .css({
-    width: 75,
-    height: 60,
-    'background-opacity': '0',
-    'border-width': 0,
-  })
-  .selector('edge[EdgeType="Item-Relation"]')
-  .css(edgeCssProperties)
-  .selector('edge[EdgeType="Byproduct-Item"]')
-  .css({
-    ...edgeCssProperties,
-    'line-style': 'dashed',
-  })
-  .selector('edge:active')
-  .css({
-    'overlay-color': '#e59344', // Color of the box
-    'overlay-opacity': '0',
-  });
+function getNetworkStyles() {
+  const diagramStyle = cytoscape
+    .stylesheet()
+    .selector(':selected')
+    .css({
+      'background-color': '#2FC25B',
+    })
+    .selector('node:active')
+    .css({
+      'overlay-color': '#e59344',
+      'overlay-padding': '12px',
+    })
+    .selector('node')
+    .css({
+      width: 75,
+      height: 60,
+      'background-opacity': '0',
+      'border-width': 0,
+    })
+    .selector('edge[EdgeType="Item-Relation"]')
+    .css(edgeCssProperties)
+    .selector('edge[EdgeType="Byproduct-Item"]')
+    .css({
+      ...edgeCssProperties,
+      'line-style': 'dashed',
+    })
+    .selector('edge:active')
+    .css({
+      'overlay-color': '#e59344', // Color of the box
+      'overlay-opacity': '0',
+    });
+
+  return diagramStyle;
+}
 
 function getEdgeColor(edgeColor) {
   switch (edgeColor) {

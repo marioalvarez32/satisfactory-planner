@@ -82,6 +82,10 @@
         <div class="options-section_item-label">Node dimensions include labels</div>
         <v-checkbox v-model="networkLayout.nodeDimensionsIncludeLabels" hide-details />
       </div>
+      <div class="options-section__item">
+        <div class="options-section_item-label">Edge Curve Style</div>
+        <v-select v-model="networkStyle.curveStyle" clearable hide-details density="compact" :suffix="`Default: ${defaultStyleOptions.curveStyle}`" :items="curveStyleOptions" variant="solo-filled" />
+      </div>
     </div>
   </div>
 </template>
@@ -89,21 +93,34 @@
 <script setup lang="ts">
   import { Ref, watch } from "vue"
   import { rankDirOptions, defaultLayoutOptions, alignmentOptions, rankerOptions, NetworkLayoutOptions } from "../Models/NetworkLayoutOptions"
+  import { NetworkStyleOptions, defaultStyleOptions, curveStyleOptions } from "../Models/NetworkStyleOptions"
+
   import { useNetworkOptions } from "../Stores/networkOptions"
   import { useVisualNetwork } from "../Composables/useVisualNetwork"
   import { useStorage } from "@vueuse/core"
   import { toRefs } from "vue"
 
-  const { networkLayout } = toRefs(useNetworkOptions())
-  const { updateNetworkLayout } = useVisualNetwork()
+  const { networkLayout, networkStyle } = toRefs(useNetworkOptions())
+
+  const { updateNetworkLayout, updateNetworkStyle } = useVisualNetwork()
 
   const storedLayoutOptions: Ref<NetworkLayoutOptions> = useStorage("network-layout-options", defaultLayoutOptions, localStorage, { mergeDefaults: true })
+  const storedStyleOptions: Ref<NetworkStyleOptions> = useStorage("network-style-options", defaultStyleOptions, localStorage, { mergeDefaults: true })
 
   watch(
     networkLayout.value,
     () => {
       storedLayoutOptions.value = networkLayout.value
       updateNetworkLayout()
+    },
+    { immediate: true }
+  )
+
+  watch(
+    networkStyle.value,
+    () => {
+      storedStyleOptions.value = networkStyle.value
+      updateNetworkStyle()
     },
     { immediate: true }
   )
