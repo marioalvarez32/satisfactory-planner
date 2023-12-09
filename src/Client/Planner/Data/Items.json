@@ -372,6 +372,34 @@
       "CanBeByproduct": true
     },
     {
+      "Id": "empty_canister",
+      "Name": "Empty Canister",
+      "ProductionRate": 60,
+      "Level": 2,
+      "Input": [
+        {
+          "Id": "plastic",
+          "ProductionRate": 30
+        }
+      ]
+    },
+    {
+      "Id": "packaged_fuel",
+      "Name": "Packaged Fuel",
+      "ProductionRate": 40,
+      "Level": 2,
+      "Input": [
+        {
+          "Id": "fuel",
+          "ProductionRate": 40
+        },
+        {
+          "Id": "empty_canister",
+          "ProductionRate": 40
+        }
+      ]
+    },
+    {
       "Id": "encased_industrial_beam",
       "Name": "Encased Industrial Beam",
       "ProductionRate": 6,
@@ -643,6 +671,55 @@
           "ProductionRate": 1
         }
       ]
+    },
+    {
+      "Id": "supercomputer",
+      "Name": "Supercomputer",
+      "ProductionRate": 1.875,
+      "Level": 2,
+      "Input": [
+        {
+          "Id": "computer",
+          "ProductionRate": 3.75
+        },
+        {
+          "Id": "ai_limiter",
+          "ProductionRate": 3.75
+        },
+        {
+          "Id": "high_speed_connector",
+          "ProductionRate": 5.625
+        },
+        {
+          "Id": "plastic",
+          "ProductionRate": 52.5
+        }
+      ]
+    },
+    {
+      "Id": "high_speed_connector",
+      "Name": "High Speed Connector",
+      "ProductionRate": 3.75,
+      "Input": [
+        {
+          "Id": "circuit_board",
+          "ProductionRate": 3.75
+        },
+        {
+          "Id": "cable",
+          "ProductionRate": 37.5
+        },
+        {
+          "Id": "quickwire",
+          "ProductionRate": 210
+        }
+      ]
+    },
+    {
+      "Id": "water",
+      "Name": "Water",
+      "ProductionRate": 60,
+      "Input": []
     }
   ]
 }
