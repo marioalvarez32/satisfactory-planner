@@ -4,16 +4,18 @@ import dagre from 'cytoscape-dagre';
 
 import cytoscapeNgraph from 'cytoscape-ngraph.forcelayout';
 import { ref } from 'vue';
+import { NetworkLayoutOptions } from '../Models/NetworkLayoutOptions';
+import { useNetworkOptions } from '../Stores/networkOptions';
 
 type Config = {
   elementId: string;
 };
 const selectedNode = ref(null);
+let networkInstance;
 export function useVisualNetwork(elementId?: string) {
   cytoscape.use(cytoscapeDomNode);
   cytoscape.use(dagre);
   cytoscape.use(cytoscapeNgraph);
-  let networkInstance;
 
   function initializeNetwork() {
     if (networkInstance) networkInstance.destroy();
@@ -43,28 +45,25 @@ export function useVisualNetwork(elementId?: string) {
     networkInstance.edges().forEach((edge) => {
       edge.addClass(`edge--${edge.data.EdgeColor}`);
     });
-    networkInstance.layout(diagramLayout).run();
+
+    updateNetworkLayout();
+  }
+
+  function updateNetworkLayout() {
+    const { networkLayout } = useNetworkOptions();
+    if (!networkLayout) return;
+    networkInstance.layout(networkLayout).run();
   }
 
   return {
     initializeNetwork,
     updateNetwork,
+    updateNetworkLayout,
     selectedNode,
   };
 }
 
-const diagramLayout = {
-  name: 'dagre',
-  avoidOverlap: true,
-  fit: true,
-  rankDir: 'UD',
-  idealEdgeLength: 10,
-  padding: 150,
-  rankSep: 175,
-  nodeSep: 100,
-  ranker: 'longest-path',
-  acyclicer: 'greedy',
-};
+const diagramLayout = new NetworkLayoutOptions();
 
 const edgeCssProperties = {
   'curve-style': 'bezier', // taxi for hierarchy. bezier for straight lines. unbundled-bezier for curved lines.

@@ -1,5 +1,6 @@
 <template>
   <div class="" :disabled="filteredTabs.length <= 1">
+    Node Type: {{ selectedNode.Type }}
     <v-checkbox v-model="isItemExported" label="Export Node" />
     <v-autocomplete v-if="isItemExported" v-model="exportedTo" density="compact" variant="outlined" item-title="Name" item-value="Id" :items="filteredTabs" />
     {{ selectedItem }}
