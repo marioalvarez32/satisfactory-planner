@@ -19,7 +19,7 @@
         </v-list-item>
       </template>
     </v-autocomplete>
-    <v-text-field v-model="internalValue.ItemsPerMinute" variant="outlined" suffix="items/min" class="production-item__production-rate" label="Enter a number" type="number" step="1" density="compact" outlined />
+    <v-text-field v-model="internalItemsPerMinute" variant="outlined" suffix="items/min" class="production-item__production-rate" label="Enter a number" type="number" step="1" density="compact" outlined />
     <v-btn density="default" color="error" icon="mdi-minus" size="x-small" @click="removeHandler" />
   </div>
 </template>
@@ -58,6 +58,17 @@
     set(value) {
       if (value) {
         internalValue.value.Id = value
+      }
+    },
+  })
+
+  const internalItemsPerMinute = computed({
+    get() {
+      return internalValue.value.ItemsPerMinute
+    },
+    set(value) {
+      if (value && value >= 0) {
+        internalValue.value.ItemsPerMinute = value
       }
     },
   })
