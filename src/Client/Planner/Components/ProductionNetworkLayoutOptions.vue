@@ -57,7 +57,7 @@
       </div>
       <div class="options-section__item">
         <div class="options-section_item-label">Ranker</div>
-        <v-select v-model="networkLayout.ranker" clearable hide-details density="compact" :suffix="`Default: ${defaultLayoutOptions.ranker}`" :items="rankerOptions" variant="solo-filled" />
+        <v-select v-model="networkLayout.ranker" hide-details density="compact" :suffix="`Default: ${defaultLayoutOptions.ranker}`" :items="rankerOptions" variant="solo-filled" />
       </div>
       <div class="options-section__item">
         <div class="options-section_item-label">Spacing Factor</div>
@@ -84,7 +84,7 @@
       </div>
       <div class="options-section__item">
         <div class="options-section_item-label">Edge Curve Style</div>
-        <v-select v-model="networkStyle.curveStyle" clearable hide-details density="compact" :suffix="`Default: ${defaultStyleOptions.curveStyle}`" :items="curveStyleOptions" variant="solo-filled" />
+        <v-select v-model="networkStyle.curveStyle" hide-details density="compact" :suffix="`Default: ${defaultStyleOptions.curveStyle}`" :items="curveStyleOptions" variant="solo-filled" />
       </div>
     </div>
   </div>

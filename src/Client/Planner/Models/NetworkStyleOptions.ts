@@ -23,4 +23,8 @@ export const curveStyleOptions = [
     value: 'unbundled-bezier',
     title: 'Curved Lines',
   },
+  {
+    value: 'segments',
+    title: 'Segments',
+  },
 ];

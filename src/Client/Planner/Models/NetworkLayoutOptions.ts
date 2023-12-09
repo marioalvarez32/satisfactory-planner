@@ -10,6 +10,7 @@ export class NetworkLayoutOptions {
   padding: number;
   spacingFactor: number;
   nodeDimensionsIncludeLabels: boolean;
+  avoidOverlap: true;
 
   constructor() {
     this.name = defaultLayoutOptions.name;
@@ -37,7 +38,8 @@ export const defaultLayoutOptions: NetworkLayoutOptions = {
   ranker: 'longest-path',
   align: 'UL',
   spacingFactor: undefined,
-  nodeDimensionsIncludeLabels: false,
+  nodeDimensionsIncludeLabels: true,
+  avoidOverlap: true,
 };
 
 export const rankDirOptions = [
