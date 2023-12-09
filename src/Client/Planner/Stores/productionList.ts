@@ -61,7 +61,9 @@ export const useProductionListStore = defineStore('production-list-store', {
           const copiedListItem: ProductionListItem = cloneDeep(listItem);
           const item = getItemFromId(copiedListItem.Id);
           const exportedItemOutputRate = getOutputTotal(item, list);
-          copiedListItem.ItemsPerMinute -= exportedItemOutputRate;
+          const exportedItemInputRate = getInputTotal(item, list);
+          const calculatedItemsPerMinute = exportedItemInputRate - exportedItemOutputRate;
+          copiedListItem.ItemsPerMinute = Math.max(0, calculatedItemsPerMinute);
           exportedItems.push(copiedListItem);
         });
       });
