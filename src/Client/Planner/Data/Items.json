@@ -5,7 +5,7 @@
       "Name": "Iron Ore",
       "ProductionRate": 60,
       "Input": [],
-      "Level": 1
+      "Level": 0
     },
     {
       "Id": "iron_ingot",
@@ -23,7 +23,7 @@
       "Id": "iron_plate",
       "Name": "Iron Plate",
       "ProductionRate": 20,
-      "Level": 3,
+      "Level": 2,
       "Input": [
         {
           "Id": "iron_ingot",
@@ -35,7 +35,7 @@
       "Id": "iron_rod",
       "Name": "Iron Rod",
       "ProductionRate": 15,
-      "Level": 3,
+      "Level": 2,
       "Input": [
         {
           "Id": "iron_ingot",
@@ -47,7 +47,7 @@
       "Id": "screw",
       "Name": "Screw",
       "ProductionRate": 40,
-      "Level": 4,
+      "Level": 3,
       "Input": [
         {
           "Id": "iron_rod",
@@ -58,7 +58,7 @@
     {
       "Id": "reinforced_iron_plate",
       "Name": "Reinforced Iron Plate",
-      "ProductionRate": 5,
+      "ProductionRate": 4,
       "Level": 5,
       "Input": [
         {
@@ -92,7 +92,7 @@
       "Name": "Copper Ore",
       "ProductionRate": 60,
       "Input": [],
-      "Level": 1
+      "Level": 0
     },
     {
       "Id": "copper_ingot",
@@ -110,7 +110,7 @@
       "Id": "wire",
       "Name": "Wire",
       "ProductionRate": 30,
-      "Level": 3,
+      "Level": 2,
       "Input": [
         {
           "Id": "copper_ingot",
@@ -122,7 +122,7 @@
       "Id": "cable",
       "Name": "Cable",
       "ProductionRate": 30,
-      "Level": 4,
+      "Level": 3,
       "Input": [
         {
           "Id": "wire",
@@ -134,7 +134,7 @@
       "Id": "copper_sheet",
       "Name": "Copper Sheet",
       "ProductionRate": 10,
-      "Level": 3,
+      "Level": 2,
       "Input": [
         {
           "Id": "copper_ingot",
@@ -147,13 +147,13 @@
       "Name": "Limestone",
       "ProductionRate": 60,
       "Input": [],
-      "Level": 1
+      "Level": 0
     },
     {
       "Id": "concrete",
       "Name": "Concrete",
       "ProductionRate": 15,
-      "Level": 2,
+      "Level": 1,
       "Input": [
         {
           "Id": "limestone",
@@ -166,13 +166,13 @@
       "Name": "Raw Quartz",
       "ProductionRate": 60,
       "Input": [],
-      "Level": 1
+      "Level": 0
     },
     {
       "Id": "quartz_crystal",
       "Name": "Quartz Crystal",
       "ProductionRate": 22.5,
-      "Level": 2,
+      "Level": 1,
       "Input": [
         {
           "Id": "raw_quartz",
@@ -185,18 +185,19 @@
       "Name": "Sulfur",
       "ProductionRate": 60,
       "Input": [],
-      "Level": 1
+      "Level": 0
     },
     {
       "Id": "coal",
       "Name": "Coal",
       "ProductionRate": 60,
       "Input": [],
-      "Level": 1
+      "Level": 0
     },
     {
       "Id": "compacted_coal",
       "Name": "Compacted Coal",
+      "Level": 1,
       "ProductionRate": 25,
       "Input": [
         {
@@ -207,13 +208,13 @@
           "Id": "sulfur",
           "ProductionRate": 25
         }
-      ],
-      "Level": 1
+      ]
     },
     {
       "Id": "steel_ingot",
       "Name": "Steel Ingot",
       "ProductionRate": 45,
+      "Level": 1,
       "Input": [
         {
           "Id": "iron_ore",
@@ -223,8 +224,7 @@
           "Id": "coal",
           "ProductionRate": 45
         }
-      ],
-      "Level": 1
+      ]
     },
     {
       "Id": "steel_beam",
@@ -236,7 +236,7 @@
           "ProductionRate": 60
         }
       ],
-      "Level": 1
+      "Level": 2
     },
     {
       "Id": "steel_pipe",
@@ -248,14 +248,14 @@
           "ProductionRate": 30
         }
       ],
-      "Level": 1
+      "Level": 2
     },
     {
       "Id": "caterium_ore",
       "Name": "Caterium Ore",
       "ProductionRate": 60,
       "Input": [],
-      "Level": 1
+      "Level": 0
     },
     {
       "Id": "caterium_ingot",
@@ -279,14 +279,14 @@
           "ProductionRate": 12
         }
       ],
-      "Level": 1
+      "Level": 2
     },
     {
       "Id": "crude_oil",
       "Name": "Crude Oil",
       "ProductionRate": 120,
       "Input": [],
-      "Level": 1
+      "Level": 0
     },
     {
       "Id": "plastic",
@@ -388,7 +388,7 @@
       "Id": "packaged_fuel",
       "Name": "Packaged Fuel",
       "ProductionRate": 40,
-      "Level": 2,
+      "Level": 3,
       "Input": [
         {
           "Id": "fuel",
@@ -404,7 +404,7 @@
       "Id": "encased_industrial_beam",
       "Name": "Encased Industrial Beam",
       "ProductionRate": 6,
-      "Level": 2,
+      "Level": 3,
       "Input": [
         {
           "Id": "concrete",
@@ -420,7 +420,7 @@
       "Id": "rotor",
       "Name": "Rotor",
       "ProductionRate": 4,
-      "Level": 2,
+      "Level": 4,
       "Input": [
         {
           "Id": "iron_rod",
@@ -438,7 +438,7 @@
       "OriginalId": "rotor",
       "AlternateName": "Alternate: Steel Rotor",
       "ProductionRate": 5,
-      "Level": 2,
+      "Level": 4,
       "Input": [
         {
           "Id": "steel_pipe",
@@ -454,7 +454,7 @@
       "Id": "stator",
       "Name": "Stator",
       "ProductionRate": 5,
-      "Level": 2,
+      "Level": 3,
       "Input": [
         {
           "Id": "steel_pipe",
@@ -470,7 +470,7 @@
       "Id": "motor",
       "Name": "Motor",
       "ProductionRate": 5,
-      "Level": 2,
+      "Level": 4,
       "Input": [
         {
           "Id": "rotor",
@@ -486,7 +486,7 @@
       "Id": "circuit_board",
       "Name": "Circuit Board",
       "ProductionRate": 7.5,
-      "Level": 2,
+      "Level": 3,
       "Input": [
         {
           "Id": "copper_sheet",
@@ -502,7 +502,7 @@
       "Id": "ai_limiter",
       "Name": "AI Limiter",
       "ProductionRate": 5,
-      "Level": 2,
+      "Level": 3,
       "Input": [
         {
           "Id": "copper_sheet",
@@ -518,7 +518,7 @@
       "Id": "smart_plating",
       "Name": "Smart Plating",
       "ProductionRate": 2,
-      "Level": 2,
+      "Level": 5,
       "Input": [
         {
           "Id": "reinforced_iron_plate",
@@ -534,7 +534,7 @@
       "Id": "versatile_framework",
       "Name": "Versatile Framework",
       "ProductionRate": 5,
-      "Level": 2,
+      "Level": 6,
       "Input": [
         {
           "Id": "modular_frame",
@@ -550,7 +550,7 @@
       "Id": "automated_wiring",
       "Name": "Automated Wiring",
       "ProductionRate": 2.5,
-      "Level": 2,
+      "Level": 4,
       "Input": [
         {
           "Id": "stator",
@@ -566,7 +566,7 @@
       "Id": "computer",
       "Name": "Computer",
       "ProductionRate": 2.5,
-      "Level": 2,
+      "Level": 6,
       "Input": [
         {
           "Id": "circuit_board",
@@ -590,7 +590,7 @@
       "Id": "heavy_modular_frame",
       "Name": "Heavy Modular Frame",
       "ProductionRate": 2,
-      "Level": 2,
+      "Level": 6,
       "Input": [
         {
           "Id": "modular_frame",
@@ -614,7 +614,7 @@
       "Id": "crystal_oscillator",
       "Name": "Crystal Oscillator",
       "ProductionRate": 1,
-      "Level": 2,
+      "Level": 5,
       "Input": [
         {
           "Id": "quartz_crystal",
@@ -634,7 +634,7 @@
       "Id": "modular_engine",
       "Name": "Modular Engine",
       "ProductionRate": 1,
-      "Level": 2,
+      "Level": 6,
       "Input": [
         {
           "Id": "motor",
@@ -654,7 +654,7 @@
       "Id": "adaptive_control_unit",
       "Name": "Adaptive Control Unit",
       "ProductionRate": 1,
-      "Level": 2,
+      "Level": 7,
       "Input": [
         {
           "Id": "automated_wiring",
@@ -678,7 +678,7 @@
       "Id": "supercomputer",
       "Name": "Supercomputer",
       "ProductionRate": 1.875,
-      "Level": 2,
+      "Level": 7,
       "Input": [
         {
           "Id": "computer",
@@ -702,6 +702,7 @@
       "Id": "high_speed_connector",
       "Name": "High Speed Connector",
       "ProductionRate": 3.75,
+      "Level": 4,
       "Input": [
         {
           "Id": "circuit_board",

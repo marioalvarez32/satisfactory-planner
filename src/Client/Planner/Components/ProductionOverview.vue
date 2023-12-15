@@ -53,6 +53,7 @@
       data: {
         id: item.Name,
         ItemId: item.Id,
+        level: item.Level,
         dom: div,
         Type: "Node",
       },

@@ -1,6 +1,7 @@
 import cytoscape from 'cytoscape';
 import cytoscapeDomNode from 'cytoscape-dom-node';
 import dagre from 'cytoscape-dagre';
+import klay from 'cytoscape-klay';
 
 import cytoscapeNgraph from 'cytoscape-ngraph.forcelayout';
 import { ref } from 'vue';
@@ -15,7 +16,7 @@ let networkInstance;
 export function useVisualNetwork(elementId?: string) {
   cytoscape.use(cytoscapeDomNode);
   cytoscape.use(dagre);
-  cytoscape.use(cytoscapeNgraph);
+  cytoscape.use(klay);
 
   function initializeNetwork() {
     if (networkInstance) networkInstance.destroy();
@@ -75,6 +76,7 @@ const diagramLayout = new NetworkLayoutOptions();
 
 const edgeCssProperties = {
   'curve-style': 'bezier', // taxi for hierarchy. bezier for straight lines. unbundled-bezier for curved lines.
+  'taxi-direction': 'downward',
   'control-point-step-size': 100,
   'target-arrow-shape': 'triangle',
   'arrow-scale': 1.7,
@@ -150,3 +152,35 @@ function getEdgeColor(edgeColor) {
       return 'gray';
   }
 }
+
+const layeredOptions = {
+  elk: {
+    edgeRouting: 'ORTHOGONAL', // Possible values: ORTHOGONAL | POLYLINE | SPLINES, style of edge routing
+    fixedAlignment: 'LEFTUP', // Possible values: NONE | LEFTUP | RIGHTDOWN | BALANCED, alignment of fixed nodes
+    hierarchyHandling: 'SEPARATE_CHILDREN', // Possible values: INCLUDE_CHILDREN | SEPARATE_CHILDREN, handling of hierarchical structures
+    layoutHierarchy: false, // Boolean value: true | false, whether to layout hierarchical structures
+    separateConnectedComponents: false, // Boolean value: true | false, whether to separate connected components
+    debug: true,
+    algorithm: 'layered',
+    direction: 'DOWN',
+
+    'spacing.componentComponent': '100f',
+    'layered.mergeEdges': false,
+    'layered.unnecessaryBendpoints': false,
+    'layered.compaction.connectedComponents': false,
+    'layered.considerModelOrder.strategy': 'NODES_AND_EDGES', // NODES_AND_EDGES | PREFER_EDGES | PREFER_NODES
+    'layered.considerModelOrder.components': 'MODEL_ORDER',
+
+    // stuff
+    'layered.layering.strategy': 'NETWORK_SIMPLEX', // Possible values: NETWORK_SIMPLEX | LONGEST_PATH | INTERACTIVE | COFFMAN_GRAHAM
+    'layered.inLayerSpacingFactor': 1.0, //IDK Numeric value, spacing factor between nodes within the same layer
+    'layered.mergeHierarchyEdges': false, // Boolean value: true | false, whether to merge edges that cross hierarchy boundaries
+    'layered.nodePlacement.bk.fixedAlignment': 'BALANCED', // Possible values: BALANCED | LEFTUP | RIGHTDOWN | NONE
+    'layered.spacing.baseValue': 0, // Numeric value, the base value for spacing
+    'layered.spacing.edgeEdgeBetweenLayers': 10, // Numeric value, spacing between edges in different layers
+    'layered.spacing.edgeNodeBetweenLayers': 50, // Numeric value, spacing between edges and nodes in different layers
+    'layered.spacing.nodeNodeBetweenLayers': 10, // Numeric value, spacing between nodes in different layers
+    'layered.thoroughness': 10, // Numeric value, thoroughness of the algorithm,
+    'layered.highDegreeNodes.treeHeight': 100,
+  },
+};
