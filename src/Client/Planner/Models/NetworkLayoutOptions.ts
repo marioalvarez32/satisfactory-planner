@@ -11,6 +11,7 @@ export class NetworkLayoutOptions {
   spacingFactor: number;
   nodeDimensionsIncludeLabels: boolean;
   avoidOverlap: true;
+  transform: (node: any, pos: any) => any;
 
   constructor() {
     this.name = defaultLayoutOptions.name;
@@ -25,13 +26,7 @@ export class NetworkLayoutOptions {
     this.align = defaultLayoutOptions.align;
     this.spacingFactor = defaultLayoutOptions.spacingFactor;
     this.nodeDimensionsIncludeLabels = defaultLayoutOptions.nodeDimensionsIncludeLabels;
-    this.transform = function (node, pos) {
-      const newY = node.data('level') * 100;
-      return {
-        x: pos.x,
-        y: pos.y + newY,
-      };
-    };
+    this.transform = defaultLayoutOptions.transform;
   }
 }
 
@@ -48,6 +43,13 @@ export const defaultLayoutOptions: NetworkLayoutOptions = {
   spacingFactor: undefined,
   nodeDimensionsIncludeLabels: true,
   avoidOverlap: true,
+  transform: function (node, pos) {
+    const newY = node.data('level') * 100;
+    return {
+      x: pos.x,
+      y: pos.y + newY,
+    };
+  },
 };
 
 export const rankDirOptions = [
