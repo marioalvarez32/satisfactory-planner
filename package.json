@@ -17,6 +17,7 @@
     "cytoscape-dagre": "^2.5.0",
     "cytoscape-dom-node": "^1.1.1",
     "cytoscape-html-node": "^2.2.0",
+    "cytoscape-klay": "^3.1.4",
     "cytoscape-ngraph.forcelayout": "^1.4.0",
     "lodash": "^4.17.21",
     "pinia": "^2.0.13",
