@@ -4,6 +4,7 @@
       <v-tabs v-model="selectedPanelTab" bg-color="primary" centered>
         <v-tab value="production-tab">Proudtion input</v-tab>
         <v-tab value="options">Options</v-tab>
+        <v-tab value="settings">Settings</v-tab>
       </v-tabs>
     </div>
     <div class="production-side-panel__content">
@@ -14,6 +15,9 @@
         <v-window-item value="options">
           <ProductionOptions />
         </v-window-item>
+        <v-window-item value="settings">
+          <GeneralSettings />
+        </v-window-item>
       </v-window>
     </div>
   </v-card>
@@ -23,6 +27,7 @@
   import { ref } from "vue"
   import ProductionList from "@/Client/Planner/Components/ProductionList.vue"
   import ProductionOptions from "@/Client/Planner/Components/ProductionOptions.vue"
+  import GeneralSettings from "./GeneralSettings.vue"
 
   const selectedPanelTab = ref("production-tab")
 </script>
