@@ -587,6 +587,28 @@
       ]
     },
     {
+      "Id": "caterium_computer",
+      "OriginalId": "computer",
+      "Name": "Computer",
+      "AlternateName": "Alternate: Caterium Computer",
+      "ProductionRate": 3.75,
+      "Level": 6,
+      "Input": [
+        {
+          "Id": "circuit_board",
+          "ProductionRate": 26.25
+        },
+        {
+          "Id": "quickwire",
+          "ProductionRate": 105
+        },
+        {
+          "Id": "rubber",
+          "ProductionRate": 45
+        }
+      ]
+    },
+    {
       "Id": "heavy_modular_frame",
       "Name": "Heavy Modular Frame",
       "ProductionRate": 2,
