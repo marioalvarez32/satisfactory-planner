@@ -10,6 +10,27 @@
   import ProductionOverview from "./Components/ProductionOverview.vue"
   import ProductionTabs from "./Components/ProductionTabs.vue"
   import ProductionSidePanel from "./Components/ProductionSidePanel.vue"
+  import { useNetworkDataStore } from "./Stores/networkData"
+  import { toRefs } from "vue"
+  import { watch } from "vue"
+  import { Ref } from "vue"
+  import { NodePositionData } from "./Models/NodePositionData"
+  import { useStorage } from "@vueuse/core"
+
+  const { nodePositions } = toRefs(useNetworkDataStore())
+
+  const storedItems: Ref<NodePositionData[]> = useStorage("production-list-node-positions", [], localStorage, { mergeDefaults: true })
+  if (storedItems.value && storedItems.value.length > 0) {
+    nodePositions.value = storedItems.value
+  }
+
+  watch(
+    nodePositions,
+    () => {
+      storedItems.value = nodePositions.value
+    },
+    { deep: true }
+  )
 </script>
 
 <style lang="scss" scoped>
