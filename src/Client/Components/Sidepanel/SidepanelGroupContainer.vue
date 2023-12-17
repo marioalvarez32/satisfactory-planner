@@ -5,6 +5,9 @@
       <span class="title">{{ title }}</span>
       <span class="line"></span>
     </div>
+    <div class="sidepanel-group-item__content-container">
+      <slot></slot>
+    </div>
   </div>
 </template>
 
@@ -19,11 +22,7 @@
 </script>
 
 <style lang="scss" scoped>
-  .sidepanel-group-item {
-  
-}
-
-.sidepanel-group-item__title-container {
+  .sidepanel-group-item__title-container {
   display: flex;
   align-items: center;
 }
@@ -37,5 +36,9 @@
 .title {
   padding: 0 10px;
   white-space: nowrap;
+}
+
+.sidepanel-group-item__content-container{
+  padding: 10px;
 }
 </style>
