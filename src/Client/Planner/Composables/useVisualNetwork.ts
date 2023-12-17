@@ -4,9 +4,11 @@ import dagre from 'cytoscape-dagre';
 import klay from 'cytoscape-klay';
 
 import cytoscapeNgraph from 'cytoscape-ngraph.forcelayout';
-import { ref } from 'vue';
+import { ref, toRefs } from 'vue';
 import { NetworkLayoutOptions } from '../Models/NetworkLayoutOptions';
 import { useNetworkOptions } from '../Stores/networkOptions';
+import { useNetworkDataStore } from '../Stores/networkData';
+import { useDebounceFn } from '@vueuse/core';
 
 type Config = {
   elementId: string;
@@ -14,11 +16,13 @@ type Config = {
 const selectedNode = ref(null);
 let networkInstance;
 export function useVisualNetwork(elementId?: string) {
+  let isLayoutReady = false;
   cytoscape.use(cytoscapeDomNode);
   cytoscape.use(dagre);
   cytoscape.use(klay);
 
   function initializeNetwork() {
+    isLayoutReady = false;
     if (networkInstance) networkInstance.destroy();
     networkInstance = cytoscape({
       container: document.getElementById(elementId), // container to render in
@@ -36,6 +40,17 @@ export function useVisualNetwork(elementId?: string) {
     networkInstance.on('unselect', function (event) {
       selectedNode.value = null;
     });
+
+    const nodePositionStore = useNetworkDataStore();
+    const debouncedSaveNodePosition = useDebounceFn(nodePositionStore.saveNodePosition, 150);
+
+    networkInstance.on('position', 'node', function (event) {
+      if (isLayoutReady) {
+        const node = event.target;
+        debouncedSaveNodePosition(node);
+      }
+    });
+
     updateNetworkStyle();
   }
 
@@ -51,9 +66,16 @@ export function useVisualNetwork(elementId?: string) {
   }
 
   function updateNetworkLayout() {
-    const { networkLayout } = useNetworkOptions();
-    if (!networkLayout) return;
-    networkInstance.layout(networkLayout).run();
+    const { networkLayout } = toRefs(useNetworkOptions());
+    if (!networkLayout.value) return;
+    networkLayout.value.ready = () => {
+      isLayoutReady = false;
+    };
+    networkLayout.value.stop = () => {
+      isLayoutReady = true;
+      restoreNodePositions();
+    };
+    networkInstance.layout(networkLayout.value).run();
   }
 
   function updateNetworkStyle() {
@@ -61,6 +83,20 @@ export function useVisualNetwork(elementId?: string) {
     if (!networkStyle) return;
     edgeCssProperties['curve-style'] = networkStyle.curveStyle;
     networkInstance.style(getNetworkStyles());
+  }
+
+  function restoreNodePositions() {
+    networkInstance.batch(function () {
+      networkInstance.nodes().forEach(function (node) {
+        const id = node.id();
+        const { getNodePositionById } = toRefs(useNetworkDataStore());
+
+        const nodePosition = getNodePositionById.value(id);
+        if (nodePosition) {
+          node.position({ x: nodePosition.X, y: nodePosition.Y });
+        }
+      });
+    });
   }
 
   return {
