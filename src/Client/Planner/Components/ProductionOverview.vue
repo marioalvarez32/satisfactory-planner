@@ -11,7 +11,7 @@
   import { Item } from "../Models/Item"
   import { useVisualNetwork } from "../Composables/useVisualNetwork"
   import { formatNumber, getItemFromId } from "../Utilities/ItemUtility"
-  import colorGroupData from "../Data/itemColorGroup.json"
+  import colorGroupData from "../Data/itemColorGroup.json5"
   import { nextTick } from "vue"
 
   const { items, getListItemById } = storeToRefs(useProductionListStore())

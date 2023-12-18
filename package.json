@@ -19,6 +19,7 @@
     "cytoscape-html-node": "^2.2.0",
     "cytoscape-klay": "^3.1.4",
     "cytoscape-ngraph.forcelayout": "^1.4.0",
+    "json5": "^2.2.3",
     "lodash": "^4.17.21",
     "pinia": "^2.0.13",
     "pinia-plugin-persist": "^1.0.0",
