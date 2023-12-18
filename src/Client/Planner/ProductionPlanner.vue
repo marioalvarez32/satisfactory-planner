@@ -14,20 +14,20 @@
   import { toRefs } from "vue"
   import { watch } from "vue"
   import { Ref } from "vue"
-  import { NodePositionData } from "./Models/NodePositionData"
+  import { SavedUserTabData } from "./Models/SavedUserTabData"
   import { useStorage } from "@vueuse/core"
 
-  const { nodePositions } = toRefs(useNetworkDataStore())
+  const { savedUserTabData } = toRefs(useNetworkDataStore())
 
-  const storedItems: Ref<NodePositionData[]> = useStorage("production-list-node-positions", [], localStorage, { mergeDefaults: true })
+  const storedItems: Ref<SavedUserTabData[]> = useStorage("production-list-chart-user-data", [], localStorage, { mergeDefaults: true })
   if (storedItems.value && storedItems.value.length > 0) {
-    nodePositions.value = storedItems.value
+    savedUserTabData.value = storedItems.value
   }
 
   watch(
-    nodePositions,
+    savedUserTabData,
     () => {
-      storedItems.value = nodePositions.value
+      storedItems.value = savedUserTabData.value
     },
     { deep: true }
   )

@@ -9,6 +9,7 @@ import { NetworkLayoutOptions } from '../Models/NetworkLayoutOptions';
 import { useNetworkOptions } from '../Stores/networkOptions';
 import { useNetworkDataStore } from '../Stores/networkData';
 import { useDebounceFn } from '@vueuse/core';
+import { Position } from '../Models/SavedUserTabData';
 
 type Config = {
   elementId: string;
@@ -28,6 +29,9 @@ export function useVisualNetwork(elementId?: string) {
       container: document.getElementById(elementId), // container to render in
       elements: [],
       layout: diagramLayout,
+      wheelSensitivity: 0.15,
+      minZoom: 0.4,
+      maxZoom: 5,
     });
 
     // Initialize cytoscape plugins
@@ -48,6 +52,19 @@ export function useVisualNetwork(elementId?: string) {
       if (isLayoutReady) {
         const node = event.target;
         debouncedSaveNodePosition(node);
+      }
+    });
+
+    const debouncedSaveNetworkPan = useDebounceFn(nodePositionStore.saveNetworkPan, 150);
+    networkInstance.on('pan', function (event) {
+      if (isLayoutReady) {
+        debouncedSaveNetworkPan(networkInstance.pan(), networkInstance.zoom());
+      }
+    });
+
+    networkInstance.on('zoom', function (event) {
+      if (isLayoutReady) {
+        debouncedSaveNetworkPan(networkInstance.pan(), networkInstance.zoom());
       }
     });
 
@@ -74,6 +91,7 @@ export function useVisualNetwork(elementId?: string) {
     networkLayout.value.stop = () => {
       isLayoutReady = true;
       restoreNodePositions();
+      restoreNetworkPanAndZoom();
     };
     networkInstance.layout(networkLayout.value).run();
   }
@@ -97,6 +115,14 @@ export function useVisualNetwork(elementId?: string) {
         }
       });
     });
+  }
+
+  function restoreNetworkPanAndZoom() {
+    const { getNetworkPan } = toRefs(useNetworkDataStore());
+    if (!getNetworkPan.value) return;
+
+    networkInstance.pan(Position.convertToCytoscapePosition(getNetworkPan.value.Position));
+    networkInstance.zoom(getNetworkPan.value.Zoom);
   }
 
   return {
