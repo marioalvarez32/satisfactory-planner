@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 import { ProductionList, ProductionListItem } from '../Models/ProductionList';
-import { NetworkPan, NodePosition, SavedUserTabData } from '../Models/SavedUserTabData';
+import { NetworkPan, NodePosition, Position, SavedUserTabData } from '../Models/SavedUserTabData';
 import { CytoscapePosition } from '../Models/CytoscapeModels';
 
 import { useProductionListStore } from './productionList';
@@ -47,10 +47,9 @@ export const useNetworkDataStore = defineStore('network-data-store', {
 
       const nodePositionIndex = this.savedUserTabData[listIndex].Nodes.findIndex((node) => nodeId == node.NodeId);
       if (nodePositionIndex == -1) {
-        this.savedUserTabData[listIndex].Nodes.push(new NodePosition(nodeId, nodePosition.x, nodePosition.y));
+        this.savedUserTabData[listIndex].Nodes.push(new NodePosition(nodeId, nodePosition));
       } else {
-        this.savedUserTabData[listIndex].Nodes[nodePositionIndex].X = nodePosition.x;
-        this.savedUserTabData[listIndex].Nodes[nodePositionIndex].Y = nodePosition.y;
+        this.savedUserTabData[listIndex].Nodes[nodePositionIndex].Position = new Position(nodePosition.x, nodePosition.y);
       }
     },
     saveNetworkPan(position: CytoscapePosition, zoom: number) {

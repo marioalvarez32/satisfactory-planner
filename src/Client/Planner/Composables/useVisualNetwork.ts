@@ -111,7 +111,7 @@ export function useVisualNetwork(elementId?: string) {
 
         const nodePosition = getNodePositionById.value(id);
         if (nodePosition) {
-          node.position({ x: nodePosition.X, y: nodePosition.Y });
+          node.position(Position.convertToCytoscapePosition(nodePosition.Position));
         }
       });
     });

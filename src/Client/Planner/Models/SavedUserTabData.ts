@@ -14,13 +14,11 @@ export class SavedUserTabData {
 
 export class NodePosition {
   NodeId: string;
-  X: number;
-  Y: number;
+  Position: Position;
 
-  constructor(nodeId: string, x: number, y: number) {
+  constructor(nodeId: string, cytoscapePosition: CytoscapePosition) {
     this.NodeId = nodeId;
-    this.X = x;
-    this.Y = y;
+    this.Position = new Position(cytoscapePosition.x, cytoscapePosition.y);
   }
 }
 
