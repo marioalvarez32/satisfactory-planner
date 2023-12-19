@@ -28,4 +28,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: build-artifacts
-          path: path/to/your/build/directory  # Replace with your build directory
+          path: dist/  # Replace with your build directory
