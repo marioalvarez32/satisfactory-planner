@@ -27,5 +27,4 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           port: 21
-          local-dir: /dist  # Replace with your build directory
-          dry-run: true
+          server-dir: public_html/
