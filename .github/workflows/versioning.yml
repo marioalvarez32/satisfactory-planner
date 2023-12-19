@@ -1,4 +1,12 @@
-- name: Semantic Release
-  run: npx semantic-release
-  env:
-    GH_TOKEN: ${{ secrets.GH_TOKEN }}
+name: Semantic Release
+on:
+  push:
+    branches: [ dev ]
+env:
+  GH_TOKEN: ${{ secrets.GH_TOKEN }}
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: npx semantic-release
