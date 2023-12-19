@@ -1,0 +1,31 @@
+name: Build Project
+
+on:
+  workflow_run:
+    workflows: ["Semantic Release"]  # Name of the first workflow
+    types:
+      - completed  # Triggered when the initial workflow is completed
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'  # Set your Node.js version
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build  # Replace with your build command
+
+      - name: Archive Production Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: build-artifacts
+          path: path/to/your/build/directory  # Replace with your build directory
