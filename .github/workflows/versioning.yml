@@ -6,7 +6,10 @@ on:
     
 permissions:
       contents: write
-      
+
+env:
+  GH_TOKEN: ${{ secrets.GH_TOKEN }}
+  
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -21,7 +24,6 @@ jobs:
       
       - name: Install Dependencies
         run: npm install
-
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-      - run: npx semantic-release
+        
+      - name: Run semantic-release
+        run: npx semantic-release
