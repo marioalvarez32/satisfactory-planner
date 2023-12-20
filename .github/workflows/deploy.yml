@@ -17,8 +17,6 @@ jobs:
     steps:
       - name: Download Artifacts
         uses: actions/download-artifact@v4
-        with:
-          name: build-artifacts
         
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
@@ -28,3 +26,4 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           port: 21
           server-dir: public_html/
+          dry-run: true
