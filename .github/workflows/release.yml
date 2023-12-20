@@ -81,11 +81,20 @@ jobs:
         with: 
           name: build-artifacts
 
-      - name: 📂 Sync files
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          port: 21
-          server-dir: public_html/
+      - name: Install LFTP
+        run: sudo apt-get install lftp
+        
+      - name: Upload files using LFTP
+        run: |
+          lftp -e "
+          set ssl:verify-certificate no;
+          open ftp://$FTP_USERNAME:$FTP_PASSWORD@$FTP_SERVER;
+          lcd ${{ github.workspace }};  # Local directory where files are downloaded
+          cd public_html/;  # Remote directory where files should be uploaded
+          mirror --reverse --verbose;
+          bye;
+          "
+        env:
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
