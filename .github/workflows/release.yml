@@ -68,7 +68,6 @@ jobs:
           port: 21
           server-dir: public_html/assets/
           dangerous-clean-slate: true
-          dry-run: true
           
   deploy:
     needs: clean-deploy
