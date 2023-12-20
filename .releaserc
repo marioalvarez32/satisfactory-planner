@@ -9,7 +9,7 @@
     [
       "@semantic-release/exec",
       {
-        "prepareCmd": "node ./updateInternalVersion.js  ${nextRelease.version}"
+        "prepareCmd": "node ./updateInternalVersion.mjs  ${nextRelease.version}"
       }
     ],
     "@semantic-release/github",
