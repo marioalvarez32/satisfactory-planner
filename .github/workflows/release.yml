@@ -54,8 +54,24 @@ jobs:
           name: build-artifacts
           path: dist/  # Replace with your build directory
           
-  deploy:
+  clean-deploy:
     needs: build
+    name: Clean server
+    runs-on: ubuntu-latest
+    steps:       
+      - name: 📂 Delete Files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          port: 21
+          server-dir: public_html/assets/
+          dangerous-clean-slate: true
+          dry-run: true
+          
+  deploy:
+    needs: clean-deploy
     name: 🎉 Deploy
     runs-on: ubuntu-latest
     steps:       
