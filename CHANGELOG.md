@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/marioalvarez32/satisfactory-planner/compare/v1.2.2...v1.2.3) (2023-12-20)
+
+
+### Bug Fixes
+
+* anothe try ([f656f1d](https://github.com/marioalvarez32/satisfactory-planner/commit/f656f1db02730396076a42480cef45b3e032c46c))
+
 ## [1.2.2](https://github.com/marioalvarez32/satisfactory-planner/compare/v1.2.1...v1.2.2) (2023-12-20)
 
 
