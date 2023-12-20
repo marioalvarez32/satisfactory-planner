@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/marioalvarez32/satisfactory-planner/compare/v1.1.1...v1.2.0) (2023-12-20)
+
+
+### Features
+
+* Adding the app's version number to to the header temporarily. ([bf7d295](https://github.com/marioalvarez32/satisfactory-planner/commit/bf7d2952ef9986382a504dcda6ac0881aa50df50))
+
 ## [1.1.1](https://github.com/marioalvarez32/satisfactory-planner/compare/v1.1.0...v1.1.1) (2023-12-20)
 
 
