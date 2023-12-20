@@ -1,3 +1,10 @@
+## [1.2.4](https://github.com/marioalvarez32/satisfactory-planner/compare/v1.2.3...v1.2.4) (2023-12-20)
+
+
+### Bug Fixes
+
+* Trying another way to fix semantic release. ([39bd7c2](https://github.com/marioalvarez32/satisfactory-planner/commit/39bd7c231c3f3fed8408818f02f3d24d1c11b341))
+
 ## [1.2.3](https://github.com/marioalvarez32/satisfactory-planner/compare/v1.2.2...v1.2.3) (2023-12-20)
 
 
