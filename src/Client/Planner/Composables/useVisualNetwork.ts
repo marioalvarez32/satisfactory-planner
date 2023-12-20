@@ -3,13 +3,13 @@ import cytoscapeDomNode from 'cytoscape-dom-node';
 import dagre from 'cytoscape-dagre';
 import klay from 'cytoscape-klay';
 
-import cytoscapeNgraph from 'cytoscape-ngraph.forcelayout';
 import { ref, toRefs } from 'vue';
 import { NetworkLayoutOptions } from '../Models/NetworkLayoutOptions';
 import { useNetworkOptions } from '../Stores/networkOptions';
 import { useNetworkDataStore } from '../Stores/networkData';
 import { useDebounceFn } from '@vueuse/core';
 import { Position } from '../Models/SavedUserTabData';
+import { cloneDeep } from 'lodash';
 
 type Config = {
   elementId: string;
@@ -85,15 +85,16 @@ export function useVisualNetwork(elementId?: string) {
   function updateNetworkLayout() {
     const { networkLayout } = toRefs(useNetworkOptions());
     if (!networkLayout.value) return;
-    networkLayout.value.ready = () => {
+    const modifiedLayout = cloneDeep(networkLayout.value);
+    modifiedLayout.ready = () => {
       isLayoutReady = false;
     };
-    networkLayout.value.stop = () => {
+    modifiedLayout.stop = () => {
       isLayoutReady = true;
       restoreNodePositions();
       restoreNetworkPanAndZoom();
     };
-    networkInstance.layout(networkLayout.value).run();
+    networkInstance.layout(modifiedLayout).run();
   }
 
   function updateNetworkStyle() {

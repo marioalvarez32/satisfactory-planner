@@ -91,39 +91,13 @@
 </template>
 
 <script setup lang="ts">
-  import { Ref, watch } from "vue"
-  import { rankDirOptions, defaultLayoutOptions, alignmentOptions, rankerOptions, NetworkLayoutOptions } from "../Models/NetworkLayoutOptions"
-  import { NetworkStyleOptions, defaultStyleOptions, curveStyleOptions } from "../Models/NetworkStyleOptions"
+  import { rankDirOptions, defaultLayoutOptions, alignmentOptions, rankerOptions } from "../Models/NetworkLayoutOptions"
+  import { defaultStyleOptions, curveStyleOptions } from "../Models/NetworkStyleOptions"
 
   import { useNetworkOptions } from "../Stores/networkOptions"
-  import { useVisualNetwork } from "../Composables/useVisualNetwork"
-  import { useStorage } from "@vueuse/core"
   import { toRefs } from "vue"
 
   const { networkLayout, networkStyle } = toRefs(useNetworkOptions())
-
-  const { updateNetworkLayout, updateNetworkStyle } = useVisualNetwork()
-
-  const storedLayoutOptions: Ref<NetworkLayoutOptions> = useStorage("network-layout-options", defaultLayoutOptions, localStorage, { mergeDefaults: true })
-  const storedStyleOptions: Ref<NetworkStyleOptions> = useStorage("network-style-options", defaultStyleOptions, localStorage, { mergeDefaults: true })
-
-  watch(
-    networkLayout.value,
-    () => {
-      storedLayoutOptions.value = networkLayout.value
-      updateNetworkLayout()
-    },
-    { immediate: true }
-  )
-
-  watch(
-    networkStyle.value,
-    () => {
-      storedStyleOptions.value = networkStyle.value
-      updateNetworkStyle()
-    },
-    { immediate: true }
-  )
 </script>
 
 <style lang="scss" scoped>
