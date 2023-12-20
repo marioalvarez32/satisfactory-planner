@@ -18,6 +18,9 @@ jobs:
       - name: Download Artifacts
         uses: actions/download-artifact@v4
         
+      - name: List files
+        run: ls -la
+
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
