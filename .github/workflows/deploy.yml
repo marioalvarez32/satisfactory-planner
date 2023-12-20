@@ -5,7 +5,10 @@ on:
     workflows: ["Build Project"]
     types:
       - completed
-
+      
+permissions:
+  actions: write
+  
 jobs:
   web-deploy:
     name: 🎉 Deploy
