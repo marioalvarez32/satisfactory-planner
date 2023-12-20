@@ -12,6 +12,7 @@ env:
 
 jobs:
   release:
+    name: Semantic Release
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
@@ -31,6 +32,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           
   build:
+    name: Build
     needs: release
     runs-on: ubuntu-latest
     steps:
@@ -56,7 +58,7 @@ jobs:
           
   clean-deploy:
     needs: build
-    name: Clean server
+    name: Prep Deploy
     runs-on: ubuntu-latest
     steps:       
       - name: 📂 Delete Files
@@ -87,4 +89,3 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           port: 21
           server-dir: public_html/
-          dry-run: true
