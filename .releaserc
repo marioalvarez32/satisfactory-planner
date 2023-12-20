@@ -12,7 +12,6 @@
         "prepareCmd": "node ./updateInternalVersion.mjs  ${nextRelease.version}"
       }
     ],
-    "@semantic-release/github",
     [
       "@semantic-release/git",
       {
@@ -21,6 +20,7 @@
           "internalVersion.json"
         ]
       }
-    ]
+    ],
+    "@semantic-release/github"
   ]
 }
