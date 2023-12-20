@@ -84,6 +84,20 @@ jobs:
       - name: Install LFTP
         run: sudo apt-get install lftp
         
+      - name: Clear Remote Directory
+        run: |
+          lftp -e "
+          set ssl:verify-certificate no;
+          open ftp://$FTP_USERNAME:$FTP_PASSWORD@$FTP_SERVER;
+          cd public_html/assets;  # Remote directory to be cleared
+          mrm *;  # Remove all files in the directory
+          bye;
+          "
+        env:
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          
       - name: Upload files using LFTP
         run: |
           lftp -e "
