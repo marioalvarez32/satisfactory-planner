@@ -89,8 +89,11 @@ jobs:
           lftp -e "
           set ssl:verify-certificate no;
           open ftp://$FTP_USERNAME:$FTP_PASSWORD@$FTP_SERVER;
+          echo 'Changing to target directory...';
           cd public_html/assets;  # Remote directory to be cleared
+          echo 'Removing files...';
           mrm *;  # Remove all files in the directory
+          echo 'Exiting...';
           bye;
           "
         env:
