@@ -1,11 +1,9 @@
 <template>
-  <v-app-bar color="surface-variant" title="Satisfactory planner" />
+  <v-app-bar color="surface-variant" :title="`Satisfactory planner: ${version}`" />
 </template>
 
-<script lang="ts">
-  export default {
-    components: {},
-  }
+<script setup lang="ts">
+  import { version } from "../../internalVersion.json"
 </script>
 
 <style lang="scss" scoped>
