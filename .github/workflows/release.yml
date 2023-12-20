@@ -31,6 +31,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           
   build:
+    needs: release
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
@@ -54,6 +55,7 @@ jobs:
           path: dist/  # Replace with your build directory
           
   deploy:
+    needs: build
     name: 🎉 Deploy
     runs-on: ubuntu-latest
     steps:       
