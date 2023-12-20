@@ -3,7 +3,7 @@ import { readFile } from 'fs/promises';
 
 async function updateVersion(newVersion) {
   console.log('🚀 ~ file: updateInternalVersion.js:5 ~ updateVersion ~ newVersion:', newVersion);
-  const customJsonFile = './public/internalVersion.json';
+  const customJsonFile = './internalVersion.json';
 
   try {
     const data = await readFile(customJsonFile, 'utf8');

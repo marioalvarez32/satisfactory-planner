@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-  import { version } from "@/../public/internalVersion.json"
+  import { version } from "@/../internalVersion.json"
 </script>
 
 <style lang="scss" scoped>
