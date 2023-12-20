@@ -94,7 +94,7 @@ export function useVisualNetwork(elementId?: string) {
       restoreNodePositions();
       restoreNetworkPanAndZoom();
     };
-    networkInstance.layout(networkLayout.value).run();
+    networkInstance.layout(modifiedLayout).run();
   }
 
   function updateNetworkStyle() {
