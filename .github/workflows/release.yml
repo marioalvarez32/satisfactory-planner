@@ -52,13 +52,11 @@ jobs:
         with:
           name: build-artifacts
           path: dist/  # Replace with your build directory
+          
   deploy:
     name: 🎉 Deploy
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-        
+    steps:       
       - name: Download Artifacts
         uses: actions/download-artifact@v4
         with: 
