@@ -1,63 +1,18 @@
-## [1.2.6](https://github.com/marioalvarez32/satisfactory-planner/compare/v1.2.5...v1.2.6) (2023-12-21)
-
-
-### Bug Fixes
-
-* Trying semantic release. ([b906d6f](https://github.com/marioalvarez32/satisfactory-planner/commit/b906d6f4271eb32ea23a5cab2a5335a3b9fa6560))
-
-## [1.2.5](https://github.com/marioalvarez32/satisfactory-planner/compare/v1.2.4...v1.2.5) (2023-12-21)
-
-
-### Bug Fixes
-
-* Another try ([d1d85d1](https://github.com/marioalvarez32/satisfactory-planner/commit/d1d85d10a82071f936c6424881ca7290693238ec))
-
-## [1.2.4](https://github.com/marioalvarez32/satisfactory-planner/compare/v1.2.3...v1.2.4) (2023-12-20)
-
-
-### Bug Fixes
-
-* Trying another way to fix semantic release. ([39bd7c2](https://github.com/marioalvarez32/satisfactory-planner/commit/39bd7c231c3f3fed8408818f02f3d24d1c11b341))
-
-## [1.2.3](https://github.com/marioalvarez32/satisfactory-planner/compare/v1.2.2...v1.2.3) (2023-12-20)
-
-
-### Bug Fixes
-
-* anothe try ([f656f1d](https://github.com/marioalvarez32/satisfactory-planner/commit/f656f1db02730396076a42480cef45b3e032c46c))
-
-## [1.2.2](https://github.com/marioalvarez32/satisfactory-planner/compare/v1.2.1...v1.2.2) (2023-12-20)
-
-
-### Bug Fixes
-
-* Trying to fix the semantic release version update. ([bdc4b98](https://github.com/marioalvarez32/satisfactory-planner/commit/bdc4b980aa1045e53aaeab30d22dc49fbfd06f58))
-
-## [1.2.1](https://github.com/marioalvarez32/satisfactory-planner/compare/v1.2.0...v1.2.1) (2023-12-20)
-
-
-### Bug Fixes
-
-* Trying semantic release using a fix commit. ([55e5e8a](https://github.com/marioalvarez32/satisfactory-planner/commit/55e5e8a05fd86c692a440b0b5e6abefef7eb2590))
-
 # [1.2.0](https://github.com/marioalvarez32/satisfactory-planner/compare/v1.1.1...v1.2.0) (2023-12-20)
-
 
 ### Features
 
-* Adding the app's version number to to the header temporarily. ([bf7d295](https://github.com/marioalvarez32/satisfactory-planner/commit/bf7d2952ef9986382a504dcda6ac0881aa50df50))
+- Adding the app's version number to to the header temporarily. ([bf7d295](https://github.com/marioalvarez32/satisfactory-planner/commit/bf7d2952ef9986382a504dcda6ac0881aa50df50))
 
 ## [1.1.1](https://github.com/marioalvarez32/satisfactory-planner/compare/v1.1.0...v1.1.1) (2023-12-20)
 
-
 ### Bug Fixes
 
-* Fixed an issue causing the node position, zoom, and pan to not be saved. ([49a8c23](https://github.com/marioalvarez32/satisfactory-planner/commit/49a8c23ce44ef34f25fb8437c0c6274e1c7a21f8))
-* Removed issues causing the browser to temporarily freeze when switching tabs. ([3c44acd](https://github.com/marioalvarez32/satisfactory-planner/commit/3c44acdd46c4a27b247666cf84fc704af3451adb))
+- Fixed an issue causing the node position, zoom, and pan to not be saved. ([49a8c23](https://github.com/marioalvarez32/satisfactory-planner/commit/49a8c23ce44ef34f25fb8437c0c6274e1c7a21f8))
+- Removed issues causing the browser to temporarily freeze when switching tabs. ([3c44acd](https://github.com/marioalvarez32/satisfactory-planner/commit/3c44acdd46c4a27b247666cf84fc704af3451adb))
 
 # [1.1.0](https://github.com/marioalvarez32/satisfactory-planner/compare/v1.0.0...v1.1.0) (2023-12-19)
 
-
 ### Features
 
-* Adding the changelog module for semantic-release. ([d1d1459](https://github.com/marioalvarez32/satisfactory-planner/commit/d1d1459c611bf44161ef95f24e36e2fdc26110f4))
+- Adding the changelog module for semantic-release. ([d1d1459](https://github.com/marioalvarez32/satisfactory-planner/commit/d1d1459c611bf44161ef95f24e36e2fdc26110f4))
