@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar color="surface-variant" :title="`Satisfactory planner: v${version}`" />
+  <v-app-bar color="surface-variant" :title="`Satisfactory planner: v${version} `" />
 </template>
 
 <script setup lang="ts">
