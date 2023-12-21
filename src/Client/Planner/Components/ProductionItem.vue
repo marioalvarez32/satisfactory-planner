@@ -26,16 +26,15 @@
 
 <script setup lang="ts">
   import { computed, ref } from "vue"
-  import { Item } from "../Models/Item"
   import { useProductionListStore } from "../Stores/productionList"
-  import { storeToRefs } from "pinia"
   import { itemDictionary } from "../Utilities/ItemUtility"
   import { ProductionListItem } from "../Models/ProductionList"
   import { watch } from "vue"
+  import { PropType } from "vue"
 
   const props = defineProps({
     listItem: {
-      type: ProductionListItem,
+      type: Object as PropType<ProductionListItem>,
       default: null,
     },
   })
