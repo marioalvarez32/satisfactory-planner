@@ -30,7 +30,7 @@ export function useVisualNetwork(elementId?: string) {
       elements: [],
       layout: diagramLayout,
       wheelSensitivity: 0.15,
-      minZoom: 0.4,
+      minZoom: 0.3,
       maxZoom: 5,
     });
 
