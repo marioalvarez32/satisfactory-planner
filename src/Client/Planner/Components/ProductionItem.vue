@@ -6,7 +6,7 @@
           <v-avatar v-if="item.title">
             <v-img :src="getImageSrc(item.title)" />
           </v-avatar>
-          {{ item.title ? item.raw.AlternateName ?? item.title : "Select an item" }}
+          <div class="input-selection__label" :title="getSelectedItemLabel(item)">{{ getSelectedItemLabel(item) }}</div>
         </div>
       </template>
       <template #item="{ props: itemProps, item }">
@@ -100,6 +100,10 @@
   function removeHandler() {
     emit("remove:listItem")
   }
+
+  function getSelectedItemLabel(item) {
+    return item.title ? item.raw.AlternateName ?? item.title : "Select an item"
+  }
 </script>
 
 <style lang="scss" scoped>
@@ -123,5 +127,17 @@
     display:flex;
     align-items: center;
     gap: 5px;
+    overflow: hidden;
   }
+
+  .input-selection__label{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+
+  :deep(.v-autocomplete .v-field__input) {
+    flex-wrap: nowrap;
+}
 </style>
