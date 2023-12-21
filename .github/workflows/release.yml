@@ -56,9 +56,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: build-artifacts
-          path: |
-            dist/  # Replace with your build directory
-            public/
+          paths: |
+            dist/*  # Replace with your build directory
+            public/*
           
   deploy:
     needs: build
