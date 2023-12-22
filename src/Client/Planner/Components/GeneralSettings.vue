@@ -1,5 +1,5 @@
 <template>
-  <v-expansion-panels mandatory="force">
+  <v-expansion-panels>
     <SidepanelGroup title="General">
       <SidepanelGroupContainer title="Import / Export">
         <div class="settings__data-options">

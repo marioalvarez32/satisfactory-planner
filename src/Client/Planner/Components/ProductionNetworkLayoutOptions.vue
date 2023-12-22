@@ -1,6 +1,5 @@
 <template>
   <div class="options-section">
-    <div class="options-section__title">Network Layout</div>
     <div class="options-section__container">
       <div class="options-section__item">
         <div class="options-section_item-label">Rank Direction</div>

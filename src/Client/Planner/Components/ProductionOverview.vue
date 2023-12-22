@@ -56,6 +56,7 @@
         level: item.Level,
         dom: div,
         Type: "Node",
+        Name: item.AlternateName ?? item.Name,
       },
     }
   }

@@ -1,17 +1,28 @@
 <template>
-  <div class="options">
-    <div v-if="selectedNode" class="">
-      <component :is="subOptionsComponent" :key="selectedNode.ItemId" :selected-node="selectedNode" />
-    </div>
-    <ProductionGeneralOptions />
-  </div>
+  <v-expansion-panels variant="accordion">
+    <SidepanelGroup v-if="selectedNode" title="Node Options" :sub-title="selectedNode.Name">
+      <SidepanelGroupContainer title="Node Options">
+        <div class="">
+          <component :is="subOptionsComponent" :key="selectedNode.ItemId" :selected-node="selectedNode" />
+        </div>
+      </SidepanelGroupContainer>
+    </SidepanelGroup>
+
+    <SidepanelGroup title="Chart Options">
+      <SidepanelGroupContainer title="Network Layout">
+        <ProductionNetworkLayoutOptions />
+      </SidepanelGroupContainer>
+    </SidepanelGroup>
+  </v-expansion-panels>
 </template>
 
 <script setup lang="ts">
   import ProductionNodeOptions from "./ProductionNodeOptions.vue"
-  import ProductionGeneralOptions from "./ProductionGeneralOptions.vue"
   import { useVisualNetwork } from "@/Client/Planner/Composables/useVisualNetwork"
   import { computed } from "vue"
+  import SidepanelGroup from "@/Client/Components/Sidepanel/SidepanelGroup.vue"
+  import SidepanelGroupContainer from "@/Client/Components/Sidepanel/SidepanelGroupContainer.vue"
+  import ProductionNetworkLayoutOptions from "./ProductionNetworkLayoutOptions.vue"
 
   const { selectedNode: selectedNetworkNode } = useVisualNetwork()
   const selectedNode = computed(() => selectedNetworkNode.value)

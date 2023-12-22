@@ -1,6 +1,6 @@
 <template>
   <div class="sidepanel-group-item">
-    <div class="sidepanel-group-item__title-container">
+    <div v-if="title" class="sidepanel-group-item__title-container">
       <span class="line"></span>
       <span class="title">{{ title }}</span>
       <span class="line"></span>
