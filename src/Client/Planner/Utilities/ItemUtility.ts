@@ -78,3 +78,10 @@ export function formatNumber(num) {
   str = str.replace(/(\.\d)0$/, '$1');
   return str;
 }
+
+export function getImageSrc(name: string) {
+  const imageName = name.toLowerCase().split(' ').join('-');
+  const imagePath = `/src/assets/items/${imageName}_64.png`;
+  const imageUrl = new URL(imagePath, import.meta.url);
+  return imageUrl.href;
+}

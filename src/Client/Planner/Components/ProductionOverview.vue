@@ -10,7 +10,7 @@
   import { useProductionListStore } from "../Stores/productionList"
   import { Item } from "../Models/Item"
   import { useVisualNetwork } from "../Composables/useVisualNetwork"
-  import { formatNumber, getItemFromId } from "../Utilities/ItemUtility"
+  import { formatNumber, getImageSrc, getItemFromId } from "../Utilities/ItemUtility"
   import colorGroupData from "../Data/itemColorGroup.json5"
   import { nextTick } from "vue"
 
@@ -127,13 +127,6 @@
     } else {
       return "--warn"
     }
-  }
-
-  function getImageSrc(name: string) {
-    const imageName = name.toLowerCase().split(" ").join("-")
-    const imagePath = `/src/assets/items/${imageName}_256.png`
-    const imageUrl = new URL(imagePath, import.meta.url)
-    return imageUrl.href
   }
 </script>
 

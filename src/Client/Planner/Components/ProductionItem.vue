@@ -27,7 +27,7 @@
 <script setup lang="ts">
   import { computed, ref } from "vue"
   import { useProductionListStore } from "../Stores/productionList"
-  import { itemDictionary } from "../Utilities/ItemUtility"
+  import { itemDictionary, getImageSrc } from "../Utilities/ItemUtility"
   import { ProductionListItem } from "../Models/ProductionList"
   import { watch } from "vue"
   import { PropType } from "vue"
@@ -85,13 +85,6 @@
         AlternateName: item.AlternateName,
       }
     })
-
-  function getImageSrc(name: string) {
-    const imageName = name.toLowerCase().split(" ").join("-")
-    const imagePath = `/src/assets/items/${imageName}_64.png`
-    const imageUrl = new URL(imagePath, import.meta.url)
-    return imageUrl.href
-  }
 
   function emitUpdate() {
     emit("update:listItem", internalValue.value)
