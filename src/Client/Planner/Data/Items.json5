@@ -1,6 +1,13 @@
 {
   "items": [
     {
+      "Id": "water",
+      "Name": "Water",
+      "ProductionRate": 60,
+      "Input": []
+    },
+    //-------------------IRON-----------------------
+    {
       "Id": "iron_ore",
       "Name": "Iron Ore",
       "ProductionRate": 60,
@@ -87,6 +94,7 @@
         }
       ]
     },
+    //-------------------COPPER-----------------------
     {
       "Id": "copper_ore",
       "Name": "Copper Ore",
@@ -142,6 +150,7 @@
         }
       ]
     },
+    //-------------------Limestone-----------------------
     {
       "Id": "limestone",
       "Name": "Limestone",
@@ -161,6 +170,7 @@
         }
       ]
     },
+    //-------------------QUARTZ-----------------------
     {
       "Id": "raw_quartz",
       "Name": "Raw Quartz",
@@ -180,6 +190,7 @@
         }
       ]
     },
+    //-------------------Sulfur---------------------
     {
       "Id": "sulfur",
       "Name": "Sulfur",
@@ -187,6 +198,7 @@
       "Input": [],
       "Level": 0
     },
+    //-------------------Coal-----------------------
     {
       "Id": "coal",
       "Name": "Coal",
@@ -210,6 +222,7 @@
         }
       ]
     },
+    //-------------------Steel-----------------------
     {
       "Id": "steel_ingot",
       "Name": "Steel Ingot",
@@ -250,6 +263,7 @@
       ],
       "Level": 2
     },
+    //-------------------Caterium-----------------------
     {
       "Id": "caterium_ore",
       "Name": "Caterium Ore",
@@ -269,6 +283,7 @@
       ],
       "Level": 1
     },
+    //-------------------Quickwire-----------------------
     {
       "Id": "quickwire",
       "Name": "Quickwire",
@@ -281,6 +296,7 @@
       ],
       "Level": 2
     },
+    //-------------------Crude Oil-----------------------
     {
       "Id": "crude_oil",
       "Name": "Crude Oil",
@@ -400,6 +416,7 @@
         }
       ]
     },
+    //-------------------ASSEMBLER-----------------------
     {
       "Id": "encased_industrial_beam",
       "Name": "Encased Industrial Beam",
@@ -562,6 +579,7 @@
         }
       ]
     },
+    //-------------------MANUFACTURERS-----------------------
     {
       "Id": "computer",
       "Name": "Computer",
@@ -739,12 +757,6 @@
           "ProductionRate": 210
         }
       ]
-    },
-    {
-      "Id": "water",
-      "Name": "Water",
-      "ProductionRate": 60,
-      "Input": []
     }
   ]
 }
