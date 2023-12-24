@@ -1,6 +1,25 @@
 <template>
   <v-card elevation="5" rounded="lg" class="production-overview">
-    <div id="production-overview" class="production-overview__network"></div>
+    <div class="production-overview__tab-container">
+      <v-tabs v-model="selectedTab" fixed-tabs density="compact" align-tabs="center" bg-color="primary" show-arrows slider-color="teal-lighten-3">
+        <v-tab value="network">Network</v-tab>
+        <v-tab value="recipes">Recipes</v-tab>
+      </v-tabs>
+    </div>
+
+    <v-window v-model="selectedTab">
+      <v-window-item value="network"><div id="production-overview" class="production-overview__network"></div></v-window-item>
+      <v-window-item value="recipes">
+        <div class="production-overview__recipe-options">
+          <div class="production-overview__table-wrapper">
+            <RecipeTable v-model="enabledBaseRecipes" title="Base Recipes" :recipes="baseRecipeIds" />
+          </div>
+          <div class="production-overview__table-wrapper">
+            <RecipeTable v-model="enabledAlternateRecipes" title="Alternate Recipes" :recipes="alternateRecipeIds" />
+          </div>
+        </div>
+      </v-window-item>
+    </v-window>
   </v-card>
 </template>
 
@@ -13,10 +32,20 @@
   import { formatNumber, getImageSrc, getItemFromId } from "../Utilities/ItemUtility"
   import colorGroupData from "../Data/itemColorGroup.json5"
   import { nextTick } from "vue"
+  import { ref } from "vue"
+  import ItemsData from "@/Client/Planner/Data/Items.json5"
+  import RecipeTable from "./RecipeOptions/RecipeTable.vue"
+  import { toRefs } from "vue"
+  import { useRecipeOptionStore } from "../Stores/recipeOptions"
 
   const { items, getListItemById } = storeToRefs(useProductionListStore())
+  const selectedTab = ref("network")
 
   const { initializeNetwork, updateNetwork } = useVisualNetwork("production-overview")
+
+  const alternateRecipeIds: string[] = ItemsData.items.filter(itemData => itemData.isAlternateRecipe === true).map(itemData => itemData.Id)
+  const baseRecipeIds: string[] = ItemsData.items.filter(itemData => !itemData.isAlternateRecipe).map(itemData => itemData.Id)
+  const { enabledAlternateRecipes, enabledBaseRecipes } = toRefs(useRecipeOptionStore())
 
   onMounted(() => {
     initializeNetwork()
@@ -133,6 +162,15 @@
 <style lang="scss" scoped>
   .production-overview {
     grid-area: overview;
+    position: relative;
+  }
+
+  .production-overview__tab-container{
+    position: absolute;
+    left:0;
+    right:0;
+    top:0;
+    z-index: 1;
   }
 
   .production-overview__network {
@@ -207,5 +245,31 @@
       background: #3949ab;
       border-radius: 35px;
     }
+  }
+  .production-overview__tab-container{
+    display:flex;
+    justify-content: center;
+    padding:10px;
+  }
+  .production-overview__tab-container :deep(button.v-tab){
+    text-transform: capitalize;
+  }
+
+  :deep(.v-window),
+  :deep(.v-window__container),
+  :deep(.v-window-item) {
+    height:100%;
+  }
+
+  .production-overview__recipe-options {
+    margin-top: 50px;
+    display:flex;
+    height: calc(100% - 50px);
+    justify-content: center;
+  }
+
+  .production-overview__table-wrapper{
+    padding:5px;
+    width: 50%;
   }
 </style>

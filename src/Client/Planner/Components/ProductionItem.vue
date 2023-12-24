@@ -31,6 +31,8 @@
   import { ProductionListItem } from "../Models/ProductionList"
   import { watch } from "vue"
   import { PropType } from "vue"
+  import { useRecipeOptionStore } from "../Stores/recipeOptions"
+  import { toRefs } from "vue"
 
   const props = defineProps({
     listItem: {
@@ -73,18 +75,21 @@
   })
 
   watch(internalValue.value, emitUpdate)
-
-  const itemList = Object.values(itemDictionary)
-    .filter(item => {
-      return !productionStore.getSelectedList.Items.some((selectedItem: ProductionListItem) => selectedItem.Id == item.Id)
-    })
-    .map(item => {
-      return {
-        Id: item.Id,
-        Name: item.Name,
-        AlternateName: item.AlternateName,
-      }
-    })
+  const { isItemEnabled } = toRefs(useRecipeOptionStore())
+  const itemList = computed(() => {
+    return Object.values(itemDictionary)
+      .filter(item => isItemEnabled.value(item.Id))
+      .filter(item => {
+        return !productionStore.getSelectedList.Items.some((selectedItem: ProductionListItem) => selectedItem.Id == item.Id)
+      })
+      .map(item => {
+        return {
+          Id: item.Id,
+          Name: item.Name,
+          AlternateName: item.AlternateName,
+        }
+      })
+  })
 
   function emitUpdate() {
     emit("update:listItem", internalValue.value)

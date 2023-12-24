@@ -6,11 +6,14 @@ import { NetworkLayoutOptions, defaultLayoutOptions } from '../Models/NetworkLay
 import { useVisualNetwork } from '../Composables/useVisualNetwork';
 import { useNetworkOptions } from '../Stores/networkOptions';
 import { NetworkStyleOptions, defaultStyleOptions } from '../Models/NetworkStyleOptions';
+import { useRecipeOptionStore } from '../Stores/recipeOptions';
+import { StoredRecipeData } from '../Models/StoredRecipeData';
 
 export function syncLocalStorageData(): void {
   syncNetworkUserData();
   syncNetworkLayoutData();
   syncNetworkStyleData();
+  syncRecipeData();
 }
 
 function syncNetworkUserData(): void {
@@ -57,6 +60,23 @@ function syncNetworkStyleData(): void {
     () => {
       storedStyleOptions.value = networkStyle.value;
       updateNetworkStyle();
+    },
+    { immediate: true }
+  );
+}
+
+function syncRecipeData(): void {
+  const storedRecipeData: Ref<StoredRecipeData> = useStorage('recipe-data', { enabledBaseRecipes: [], enabledAlternateRecipes: [] });
+
+  const { enabledAlternateRecipes, enabledBaseRecipes } = toRefs(useRecipeOptionStore());
+
+  watch(
+    [enabledAlternateRecipes, enabledBaseRecipes],
+    () => {
+      storedRecipeData.value = {
+        enabledBaseRecipes: enabledBaseRecipes.value,
+        enabledAlternateRecipes: enabledAlternateRecipes.value,
+      };
     },
     { immediate: true }
   );

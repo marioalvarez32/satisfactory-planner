@@ -2,12 +2,9 @@
   <v-expansion-panels variant="accordion">
     <SidepanelGroup v-if="selectedNode" title="Node Options" :sub-title="selectedNode.Name">
       <SidepanelGroupContainer title="Node Options">
-        <div class="">
-          <component :is="subOptionsComponent" :key="selectedNode.ItemId" :selected-node="selectedNode" />
-        </div>
+        <component :is="subOptionsComponent" :key="selectedNode.ItemId" :selected-node="selectedNode" />
       </SidepanelGroupContainer>
     </SidepanelGroup>
-
     <SidepanelGroup title="Chart Options">
       <SidepanelGroupContainer title="Network Layout">
         <ProductionNetworkLayoutOptions />

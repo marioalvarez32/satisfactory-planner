@@ -10,6 +10,7 @@ export class Item {
   AlternateName?: string;
   Byproduct: ProductionInput[];
   CanBeByproduct: boolean;
+  isAlternateRecipe?: boolean;
 
   constructor(item: Item) {
     this.Id = item.Id;
@@ -22,6 +23,7 @@ export class Item {
     this.AlternateName = item.AlternateName ?? null;
     this.Byproduct = item.Byproduct;
     this.CanBeByproduct = !!item.CanBeByproduct;
+    this.isAlternateRecipe = !!item.isAlternateRecipe;
   }
 }
 
