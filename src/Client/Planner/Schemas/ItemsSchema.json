@@ -1,0 +1,83 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "type": "object",
+    "properties": {
+        "Items": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "Id": {
+                        "type": "string"
+                    },
+                    "Name": {
+                        "type": "string"
+                    },
+                    "ProductionRate": {
+                        "type": "number",
+                        "minimum": 1
+                    },
+                    "Level": {
+                        "type": "number",
+                        "minimum": 0
+                    },
+                    "OriginalId": {
+                        "type": "string"
+                    },
+                    "AlternateName": {
+                        "type": "string"
+                    },
+                    "CanBeByproduct": {
+                        "type": "boolean"
+                    },
+                    "IsAlternateRecipe": {
+                        "type": "boolean"
+                    },
+                    "SinkPoints": {
+                        "type": "boolean"
+                    },
+                    "Tier": {
+                        "type": "number"
+                    },
+                    "Input": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "Id": {
+                                    "type": "string"
+                                },
+                                "ProductionRate": {
+                                    "type": "number",
+                                    "minimum": 1
+                                }
+                            },
+                            "required": [
+                                "Id",
+                                "Name"
+                            ]
+                        }
+                    }
+                },
+                "required": [
+                    "Id",
+                    "Name",
+                    "ProductionRate",
+                    "Level",
+                    "SinkPoints",
+                    "Tier",
+                    "Input"
+                ],
+                "dependencies": {
+                    "OriginalId": [
+                        "AlternateName",
+                        "isAlternateRecipe"
+                    ]
+                }
+            }
+        }
+    },
+    "required": [
+        "Items"
+    ]
+}
