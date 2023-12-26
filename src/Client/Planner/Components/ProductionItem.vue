@@ -54,7 +54,7 @@
 
   const selectConvertedValue = computed({
     get() {
-      return getRecipeFromId(props.listItem.Id)
+      return props.listItem.Id ? getRecipeFromId(props.listItem.Id) : ""
     },
     set(value) {
       if (value) {
