@@ -27,7 +27,7 @@
 <script setup lang="ts">
   import { computed, ref } from "vue"
   import { useProductionListStore } from "../Stores/productionList"
-  import { itemDictionary, getImageSrc } from "../Utilities/ItemUtility"
+  import { itemDictionary, getImageSrc, getRecipeFromId } from "../Utilities/ItemUtility"
   import { ProductionListItem } from "../Models/ProductionList"
   import { watch } from "vue"
   import { PropType } from "vue"
@@ -54,7 +54,7 @@
 
   const selectConvertedValue = computed({
     get() {
-      return itemDictionary[props.listItem.Id] ? itemDictionary[props.listItem.Id] : ""
+      return getRecipeFromId(props.listItem.Id)
     },
     set(value) {
       if (value) {

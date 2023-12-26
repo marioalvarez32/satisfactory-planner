@@ -85,3 +85,8 @@ export function getImageSrc(name: string) {
   const imageUrl = new URL(imagePath, import.meta.url);
   return imageUrl.href;
 }
+
+export function getRecipeFromId(id: string) {
+  if (!itemDictionary[id]) throw new Error(`Recipe not found for id: ${id}`);
+  return itemDictionary[id];
+}
