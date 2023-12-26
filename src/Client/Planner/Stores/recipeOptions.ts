@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 import { Ref } from 'vue';
 import { StoredRecipeData } from '../Models/StoredRecipeData';
 import { useStorage } from '@vueuse/core';
-import ItemsData from '@/Client/Planner/Data/Items.json5';
+import ItemsData from '@/Client/Planner/Data/Items.json';
 
 const initialRecipeData: StoredRecipeData = {
   enabledBaseRecipes: ItemsData.items.filter((itemData) => !itemData.isAlternateRecipe).map((itemData) => itemData.Id),
