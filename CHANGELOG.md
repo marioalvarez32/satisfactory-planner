@@ -1,3 +1,15 @@
+# [1.4.0](https://github.com/marioalvarez32/satisfactory-planner/compare/v1.3.0...v1.4.0) (2023-12-31)
+
+
+### Bug Fixes
+
+* Adding missing item icons ([1ecf01a](https://github.com/marioalvarez32/satisfactory-planner/commit/1ecf01a9c8970bb459df26d5e8ea91f9ac089400))
+
+
+### Features
+
+* Adding missing base and alternate recipes. ([98f2cde](https://github.com/marioalvarez32/satisfactory-planner/commit/98f2cdefeb1f92618d6e1f3f6cf865f46aff0b9e))
+
 # [1.3.0](https://github.com/marioalvarez32/satisfactory-planner/compare/v1.2.6...v1.3.0) (2023-12-24)
 
 

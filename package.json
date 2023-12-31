@@ -1,6 +1,6 @@
 {
   "name": "satisfactory-planner",
-  "version": "0.0.1",
+  "version": "1.4.0",
   "license": "None",
   "scripts": {
     "dev": "vite",
