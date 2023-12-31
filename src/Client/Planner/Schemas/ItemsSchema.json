@@ -6,73 +6,125 @@
             "type": "array",
             "items": {
                 "type": "object",
-                "properties": {
-                    "Id": {
-                        "type": "string"
-                    },
-                    "Name": {
-                        "type": "string"
-                    },
-                    "ProductionRate": {
-                        "type": "number",
-                        "minimum": 1
-                    },
-                    "Level": {
-                        "type": "number",
-                        "minimum": 0
-                    },
-                    "OriginalId": {
-                        "type": "string"
-                    },
-                    "AlternateName": {
-                        "type": "string"
-                    },
-                    "CanBeByproduct": {
-                        "type": "boolean"
-                    },
-                    "IsAlternateRecipe": {
-                        "type": "boolean"
-                    },
-                    "SinkPoints": {
-                        "type": "boolean"
-                    },
-                    "Tier": {
-                        "type": "number"
-                    },
-                    "Input": {
-                        "type": "array",
-                        "items": {
-                            "type": "object",
-                            "properties": {
-                                "Id": {
-                                    "type": "string"
-                                },
-                                "ProductionRate": {
-                                    "type": "number",
-                                    "minimum": 1
-                                }
-                            },
-                            "required": [
-                                "Id",
-                                "Name"
-                            ]
+                "if": {
+                    "properties": {
+                        "IsRecipe": {
+                            "const": false
                         }
-                    }
-                },
-                "required": [
-                    "Id",
-                    "Name",
-                    "ProductionRate",
-                    "Level",
-                    "SinkPoints",
-                    "Tier",
-                    "Input"
-                ],
-                "dependencies": {
-                    "OriginalId": [
-                        "AlternateName",
-                        "isAlternateRecipe"
+                    },
+                    "required": [
+                        "IsRecipe"
                     ]
+                },
+                "then": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "Id": {
+                            "type": "string"
+                        },
+                        "Name": {
+                            "type": "string"
+                        },
+                        "SinkPoints": {
+                            "type": "number"
+                        },
+                        "IsRecipe": {
+                            "type": "boolean",
+                            "default": false
+                        }
+                    },
+                    "required": [
+                        "Id",
+                        "Name",
+                        "SinkPoints"
+                    ]
+                },
+                "else": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "Id": {
+                            "type": "string"
+                        },
+                        "Name": {
+                            "type": "string"
+                        },
+                        "ProductionRate": {
+                            "type": "number",
+                            "minimum": 0
+                        },
+                        "OriginalId": {
+                            "type": "string"
+                        },
+                        "AlternateName": {
+                            "type": "string"
+                        },
+                        "CanBeByproduct": {
+                            "type": "boolean"
+                        },
+                        "IsAlternateRecipe": {
+                            "type": "boolean"
+                        },
+                        "SinkPoints": {
+                            "type": "number"
+                        },
+                        "Input": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "properties": {
+                                    "Id": {
+                                        "type": "string"
+                                    },
+                                    "ProductionRate": {
+                                        "type": "number",
+                                        "minimum": 0
+                                    }
+                                },
+                                "required": [
+                                    "Id",
+                                    "ProductionRate"
+                                ]
+                            }
+                        },
+                        "Byproduct": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "properties": {
+                                    "Id": {
+                                        "type": "string"
+                                    },
+                                    "ProductionRate": {
+                                        "type": "number",
+                                        "minimum": 0
+                                    }
+                                },
+                                "required": [
+                                    "Id",
+                                    "ProductionRate"
+                                ]
+                            }
+                        },
+                        "IsRecipe": {
+                            "type": "boolean",
+                            "default": true
+                        }
+                    },
+                    "required": [
+                        "Id",
+                        "Name",
+                        "ProductionRate",
+                        "SinkPoints",
+                        "Input"
+                    ],
+                    "dependencies": {
+                        "OriginalId": [
+                            "AlternateName",
+                            "IsAlternateRecipe"
+                        ]
+                    }
                 }
             }
         }

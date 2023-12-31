@@ -51,7 +51,7 @@ export const defaultLayoutOptions: NetworkLayoutOptions = {
     const newY = node.data('level') * 100;
     return {
       x: pos.x,
-      y: pos.y + newY,
+      y: pos.y,
     };
   },
   ready: null,
