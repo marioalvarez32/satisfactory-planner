@@ -1,16 +1,51 @@
 {
-  "$schema": "../Schemas/SchemaItems.json",
-  "items": [
+  "$schema": "../Schemas/ItemsSchema.json",
+  "Items": [
+    {
+      "Id": "fabric",
+      "Name": "Fabric",
+      "IsRecipe": false,
+      "SinkPoints": 140
+    },
     {
       "Id": "biomass",
       "Name": "Biomass",
-      "ProductionRate": 1,
-      "Input": []
+      "IsRecipe": false,
+      "SinkPoints": 12
     },
     {
       "Id": "water",
       "Name": "Water",
       "ProductionRate": 60,
+      "Input": [],
+      "SinkPoints": 0
+    },
+    {
+      "Id": "nitrogen_gas",
+      "Name": "Nitrogen Gas",
+      "ProductionRate": 60,
+      "SinkPoints": 0,
+      "Input": []
+    },
+    {
+      "Id": "nitric_acid",
+      "Name": "Nitric Acid",
+      "ProductionRate": 60,
+      "SinkPoints": 0,
+      "Input": []
+    },
+    {
+      "Id": "uranium",
+      "Name": "Uranium",
+      "ProductionRate": 60,
+      "SinkPoints": 35,
+      "Input": []
+    },
+    {
+      "Id": "uranium_waste",
+      "Name": "Uranium Waste",
+      "ProductionRate": 60,
+      "SinkPoints": 0,
       "Input": []
     },
     {
@@ -18,13 +53,13 @@
       "Name": "Iron Ore",
       "ProductionRate": 60,
       "Input": [],
-      "Level": 0
+      "SinkPoints": 1
     },
     {
       "Id": "iron_ingot",
       "Name": "Iron Ingot",
       "ProductionRate": 30,
-      "Level": 1,
+      "SinkPoints": 2,
       "Input": [
         {
           "Id": "iron_ore",
@@ -36,7 +71,7 @@
       "Id": "iron_plate",
       "Name": "Iron Plate",
       "ProductionRate": 20,
-      "Level": 2,
+      "SinkPoints": 6,
       "Input": [
         {
           "Id": "iron_ingot",
@@ -48,7 +83,7 @@
       "Id": "iron_rod",
       "Name": "Iron Rod",
       "ProductionRate": 15,
-      "Level": 2,
+      "SinkPoints": 4,
       "Input": [
         {
           "Id": "iron_ingot",
@@ -60,7 +95,7 @@
       "Id": "screw",
       "Name": "Screw",
       "ProductionRate": 40,
-      "Level": 3,
+      "SinkPoints": 2,
       "Input": [
         {
           "Id": "iron_rod",
@@ -71,8 +106,8 @@
     {
       "Id": "reinforced_iron_plate",
       "Name": "Reinforced Iron Plate",
-      "ProductionRate": 4,
-      "Level": 5,
+      "ProductionRate": 5,
+      "SinkPoints": 120,
       "Input": [
         {
           "Id": "screw",
@@ -88,7 +123,7 @@
       "Id": "modular_frame",
       "Name": "Modular Frame",
       "ProductionRate": 2,
-      "Level": 6,
+      "SinkPoints": 408,
       "Input": [
         {
           "Id": "iron_rod",
@@ -105,13 +140,13 @@
       "Name": "Copper Ore",
       "ProductionRate": 60,
       "Input": [],
-      "Level": 0
+      "SinkPoints": 6
     },
     {
       "Id": "copper_ingot",
       "Name": "Copper Ingot",
       "ProductionRate": 30,
-      "Level": 1,
+      "SinkPoints": 6,
       "Input": [
         {
           "Id": "copper_ore",
@@ -123,7 +158,7 @@
       "Id": "wire",
       "Name": "Wire",
       "ProductionRate": 30,
-      "Level": 2,
+      "SinkPoints": 6,
       "Input": [
         {
           "Id": "copper_ingot",
@@ -135,7 +170,7 @@
       "Id": "cable",
       "Name": "Cable",
       "ProductionRate": 30,
-      "Level": 3,
+      "SinkPoints": 24,
       "Input": [
         {
           "Id": "wire",
@@ -147,7 +182,7 @@
       "Id": "copper_sheet",
       "Name": "Copper Sheet",
       "ProductionRate": 10,
-      "Level": 2,
+      "SinkPoints": 24,
       "Input": [
         {
           "Id": "copper_ingot",
@@ -160,13 +195,13 @@
       "Name": "Limestone",
       "ProductionRate": 60,
       "Input": [],
-      "Level": 0
+      "SinkPoints": 2
     },
     {
       "Id": "concrete",
       "Name": "Concrete",
       "ProductionRate": 15,
-      "Level": 1,
+      "SinkPoints": 12,
       "Input": [
         {
           "Id": "limestone",
@@ -179,13 +214,13 @@
       "Name": "Raw Quartz",
       "ProductionRate": 60,
       "Input": [],
-      "Level": 0
+      "SinkPoints": 15
     },
     {
       "Id": "quartz_crystal",
       "Name": "Quartz Crystal",
       "ProductionRate": 22.5,
-      "Level": 1,
+      "SinkPoints": 50,
       "Input": [
         {
           "Id": "raw_quartz",
@@ -197,7 +232,7 @@
       "Id": "silica",
       "Name": "Silica",
       "ProductionRate": 37.5,
-      "Level": 1,
+      "SinkPoints": 20,
       "Input": [
         {
           "Id": "raw_quartz",
@@ -210,20 +245,20 @@
       "Name": "Sulfur",
       "ProductionRate": 60,
       "Input": [],
-      "Level": 0
+      "SinkPoints": 11
     },
     {
       "Id": "coal",
       "Name": "Coal",
       "ProductionRate": 60,
       "Input": [],
-      "Level": 0
+      "SinkPoints": 3
     },
     {
       "Id": "compacted_coal",
       "Name": "Compacted Coal",
-      "Level": 1,
       "ProductionRate": 25,
+      "SinkPoints": 28,
       "Input": [
         {
           "Id": "coal",
@@ -239,7 +274,7 @@
       "Id": "steel_ingot",
       "Name": "Steel Ingot",
       "ProductionRate": 45,
-      "Level": 1,
+      "SinkPoints": 8,
       "Input": [
         {
           "Id": "iron_ore",
@@ -255,68 +290,69 @@
       "Id": "steel_beam",
       "Name": "Steel Beam",
       "ProductionRate": 15,
+      "SinkPoints": 64,
       "Input": [
         {
           "Id": "steel_ingot",
           "ProductionRate": 60
         }
-      ],
-      "Level": 2
+      ]
     },
     {
       "Id": "steel_pipe",
       "Name": "Steel Pipe",
       "ProductionRate": 20,
+      "SinkPoints": 24,
       "Input": [
         {
           "Id": "steel_ingot",
           "ProductionRate": 30
         }
-      ],
-      "Level": 2
+      ]
     },
     {
       "Id": "caterium_ore",
       "Name": "Caterium Ore",
       "ProductionRate": 60,
       "Input": [],
-      "Level": 0
+      "SinkPoints": 7
     },
     {
       "Id": "caterium_ingot",
       "Name": "Caterium Ingot",
       "ProductionRate": 15,
+      "SinkPoints": 42,
       "Input": [
         {
           "Id": "caterium_ore",
           "ProductionRate": 45
         }
-      ],
-      "Level": 1
+      ]
     },
     {
       "Id": "quickwire",
       "Name": "Quickwire",
       "ProductionRate": 60,
+      "SinkPoints": 17,
       "Input": [
         {
           "Id": "caterium_ingot",
           "ProductionRate": 12
         }
-      ],
-      "Level": 2
+      ]
     },
     {
       "Id": "crude_oil",
       "Name": "Crude Oil",
       "ProductionRate": 120,
       "Input": [],
-      "Level": 0
+      "SinkPoints": 0
     },
     {
       "Id": "plastic",
       "Name": "Plastic",
       "ProductionRate": 20,
+      "SinkPoints": 75,
       "Input": [
         {
           "Id": "crude_oil",
@@ -328,13 +364,51 @@
           "Id": "heavy_oil_residue",
           "ProductionRate": 10
         }
-      ],
-      "Level": 1
+      ]
+    },
+    {
+      "Id": "residual_plastic",
+      "AlternateName": "Residual Plastic",
+      "IsAlternateRecipe": true,
+      "OriginalId": "plastic",
+      "Name": "Plastic",
+      "ProductionRate": 20,
+      "SinkPoints": 75,
+      "Input": [
+        {
+          "Id": "polymer_resin",
+          "ProductionRate": 60
+        },
+        {
+          "Id": "water",
+          "ProductionRate": 20
+        }
+      ]
+    },
+    {
+      "Id": "residual_rubber",
+      "AlternateName": "Residual Rubber",
+      "IsAlternateRecipe": true,
+      "OriginalId": "rubber",
+      "Name": "Rubber",
+      "ProductionRate": 20,
+      "SinkPoints": 75,
+      "Input": [
+        {
+          "Id": "polymer_resin",
+          "ProductionRate": 40
+        },
+        {
+          "Id": "water",
+          "ProductionRate": 40
+        }
+      ]
     },
     {
       "Id": "rubber",
       "Name": "Rubber",
       "ProductionRate": 20,
+      "SinkPoints": 60,
       "Input": [
         {
           "Id": "crude_oil",
@@ -346,13 +420,13 @@
           "Id": "heavy_oil_residue",
           "ProductionRate": 20
         }
-      ],
-      "Level": 1
+      ]
     },
     {
       "Id": "fuel",
       "Name": "Fuel",
       "ProductionRate": 40,
+      "SinkPoints": 0,
       "Input": [
         {
           "Id": "crude_oil",
@@ -364,8 +438,7 @@
           "Id": "polymer_resin",
           "ProductionRate": 30
         }
-      ],
-      "Level": 1
+      ]
     },
     {
       "Id": "residue_fuel",
@@ -373,20 +446,21 @@
       "Name": "Fuel",
       "AlternateName": "Residue Fuel",
       "ProductionRate": 40,
+      "IsAlternateRecipe": true,
+      "SinkPoints": 0,
       "Input": [
         {
           "Id": "heavy_oil_residue",
           "ProductionRate": 60
         }
-      ],
-      "Level": 1
+      ]
     },
     {
       "Id": "polymer_resin",
       "Name": "Polymer Resin",
       "ProductionRate": 40,
+      "SinkPoints": 12,
       "Input": [],
-      "Level": 1,
       "CanBeByproduct": true
     },
     {
@@ -394,14 +468,14 @@
       "Name": "Heavy Oil Residue",
       "ProductionRate": 60,
       "Input": [],
-      "Level": 1,
+      "SinkPoints": 0,
       "CanBeByproduct": true
     },
     {
       "Id": "empty_canister",
       "Name": "Empty Canister",
       "ProductionRate": 60,
-      "Level": 2,
+      "SinkPoints": 60,
       "Input": [
         {
           "Id": "plastic",
@@ -413,7 +487,7 @@
       "Id": "packaged_fuel",
       "Name": "Packaged Fuel",
       "ProductionRate": 40,
-      "Level": 3,
+      "SinkPoints": 270,
       "Input": [
         {
           "Id": "fuel",
@@ -426,10 +500,26 @@
       ]
     },
     {
+      "Id": "packaged_turbofuel",
+      "Name": "Packaged Turbofuel",
+      "ProductionRate": 20,
+      "SinkPoints": 570,
+      "Input": [
+        {
+          "Id": "turbofuel",
+          "ProductionRate": 20
+        },
+        {
+          "Id": "empty_canister",
+          "ProductionRate": 20
+        }
+      ]
+    },
+    {
       "Id": "encased_industrial_beam",
       "Name": "Encased Industrial Beam",
       "ProductionRate": 6,
-      "Level": 3,
+      "SinkPoints": 632,
       "Input": [
         {
           "Id": "concrete",
@@ -445,7 +535,7 @@
       "Id": "rotor",
       "Name": "Rotor",
       "ProductionRate": 4,
-      "Level": 4,
+      "SinkPoints": 140,
       "Input": [
         {
           "Id": "iron_rod",
@@ -461,7 +551,7 @@
       "Id": "stator",
       "Name": "Stator",
       "ProductionRate": 5,
-      "Level": 3,
+      "SinkPoints": 240,
       "Input": [
         {
           "Id": "steel_pipe",
@@ -477,7 +567,7 @@
       "Id": "motor",
       "Name": "Motor",
       "ProductionRate": 5,
-      "Level": 4,
+      "SinkPoints": 1520,
       "Input": [
         {
           "Id": "rotor",
@@ -493,7 +583,7 @@
       "Id": "circuit_board",
       "Name": "Circuit Board",
       "ProductionRate": 7.5,
-      "Level": 3,
+      "SinkPoints": 696,
       "Input": [
         {
           "Id": "copper_sheet",
@@ -509,7 +599,7 @@
       "Id": "ai_limiter",
       "Name": "AI Limiter",
       "ProductionRate": 5,
-      "Level": 3,
+      "SinkPoints": 920,
       "Input": [
         {
           "Id": "copper_sheet",
@@ -525,7 +615,7 @@
       "Id": "smart_plating",
       "Name": "Smart Plating",
       "ProductionRate": 2,
-      "Level": 5,
+      "SinkPoints": 520,
       "Input": [
         {
           "Id": "reinforced_iron_plate",
@@ -533,7 +623,7 @@
         },
         {
           "Id": "rotor",
-          "ProductionRate": 20
+          "ProductionRate": 2
         }
       ]
     },
@@ -541,7 +631,7 @@
       "Id": "versatile_framework",
       "Name": "Versatile Framework",
       "ProductionRate": 5,
-      "Level": 6,
+      "SinkPoints": 1176,
       "Input": [
         {
           "Id": "modular_frame",
@@ -557,7 +647,7 @@
       "Id": "automated_wiring",
       "Name": "Automated Wiring",
       "ProductionRate": 2.5,
-      "Level": 4,
+      "SinkPoints": 1440,
       "Input": [
         {
           "Id": "stator",
@@ -573,7 +663,7 @@
       "Id": "computer",
       "Name": "Computer",
       "ProductionRate": 2.5,
-      "Level": 6,
+      "SinkPoints": 17260,
       "Input": [
         {
           "Id": "circuit_board",
@@ -597,7 +687,7 @@
       "Id": "heavy_modular_frame",
       "Name": "Heavy Modular Frame",
       "ProductionRate": 2,
-      "Level": 6,
+      "SinkPoints": 11520,
       "Input": [
         {
           "Id": "modular_frame",
@@ -621,7 +711,7 @@
       "Id": "crystal_oscillator",
       "Name": "Crystal Oscillator",
       "ProductionRate": 1,
-      "Level": 5,
+      "SinkPoints": 3072,
       "Input": [
         {
           "Id": "quartz_crystal",
@@ -641,7 +731,7 @@
       "Id": "modular_engine",
       "Name": "Modular Engine",
       "ProductionRate": 1,
-      "Level": 6,
+      "SinkPoints": 9960,
       "Input": [
         {
           "Id": "motor",
@@ -661,7 +751,7 @@
       "Id": "adaptive_control_unit",
       "Name": "Adaptive Control Unit",
       "ProductionRate": 1,
-      "Level": 7,
+      "SinkPoints": 86120,
       "Input": [
         {
           "Id": "automated_wiring",
@@ -685,7 +775,7 @@
       "Id": "supercomputer",
       "Name": "Supercomputer",
       "ProductionRate": 1.875,
-      "Level": 7,
+      "SinkPoints": 99576,
       "Input": [
         {
           "Id": "computer",
@@ -709,7 +799,7 @@
       "Id": "high_speed_connector",
       "Name": "High Speed Connector",
       "ProductionRate": 3.75,
-      "Level": 4,
+      "SinkPoints": 3776,
       "Input": [
         {
           "Id": "circuit_board",
@@ -731,8 +821,8 @@
       "OriginalId": "rotor",
       "AlternateName": "Steel Rotor",
       "ProductionRate": 5,
-      "Level": 4,
-      "isAlternateRecipe": true,
+      "SinkPoints": 140,
+      "IsAlternateRecipe": true,
       "Input": [
         {
           "Id": "steel_pipe",
@@ -750,8 +840,8 @@
       "Name": "Computer",
       "AlternateName": "Caterium Computer",
       "ProductionRate": 3.75,
-      "Level": 6,
-      "isAlternateRecipe": true,
+      "IsAlternateRecipe": true,
+      "SinkPoints": 17260,
       "Input": [
         {
           "Id": "circuit_board",
@@ -773,8 +863,8 @@
       "OriginalId": "copper_ingot",
       "AlternateName": "Copper Alloy Ingot",
       "ProductionRate": 100,
-      "isAlternateRecipe": true,
-      "Level": 1,
+      "IsAlternateRecipe": true,
+      "SinkPoints": 6,
       "Input": [
         {
           "Id": "copper_ore",
@@ -792,8 +882,8 @@
       "OriginalId": "iron_ingot",
       "AlternateName": "Iron Alloy Ingot",
       "ProductionRate": 50,
-      "isAlternateRecipe": true,
-      "Level": 1,
+      "IsAlternateRecipe": true,
+      "SinkPoints": 2,
       "Input": [
         {
           "Id": "iron_ore",
@@ -811,8 +901,8 @@
       "OriginalId": "reinforced_iron_plate",
       "AlternateName": "Bolted Iron Plate",
       "ProductionRate": 15,
-      "isAlternateRecipe": true,
-      "Level": 5,
+      "IsAlternateRecipe": true,
+      "SinkPoints": 120,
       "Input": [
         {
           "Id": "iron_plate",
@@ -830,12 +920,12 @@
       "OriginalId": "reinforced_iron_plate",
       "AlternateName": "Stitched Iron Plate",
       "ProductionRate": 5.6,
-      "isAlternateRecipe": true,
-      "Level": 5,
+      "IsAlternateRecipe": true,
+      "SinkPoints": 120,
       "Input": [
         {
           "Id": "iron_plate",
-          "ProductionRate": 18.8
+          "ProductionRate": 18.75
         },
         {
           "Id": "wire",
@@ -849,8 +939,8 @@
       "OriginalId": "screw",
       "AlternateName": "Cast Screw",
       "ProductionRate": 50,
-      "isAlternateRecipe": true,
-      "Level": 3,
+      "IsAlternateRecipe": true,
+      "SinkPoints": 2,
       "Input": [
         {
           "Id": "iron_ingot",
@@ -864,8 +954,8 @@
       "OriginalId": "black_powder",
       "AlternateName": "Fine Black Powder",
       "ProductionRate": 15,
-      "isAlternateRecipe": true,
-      "Level": 2,
+      "IsAlternateRecipe": true,
+      "SinkPoints": 14,
       "Input": [
         {
           "Id": "sulfur",
@@ -873,7 +963,7 @@
         },
         {
           "Id": "compacted_coal",
-          "ProductionRate": 3.8
+          "ProductionRate": 3.75
         }
       ]
     },
@@ -883,8 +973,8 @@
       "OriginalId": "wire",
       "AlternateName": "Caterium Wire",
       "ProductionRate": 120,
-      "isAlternateRecipe": true,
-      "Level": 2,
+      "IsAlternateRecipe": true,
+      "SinkPoints": 6,
       "Input": [
         {
           "Id": "caterium_ingot",
@@ -898,8 +988,8 @@
       "OriginalId": "wire",
       "AlternateName": "Fused Wire",
       "ProductionRate": 90,
-      "isAlternateRecipe": true,
-      "Level": 2,
+      "IsAlternateRecipe": true,
+      "SinkPoints": 6,
       "Input": [
         {
           "Id": "caterium_ingot",
@@ -916,17 +1006,17 @@
       "Name": "Silica",
       "OriginalId": "silica",
       "AlternateName": "Cheap Silica",
-      "ProductionRate": 26.3,
-      "isAlternateRecipe": true,
-      "Level": 1,
+      "ProductionRate": 26.25,
+      "IsAlternateRecipe": true,
+      "SinkPoints": 20,
       "Input": [
         {
           "Id": "raw_quartz",
-          "ProductionRate": 11.3
+          "ProductionRate": 11.25
         },
         {
           "Id": "limestone",
-          "ProductionRate": 18.8
+          "ProductionRate": 18.75
         }
       ]
     },
@@ -936,8 +1026,8 @@
       "OriginalId": "wire",
       "AlternateName": "Iron Wire",
       "ProductionRate": 22.5,
-      "isAlternateRecipe": true,
-      "Level": 2,
+      "IsAlternateRecipe": true,
+      "SinkPoints": 6,
       "Input": [
         {
           "Id": "iron_ingot",
@@ -951,8 +1041,8 @@
       "OriginalId": "modular_frame",
       "AlternateName": "Bolted Frame",
       "ProductionRate": 5,
-      "Level": 6,
-      "isAlternateRecipe": true,
+      "SinkPoints": 408,
+      "IsAlternateRecipe": true,
       "Input": [
         {
           "Id": "reinforced_iron_plate",
@@ -969,9 +1059,9 @@
       "Name": "Rotor",
       "OriginalId": "rotor",
       "AlternateName": "Copper Rotor",
-      "ProductionRate": 11.3,
-      "Level": 4,
-      "isAlternateRecipe": true,
+      "ProductionRate": 11.25,
+      "SinkPoints": 140,
+      "IsAlternateRecipe": true,
       "Input": [
         {
           "Id": "copper_sheet",
@@ -989,8 +1079,8 @@
       "OriginalId": "iron_rod",
       "AlternateName": "Steel Rod",
       "ProductionRate": 48,
-      "Level": 2,
-      "isAlternateRecipe": true,
+      "SinkPoints": 4,
+      "IsAlternateRecipe": true,
       "Input": [
         {
           "Id": "steel_ingot",
@@ -1004,8 +1094,8 @@
       "OriginalId": "modular_frame",
       "AlternateName": "Steeled Frame",
       "ProductionRate": 3,
-      "Level": 6,
-      "isAlternateRecipe": true,
+      "SinkPoints": 408,
+      "IsAlternateRecipe": true,
       "Input": [
         {
           "Id": "reinforced_iron_plate",
@@ -1023,8 +1113,8 @@
       "OriginalId": "screw",
       "AlternateName": "Steel Screw",
       "ProductionRate": 260,
-      "Level": 3,
-      "isAlternateRecipe": true,
+      "SinkPoints": 2,
+      "IsAlternateRecipe": true,
       "Input": [
         {
           "Id": "steel_beam",
@@ -1038,8 +1128,8 @@
       "OriginalId": "steel_ingot",
       "AlternateName": "Solid Steel Ingot",
       "ProductionRate": 60,
-      "Level": 1,
-      "isAlternateRecipe": true,
+      "SinkPoints": 8,
+      "IsAlternateRecipe": true,
       "Input": [
         {
           "Id": "iron_ingot",
@@ -1057,8 +1147,8 @@
       "OriginalId": "quickwire",
       "AlternateName": "Fused Quickwire",
       "ProductionRate": 90,
-      "isAlternateRecipe": true,
-      "Level": 2,
+      "IsAlternateRecipe": true,
+      "SinkPoints": 17,
       "Input": [
         {
           "Id": "caterium_ingot",
@@ -1076,8 +1166,8 @@
       "OriginalId": "steel_ingot",
       "AlternateName": "Compacted Steel Ingot",
       "ProductionRate": 37.5,
-      "Level": 1,
-      "isAlternateRecipe": true,
+      "IsAlternateRecipe": true,
+      "SinkPoints": 28,
       "Input": [
         {
           "Id": "iron_ore",
@@ -1085,7 +1175,7 @@
         },
         {
           "Id": "compacted_coal",
-          "ProductionRate": 11.3
+          "ProductionRate": 111.25
         }
       ]
     },
@@ -1095,8 +1185,8 @@
       "OriginalId": "beacon",
       "AlternateName": "Crystal Beacon",
       "ProductionRate": 10,
-      "Level": 1,
-      "isAlternateRecipe": true,
+      "IsAlternateRecipe": true,
+      "SinkPoints": 320,
       "Input": [
         {
           "Id": "steel_beam",
@@ -1118,8 +1208,8 @@
       "OriginalId": "coal",
       "AlternateName": "Charcoal",
       "ProductionRate": 150,
-      "Level": 1,
-      "isAlternateRecipe": true,
+      "SinkPoints": 3,
+      "IsAlternateRecipe": true,
       "Input": [
         {
           "Id": "coal",
@@ -1133,8 +1223,8 @@
       "OriginalId": "concrete",
       "AlternateName": "Wet Concrete",
       "ProductionRate": 80,
-      "Level": 1,
-      "isAlternateRecipe": true,
+      "IsAlternateRecipe": true,
+      "SinkPoints": 12,
       "Input": [
         {
           "Id": "limestone",
@@ -1152,8 +1242,8 @@
       "OriginalId": "copper_ingot",
       "AlternateName": "Pure Copper Ingot",
       "ProductionRate": 37.5,
-      "Level": 1,
-      "isAlternateRecipe": true,
+      "IsAlternateRecipe": true,
+      "SinkPoints": 6,
       "Input": [
         {
           "Id": "copper_ore",
@@ -1171,8 +1261,8 @@
       "OriginalId": "copper_sheet",
       "AlternateName": "Steamed Copper Sheet",
       "ProductionRate": 22.5,
-      "Level": 2,
-      "isAlternateRecipe": true,
+      "IsAlternateRecipe": true,
+      "SinkPoints": 24,
       "Input": [
         {
           "Id": "copper_ingot",
@@ -1190,8 +1280,8 @@
       "OriginalId": "iron_ingot",
       "AlternateName": "Pure Iron Ingot",
       "ProductionRate": 65,
-      "Level": 1,
-      "isAlternateRecipe": true,
+      "SinkPoints": 2,
+      "IsAlternateRecipe": true,
       "Input": [
         {
           "Id": "iron_ore",
@@ -1209,8 +1299,8 @@
       "OriginalId": "caterium_ingot",
       "AlternateName": "Pure Caterium Ingot",
       "ProductionRate": 12,
-      "Level": 1,
-      "isAlternateRecipe": true,
+      "IsAlternateRecipe": true,
+      "SinkPoints": 42,
       "Input": [
         {
           "Id": "caterium_ore",
@@ -1228,8 +1318,8 @@
       "OriginalId": "quartz_crystal",
       "AlternateName": "Pure Quartz Crystal",
       "ProductionRate": 52.5,
-      "Level": 1,
-      "isAlternateRecipe": true,
+      "SinkPoints": 52.5,
+      "IsAlternateRecipe": true,
       "Input": [
         {
           "Id": "raw_quartz",
@@ -1243,12 +1333,12 @@
     },
     {
       "Id": "encased_industrial_pipe",
-      "Name": "Encased Industrial Pipe",
+      "Name": "Encased Industrial Beam",
       "OriginalId": "encased_industrial_beam",
       "AlternateName": "Encased Industrial Pipe",
       "ProductionRate": 4,
-      "Level": 3,
-      "isAlternateRecipe": true,
+      "SinkPoints": 632,
+      "IsAlternateRecipe": true,
       "Input": [
         {
           "Id": "concrete",
@@ -1256,7 +1346,7 @@
         },
         {
           "Id": "steel_pipe",
-          "ProductionRate": 228
+          "ProductionRate": 28
         }
       ]
     },
@@ -1266,12 +1356,12 @@
       "OriginalId": "automated_wiring",
       "AlternateName": "Automated Speed Wiring",
       "ProductionRate": 7.5,
-      "Level": 4,
-      "isAlternateRecipe": true,
+      "SinkPoints": 1440,
+      "IsAlternateRecipe": true,
       "Input": [
         {
           "Id": "stator",
-          "ProductionRate": 3.8
+          "ProductionRate": 3.75
         },
         {
           "Id": "wire",
@@ -1279,7 +1369,7 @@
         },
         {
           "Id": "high_speed_connector",
-          "ProductionRate": 1.9
+          "ProductionRate": 1.9875
         }
       ]
     },
@@ -1289,8 +1379,8 @@
       "OriginalId": "stator",
       "AlternateName": "Quickwire Stator",
       "ProductionRate": 8,
-      "Level": 3,
-      "isAlternateRecipe": true,
+      "SinkPoints": 240,
+      "IsAlternateRecipe": true,
       "Input": [
         {
           "Id": "quickwire",
@@ -1308,20 +1398,20 @@
       "OriginalId": "motor",
       "AlternateName": "Rigour Motor",
       "ProductionRate": 7.5,
-      "Level": 4,
-      "isAlternateRecipe": true,
+      "SinkPoints": 1520,
+      "IsAlternateRecipe": true,
       "Input": [
         {
           "Id": "rotor",
-          "ProductionRate": 3.8
+          "ProductionRate": 3.75
         },
         {
           "Id": "stator",
-          "ProductionRate": 3.8
+          "ProductionRate": 3.75
         },
         {
           "Id": "crystal_oscillator",
-          "ProductionRate": 1.3
+          "ProductionRate": 1.25
         }
       ]
     },
@@ -1331,8 +1421,8 @@
       "OriginalId": "empty_canister",
       "AlternateName": "Coated Iron Canister",
       "ProductionRate": 60,
-      "Level": 2,
-      "isAlternateRecipe": true,
+      "SinkPoints": 60,
+      "IsAlternateRecipe": true,
       "Input": [
         {
           "Id": "iron_plate",
@@ -1350,8 +1440,8 @@
       "OriginalId": "empty_canister",
       "AlternateName": "Steel Canister",
       "ProductionRate": 40,
-      "Level": 2,
-      "isAlternateRecipe": true,
+      "SinkPoints": 60,
+      "IsAlternateRecipe": true,
       "Input": [
         {
           "Id": "steel_ingot",
@@ -1364,25 +1454,25 @@
       "Name": "Heavy Modular Frame",
       "OriginalId": "heavy_modular_frame",
       "AlternateName": "Heavy Encased Frame",
-      "ProductionRate": 2.8,
-      "Level": 6,
-      "isAlternateRecipe": true,
+      "ProductionRate": 2.8125,
+      "SinkPoints": 11520,
+      "IsAlternateRecipe": true,
       "Input": [
         {
           "Id": "modular_frame",
-          "ProductionRate": 18.8
+          "ProductionRate": 7.5
         },
         {
           "Id": "encased_industrial_beam",
-          "ProductionRate": 11.3
+          "ProductionRate": 9.375
         },
         {
-          "Id": "rubber",
-          "ProductionRate": 75
+          "Id": "steel_pipe",
+          "ProductionRate": 33.75
         },
         {
-          "Id": "screw",
-          "ProductionRate": 390
+          "Id": "concrete",
+          "ProductionRate": 20.625
         }
       ]
     },
@@ -1391,17 +1481,17 @@
       "Name": "Heavy Modular Frame",
       "OriginalId": "heavy_modular_frame",
       "AlternateName": "Heavy Flexible Frame",
-      "ProductionRate": 3.8,
-      "Level": 6,
-      "isAlternateRecipe": true,
+      "ProductionRate": 3.75,
+      "SinkPoints": 11520,
+      "IsAlternateRecipe": true,
       "Input": [
         {
           "Id": "modular_frame",
-          "ProductionRate": 18.8
+          "ProductionRate": 18.75
         },
         {
           "Id": "encased_industrial_beam",
-          "ProductionRate": 11.3
+          "ProductionRate": 11.25
         },
         {
           "Id": "rubber",
@@ -1418,9 +1508,9 @@
       "Name": "Computer",
       "OriginalId": "computer",
       "AlternateName": "Crystal Computer",
-      "ProductionRate": 2.8,
-      "Level": 6,
-      "isAlternateRecipe": true,
+      "ProductionRate": 2.8125,
+      "SinkPoints": 17260,
+      "IsAlternateRecipe": true,
       "Input": [
         {
           "Id": "circuit_board",
@@ -1428,7 +1518,7 @@
         },
         {
           "Id": "crystal_oscillator",
-          "ProductionRate": 2.8
+          "ProductionRate": 2.8125
         }
       ]
     },
@@ -1438,8 +1528,8 @@
       "OriginalId": "cable",
       "AlternateName": "Coated Cable",
       "ProductionRate": 67.5,
-      "Level": 2,
-      "isAlternateRecipe": true,
+      "IsAlternateRecipe": true,
+      "SinkPoints": 24,
       "Input": [
         {
           "Id": "wire",
@@ -1457,8 +1547,8 @@
       "OriginalId": "cable",
       "AlternateName": "Insulated Cable",
       "ProductionRate": 100,
-      "Level": 2,
-      "isAlternateRecipe": true,
+      "IsAlternateRecipe": true,
+      "SinkPoints": 24,
       "Input": [
         {
           "Id": "wire",
@@ -1476,8 +1566,8 @@
       "OriginalId": "concrete",
       "AlternateName": "Rubber Concrete",
       "ProductionRate": 45,
-      "Level": 1,
-      "isAlternateRecipe": true,
+      "SinkPoints": 12,
+      "IsAlternateRecipe": true,
       "Input": [
         {
           "Id": "limestone",
@@ -1495,8 +1585,8 @@
       "OriginalId": "iron_plate",
       "AlternateName": "Coated Iron Plate",
       "ProductionRate": 75,
-      "Level": 2,
-      "isAlternateRecipe": true,
+      "SinkPoints": 6,
+      "IsAlternateRecipe": true,
       "Input": [
         {
           "Id": "iron_ingot",
@@ -1514,8 +1604,8 @@
       "OriginalId": "iron_plate",
       "AlternateName": "Steel Coated Plate",
       "ProductionRate": 45,
-      "Level": 2,
-      "isAlternateRecipe": true,
+      "SinkPoints": 6,
+      "IsAlternateRecipe": true,
       "Input": [
         {
           "Id": "plastic",
@@ -1533,8 +1623,8 @@
       "OriginalId": "plastic",
       "AlternateName": "Recycled Plastic",
       "ProductionRate": 60,
-      "Level": 1,
-      "isAlternateRecipe": true,
+      "SinkPoints": 75,
+      "IsAlternateRecipe": true,
       "Input": [
         {
           "Id": "rubber",
@@ -1552,8 +1642,8 @@
       "OriginalId": "polymer_resin",
       "AlternateName": "Crude Oil Polymer Resin",
       "ProductionRate": 130,
-      "isAlternateRecipe": true,
-      "Level": 1,
+      "IsAlternateRecipe": true,
+      "SinkPoints": 12,
       "Input": [
         {
           "Id": "crude_oil",
@@ -1566,17 +1656,17 @@
       "Name": "Reinforced Iron Plate",
       "OriginalId": "reinforced_iron_plate",
       "AlternateName": "Adhered Iron Plate",
-      "ProductionRate": 3.8,
-      "Level": 2,
-      "isAlternateRecipe": true,
+      "ProductionRate": 3.75,
+      "SinkPoints": 120,
+      "IsAlternateRecipe": true,
       "Input": [
         {
           "Id": "iron_ingot",
-          "ProductionRate": 11.3
+          "ProductionRate": 11.25
         },
         {
           "Id": "rubber",
-          "ProductionRate": 3.8
+          "ProductionRate": 3.75
         }
       ]
     },
@@ -1586,8 +1676,8 @@
       "OriginalId": "rubber",
       "AlternateName": "Recycled Rubber",
       "ProductionRate": 60,
-      "Level": 1,
-      "isAlternateRecipe": true,
+      "SinkPoints": 0,
+      "IsAlternateRecipe": true,
       "Input": [
         {
           "Id": "fuel",
@@ -1605,8 +1695,8 @@
       "OriginalId": "smart_plating",
       "AlternateName": "Plastic Smart Plating",
       "ProductionRate": 5,
-      "Level": 5,
-      "isAlternateRecipe": true,
+      "SinkPoints": 520,
+      "IsAlternateRecipe": true,
       "Input": [
         {
           "Id": "reinforced_iron_plate",
@@ -1628,12 +1718,12 @@
       "OriginalId": "versatile_framework",
       "AlternateName": "Flexible Framework",
       "ProductionRate": 7.5,
-      "Level": 6,
-      "isAlternateRecipe": true,
+      "SinkPoints": 1176,
+      "IsAlternateRecipe": true,
       "Input": [
         {
           "Id": "modular_frame",
-          "ProductionRate": 3.8
+          "ProductionRate": 3.75
         },
         {
           "Id": "steel_beam",
@@ -1651,8 +1741,8 @@
       "OriginalId": "cable",
       "AlternateName": "Quickwire Cable",
       "ProductionRate": 27.5,
-      "Level": 2,
-      "isAlternateRecipe": true,
+      "IsAlternateRecipe": true,
+      "SinkPoints": 24,
       "Input": [
         {
           "Id": "quickwire",
@@ -1669,9 +1759,9 @@
       "Name": "Circuit Board",
       "OriginalId": "circuit_board",
       "AlternateName": "Caterium Circuit Board",
-      "ProductionRate": 8.8,
-      "Level": 3,
-      "isAlternateRecipe": true,
+      "ProductionRate": 8.75,
+      "IsAlternateRecipe": true,
+      "SinkPoints": 696,
       "Input": [
         {
           "Id": "quickwire",
@@ -1688,21 +1778,21 @@
       "Name": "Crystal Oscillator",
       "OriginalId": "crystal_oscillator",
       "AlternateName": "Insulated Crystal Oscillator",
-      "ProductionRate": 1.9,
-      "Level": 5,
-      "isAlternateRecipe": true,
+      "ProductionRate": 1.875,
+      "IsAlternateRecipe": true,
+      "SinkPoints": 3072,
       "Input": [
         {
           "Id": "quartz_crystal",
-          "ProductionRate": 18.8
+          "ProductionRate": 18.75
         },
         {
           "Id": "rubber",
-          "ProductionRate": 13.1
+          "ProductionRate": 13.125
         },
         {
           "Id": "ai_limiter",
-          "ProductionRate": 1.9
+          "ProductionRate": 1.875
         }
       ]
     },
@@ -1712,8 +1802,8 @@
       "OriginalId": "turbofuel",
       "AlternateName": "Turbo Heavy Fuel",
       "ProductionRate": 30,
-      "Level": 3,
-      "isAlternateRecipe": true,
+      "IsAlternateRecipe": true,
+      "SinkPoints": 28,
       "Input": [
         {
           "Id": "heavy_oil_residue",
@@ -1731,27 +1821,8 @@
       "OriginalId": "concrete",
       "AlternateName": "Fine Concrete",
       "ProductionRate": 25,
-      "isAlternateRecipe": true,
-      "Level": 1,
-      "Input": [
-        {
-          "Id": "silica",
-          "ProductionRate": 7.5
-        },
-        {
-          "Id": "limestone",
-          "ProductionRate": 30
-        }
-      ]
-    },
-    {
-      "Id": "fine_concrete",
-      "Name": "Concrete",
-      "OriginalId": "concrete",
-      "AlternateName": "Fine Concrete",
-      "ProductionRate": 25,
-      "isAlternateRecipe": true,
-      "Level": 1,
+      "IsAlternateRecipe": true,
+      "SinkPoints": 12,
       "Input": [
         {
           "Id": "silica",
@@ -1769,8 +1840,8 @@
       "OriginalId": "coal",
       "AlternateName": "Biocoal",
       "ProductionRate": 45,
-      "Level": 1,
-      "isAlternateRecipe": true,
+      "SinkPoints": 12,
+      "IsAlternateRecipe": true,
       "Input": [
         {
           "Id": "biomass",
@@ -1784,8 +1855,8 @@
       "OriginalId": "circuit_board",
       "AlternateName": "Electrode Circuit Board",
       "ProductionRate": 5,
-      "Level": 3,
-      "isAlternateRecipe": true,
+      "IsAlternateRecipe": true,
+      "SinkPoints": 696,
       "Input": [
         {
           "Id": "rubber",
@@ -1793,7 +1864,7 @@
         },
         {
           "Id": "petroleum_coke",
-          "ProductionRate": 345
+          "ProductionRate": 45
         }
       ]
     },
@@ -1803,8 +1874,8 @@
       "OriginalId": "packaged_fuel",
       "AlternateName": "Diluted Packaged Fuel",
       "ProductionRate": 60,
-      "Level": 3,
-      "isAlternateRecipe": true,
+      "SinkPoints": 270,
+      "IsAlternateRecipe": true,
       "Input": [
         {
           "Id": "heavy_oil_residue",
@@ -1822,8 +1893,8 @@
       "OriginalId": "steel_ingot",
       "AlternateName": "Coke Steel Ingot",
       "ProductionRate": 100,
-      "Level": 1,
-      "isAlternateRecipe": true,
+      "SinkPoints": 20,
+      "IsAlternateRecipe": true,
       "Input": [
         {
           "Id": "iron_ore",
@@ -1841,8 +1912,8 @@
       "OriginalId": "high_speed_connector",
       "AlternateName": "Silicon High Speed Connector",
       "ProductionRate": 3,
-      "Level": 4,
-      "isAlternateRecipe": true,
+      "SinkPoints": 3776,
+      "IsAlternateRecipe": true,
       "Input": [
         {
           "Id": "silica",
@@ -1864,8 +1935,8 @@
       "OriginalId": "circuit_board",
       "AlternateName": "Silicon Circuit Board",
       "ProductionRate": 12.5,
-      "Level": 3,
-      "isAlternateRecipe": true,
+      "IsAlternateRecipe": true,
+      "SinkPoints": 696,
       "Input": [
         {
           "Id": "copper_sheet",
@@ -1883,8 +1954,8 @@
       "OriginalId": "battery",
       "AlternateName": "Classic Battery",
       "ProductionRate": 30,
-      "Level": 5,
-      "isAlternateRecipe": true,
+      "IsAlternateRecipe": true,
+      "SinkPoints": 465,
       "Input": [
         {
           "Id": "alclad_aluminum_sheet",
@@ -1910,12 +1981,12 @@
       "OriginalId": "motor",
       "AlternateName": "Electric Motor",
       "ProductionRate": 7.5,
-      "Level": 4,
-      "isAlternateRecipe": true,
+      "SinkPoints": 1520,
+      "IsAlternateRecipe": true,
       "Input": [
         {
           "Id": "electromagnetic_control_rod",
-          "ProductionRate": 3.8
+          "ProductionRate": 3.75
         },
         {
           "Id": "rotor",
@@ -1928,36 +1999,28 @@
       "Name": "Supercomputer",
       "OriginalId": "supercomputer",
       "AlternateName": "OC Supercomputer",
-      "ProductionRate": 2.4,
-      "Level": 7,
-      "isAlternateRecipe": true,
+      "ProductionRate": 3,
+      "SinkPoints": 99576,
+      "IsAlternateRecipe": true,
       "Input": [
         {
-          "Id": "computer",
-          "ProductionRate": 3.6
+          "Id": "radio_control_unit",
+          "ProductionRate": 9
         },
         {
-          "Id": "electromagnetic_control_rod",
-          "ProductionRate": 2.4
-        },
-        {
-          "Id": "battery",
-          "ProductionRate": 24
-        },
-        {
-          "Id": "wire",
-          "ProductionRate": 54
+          "Id": "cooling_system",
+          "ProductionRate": 9
         }
       ]
     },
     {
-      "Id": "super_state_computer",
+      "Id": "super-state_computer",
       "Name": "Supercomputer",
       "OriginalId": "supercomputer",
       "AlternateName": "Super-State Computer",
       "ProductionRate": 2.4,
-      "Level": 7,
-      "isAlternateRecipe": true,
+      "SinkPoints": 99576,
+      "IsAlternateRecipe": true,
       "Input": [
         {
           "Id": "computer",
@@ -1983,8 +2046,8 @@
       "OriginalId": "alumina_solution",
       "AlternateName": "Sloppy Alumina Solution",
       "ProductionRate": 240,
-      "Level": 1,
-      "isAlternateRecipe": true,
+      "SinkPoints": 0,
+      "IsAlternateRecipe": true,
       "Input": [
         {
           "Id": "bauxite",
@@ -2002,8 +2065,8 @@
       "OriginalId": "aluminum_casing",
       "AlternateName": "Alclad Casing",
       "ProductionRate": 112.5,
-      "Level": 3,
-      "isAlternateRecipe": true,
+      "SinkPoints": 393,
+      "IsAlternateRecipe": true,
       "Input": [
         {
           "Id": "aluminum_ingot",
@@ -2021,8 +2084,8 @@
       "OriginalId": "aluminum_ingot",
       "AlternateName": "Pure Aluminum Ingot",
       "ProductionRate": 30,
-      "Level": 1,
-      "isAlternateRecipe": true,
+      "SinkPoints": 131,
+      "IsAlternateRecipe": true,
       "Input": [
         {
           "Id": "aluminum_scrap",
@@ -2035,9 +2098,9 @@
       "Name": "Turbo Motor",
       "OriginalId": "turbo_motor",
       "AlternateName": "Turbo Pressure Motor",
-      "ProductionRate": 3.8,
-      "Level": 7,
-      "isAlternateRecipe": true,
+      "ProductionRate": 3.75,
+      "SinkPoints": 242720,
+      "IsAlternateRecipe": true,
       "Input": [
         {
           "Id": "motor",
@@ -2045,7 +2108,7 @@
         },
         {
           "Id": "pressure_conversion_cube",
-          "ProductionRate": 1.9
+          "ProductionRate": 1.875
         },
         {
           "Id": "packaged_nitrogen_gas",
@@ -2063,8 +2126,8 @@
       "OriginalId": "aluminum_scrap",
       "AlternateName": "Electrode Aluminum Scrap",
       "ProductionRate": 300,
-      "Level": 1,
-      "isAlternateRecipe": true,
+      "SinkPoints": 27,
+      "IsAlternateRecipe": true,
       "Input": [
         {
           "Id": "alumina_solution",
@@ -2074,6 +2137,12 @@
           "Id": "petroleum_coke",
           "ProductionRate": 60
         }
+      ],
+      "Byproduct": [
+        {
+          "Id": "water",
+          "ProductionRate": 105
+        }
       ]
     },
     {
@@ -2082,8 +2151,8 @@
       "OriginalId": "fuel",
       "AlternateName": "Diluted Fuel",
       "ProductionRate": 100,
-      "Level": 3,
-      "isAlternateRecipe": true,
+      "SinkPoints": 0,
+      "IsAlternateRecipe": true,
       "Input": [
         {
           "Id": "heavy_oil_residue",
@@ -2101,8 +2170,8 @@
       "OriginalId": "radio_control_unit",
       "AlternateName": "Radio Control System",
       "ProductionRate": 4.5,
-      "Level": 7,
-      "isAlternateRecipe": true,
+      "SinkPoints": 19600,
+      "IsAlternateRecipe": true,
       "Input": [
         {
           "Id": "crystal_oscillator",
@@ -2128,8 +2197,8 @@
       "OriginalId": "aluminum_scrap",
       "AlternateName": "Instant Aluminum Scrap",
       "ProductionRate": 300,
-      "Level": 1,
-      "isAlternateRecipe": true,
+      "SinkPoints": 27,
+      "IsAlternateRecipe": true,
       "Input": [
         {
           "Id": "bauxite",
@@ -2147,6 +2216,12 @@
           "Id": "water",
           "ProductionRate": 60
         }
+      ],
+      "Byproduct": [
+        {
+          "Id": "water",
+          "ProductionRate": 50
+        }
       ]
     },
     {
@@ -2155,8 +2230,8 @@
       "OriginalId": "turbofuel",
       "AlternateName": "Turbo Blend Fuel",
       "ProductionRate": 45,
-      "Level": 3,
-      "isAlternateRecipe": true,
+      "SinkPoints": 0,
+      "IsAlternateRecipe": true,
       "Input": [
         {
           "Id": "heavy_oil_residue",
@@ -2181,17 +2256,17 @@
       "Name": "Cooling System",
       "OriginalId": "cooling_system",
       "AlternateName": "Cooling Device",
-      "ProductionRate": 3.8,
-      "Level": 7,
-      "isAlternateRecipe": true,
+      "ProductionRate": 3.75,
+      "IsAlternateRecipe": true,
+      "SinkPoints": 12006,
       "Input": [
         {
           "Id": "heat_sink",
-          "ProductionRate": 9.8
+          "ProductionRate": 9.375
         },
         {
           "Id": "motor",
-          "ProductionRate": 1.9
+          "ProductionRate": 1.875
         },
         {
           "Id": "nitrogen_gas",
@@ -2205,8 +2280,8 @@
       "OriginalId": "heat_sink",
       "AlternateName": "Heat Exchanger",
       "ProductionRate": 10,
-      "Level": 7,
-      "isAlternateRecipe": true,
+      "SinkPoints": 2804,
+      "IsAlternateRecipe": true,
       "Input": [
         {
           "Id": "aluminum_casing",
@@ -2219,13 +2294,29 @@
       ]
     },
     {
+      "Id": "heat_sink",
+      "Name": "Heat Sink",
+      "ProductionRate": 7.5,
+      "SinkPoints": 2804,
+      "Input": [
+        {
+          "Id": "alclad_aluminum_sheet",
+          "ProductionRate": 37.5
+        },
+        {
+          "Id": "copper_sheet",
+          "ProductionRate": 22.5
+        }
+      ]
+    },
+    {
       "Id": "radio_connection_unit",
       "Name": "Radio Control Unit",
       "OriginalId": "radio_control_unit",
       "AlternateName": "Radio Connection Unit",
-      "ProductionRate": 3.8,
-      "Level": 7,
-      "isAlternateRecipe": true,
+      "ProductionRate": 3.75,
+      "SinkPoints": 19600,
+      "IsAlternateRecipe": true,
       "Input": [
         {
           "Id": "heat_sink",
@@ -2246,25 +2337,25 @@
       "Name": "Turbo Motor",
       "OriginalId": "turbo_motor",
       "AlternateName": "Turbo Electric Motor",
-      "ProductionRate": 2.8,
-      "Level": 7,
-      "isAlternateRecipe": true,
+      "ProductionRate": 2.8125,
+      "SinkPoints": 242720,
+      "IsAlternateRecipe": true,
       "Input": [
         {
           "Id": "motor",
-          "ProductionRate": 6.6
+          "ProductionRate": 6.5625
         },
         {
           "Id": "radio_control_unit",
-          "ProductionRate": 8.4
+          "ProductionRate": 8.4375
         },
         {
           "Id": "electromagnetic_control_rod",
-          "ProductionRate": 4.7
+          "ProductionRate": 4.6875
         },
         {
           "Id": "rotor",
-          "ProductionRate": 6.6
+          "ProductionRate": 6.5625
         }
       ]
     },
@@ -2274,8 +2365,8 @@
       "OriginalId": "electromagnetic_control_rod",
       "AlternateName": "Electromagnetic Connection Rod",
       "ProductionRate": 8,
-      "Level": 4,
-      "isAlternateRecipe": true,
+      "SinkPoints": 2560,
+      "IsAlternateRecipe": true,
       "Input": [
         {
           "Id": "stator",
@@ -2293,8 +2384,8 @@
       "OriginalId": "encased_uranium_cell",
       "AlternateName": "Infused Uranium Cell",
       "ProductionRate": 20,
-      "Level": 7,
-      "isAlternateRecipe": true,
+      "SinkPoints": 147,
+      "IsAlternateRecipe": true,
       "Input": [
         {
           "Id": "uranium",
@@ -2320,8 +2411,8 @@
       "OriginalId": "nuclear_fuel_rod",
       "AlternateName": "Uranium Fuel Unit",
       "ProductionRate": 0.6,
-      "Level": 7,
-      "isAlternateRecipe": true,
+      "SinkPoints": 44092,
+      "IsAlternateRecipe": true,
       "Input": [
         {
           "Id": "encased_uranium_cell",
@@ -2347,8 +2438,8 @@
       "OriginalId": "encased_plutonium_cell",
       "AlternateName": "Instant Plutonium Cell",
       "ProductionRate": 10,
-      "Level": 7,
-      "isAlternateRecipe": true,
+      "IsAlternateRecipe": true,
+      "SinkPoints": 0,
       "Input": [
         {
           "Id": "non-fissile_uranium",
@@ -2366,8 +2457,8 @@
       "OriginalId": "fused_modular_frame",
       "AlternateName": "Heat-Fused Frame",
       "ProductionRate": 3,
-      "Level": 6,
-      "isAlternateRecipe": true,
+      "SinkPoints": 62840,
+      "IsAlternateRecipe": true,
       "Input": [
         {
           "Id": "heavy_modular_frame",
@@ -2393,8 +2484,8 @@
       "OriginalId": "non-fissile_uranium",
       "AlternateName": "Fertile Uranium",
       "ProductionRate": 100,
-      "Level": 7,
-      "isAlternateRecipe": true,
+      "IsAlternateRecipe": true,
+      "SinkPoints": 0,
       "Input": [
         {
           "Id": "uranium",
@@ -2412,6 +2503,12 @@
           "Id": "sulfuric_acid",
           "ProductionRate": 25
         }
+      ],
+      "Byproduct": [
+        {
+          "Id": "water",
+          "ProductionRate": 40
+        }
       ]
     },
     {
@@ -2420,8 +2517,8 @@
       "OriginalId": "plutonium_fuel_rod",
       "AlternateName": "Plutonium Fuel Unit",
       "ProductionRate": 0.5,
-      "Level": 7,
-      "isAlternateRecipe": true,
+      "IsAlternateRecipe": true,
+      "SinkPoints": 153184,
       "Input": [
         {
           "Id": "encased_plutonium_cell",
@@ -2430,6 +2527,902 @@
         {
           "Id": "pressure_conversion_cube",
           "ProductionRate": 0.5
+        }
+      ]
+    },
+    {
+      "Id": "plutonium_fuel_unit",
+      "Name": "Plutonium Fuel Rod",
+      "ProductionRate": 0.25,
+      "SinkPoints": 153184,
+      "Input": [
+        {
+          "Id": "encased_plutonium_cell",
+          "ProductionRate": 7.5
+        },
+        {
+          "Id": "steel_beam",
+          "ProductionRate": 4.5
+        },
+        {
+          "Id": "electromagnetic_control_rod",
+          "ProductionRate": 1.5
+        },
+        {
+          "Id": "heat_sink",
+          "ProductionRate": 2.5
+        }
+      ]
+    },
+    {
+      "Id": "uranium_fuel_rod",
+      "Name": "Uranium Fuel Rod",
+      "ProductionRate": 0.4,
+      "SinkPoints": 44092,
+      "Input": [
+        {
+          "Id": "encased_plutonium_cell",
+          "ProductionRate": 1.2
+        },
+        {
+          "Id": "encased_uranium_cell",
+          "ProductionRate": 20
+        },
+        {
+          "Id": "electromagnetic_control_rod",
+          "ProductionRate": 2
+        }
+      ]
+    },
+    {
+      "Id": "alclad_aluminum_sheet",
+      "Name": "Alclad Aluminum Sheet",
+      "ProductionRate": 30,
+      "SinkPoints": 266,
+      "Input": [
+        {
+          "Id": "aluminum_ingot",
+          "ProductionRate": 30
+        },
+        {
+          "Id": "copper_ingot",
+          "ProductionRate": 10
+        }
+      ]
+    },
+    {
+      "Id": "aluminum_casing",
+      "Name": "Aluminum Casing",
+      "ProductionRate": 60,
+      "SinkPoints": 393,
+      "Input": [
+        {
+          "Id": "aluminum_ingot",
+          "ProductionRate": 90
+        }
+      ]
+    },
+    {
+      "Id": "aluminum_ingot",
+      "Name": "Aluminum Ingot",
+      "ProductionRate": 60,
+      "SinkPoints": 131,
+      "Input": [
+        {
+          "Id": "aluminum_scrap",
+          "ProductionRate": 90
+        },
+        {
+          "Id": "silica",
+          "ProductionRate": 75
+        }
+      ]
+    },
+    {
+      "Id": "aluminum_scrap",
+      "Name": "Aluminum Scrap",
+      "ProductionRate": 360,
+      "SinkPoints": 27,
+      "Input": [
+        {
+          "Id": "alumina_solution",
+          "ProductionRate": 240
+        },
+        {
+          "Id": "coal",
+          "ProductionRate": 120
+        }
+      ],
+      "Byproduct": [
+        {
+          "Id": "water",
+          "ProductionRate": 120
+        }
+      ]
+    },
+    {
+      "Id": "assembly_director_system",
+      "Name": "Assembly Director System",
+      "ProductionRate": 0.75,
+      "SinkPoints": 543632,
+      "Input": [
+        {
+          "Id": "supercomputer",
+          "ProductionRate": 0.75
+        },
+        {
+          "Id": "adaptive_control_unit",
+          "ProductionRate": 1.5
+        }
+      ]
+    },
+    {
+      "Id": "battery",
+      "Name": "Battery",
+      "ProductionRate": 20,
+      "SinkPoints": 465,
+      "Input": [
+        {
+          "Id": "sulfuric_acid",
+          "ProductionRate": 50
+        },
+        {
+          "Id": "aluminum_casing",
+          "ProductionRate": 20
+        },
+        {
+          "Id": "alumina_solution",
+          "ProductionRate": 40
+        }
+      ],
+      "Byproduct": [
+        {
+          "Id": "water",
+          "ProductionRate": 30
+        }
+      ]
+    },
+    {
+      "Id": "bauxite",
+      "Name": "Bauxite",
+      "ProductionRate": 60,
+      "SinkPoints": 8,
+      "Input": []
+    },
+    {
+      "Id": "beacon",
+      "Name": "Beacon",
+      "ProductionRate": 7.5,
+      "SinkPoints": 320,
+      "Input": [
+        {
+          "Id": "iron_plate",
+          "ProductionRate": 22.5
+        },
+        {
+          "Id": "iron_rod",
+          "ProductionRate": 7.5
+        },
+        {
+          "Id": "wire",
+          "ProductionRate": 112.5
+        },
+        {
+          "Id": "cable",
+          "ProductionRate": 15
+        }
+      ]
+    },
+    {
+      "Id": "black_powder",
+      "Name": "Black Powder",
+      "ProductionRate": 30,
+      "SinkPoints": 14,
+      "Input": [
+        {
+          "Id": "coal",
+          "ProductionRate": 15
+        },
+        {
+          "Id": "sulfur",
+          "ProductionRate": 15
+        }
+      ]
+    },
+    {
+      "Id": "turbofuel",
+      "Name": "Turbofuel",
+      "ProductionRate": 18.75,
+      "SinkPoints": 0,
+      "Input": [
+        {
+          "Id": "fuel",
+          "ProductionRate": 22.5
+        },
+        {
+          "Id": "compacted_coal",
+          "ProductionRate": 15
+        }
+      ]
+    },
+    {
+      "Id": "cooling_system",
+      "Name": "Cooling System",
+      "ProductionRate": 6,
+      "SinkPoints": 12006,
+      "Input": [
+        {
+          "Id": "heat_sink",
+          "ProductionRate": 12
+        },
+        {
+          "Id": "rubber",
+          "ProductionRate": 12
+        },
+        {
+          "Id": "water",
+          "ProductionRate": 30
+        },
+        {
+          "Id": "nitrogen_gas",
+          "ProductionRate": 150
+        }
+      ]
+    },
+    {
+      "Id": "copper_powder",
+      "Name": "Copper Powder",
+      "ProductionRate": 50,
+      "SinkPoints": 72,
+      "Input": [
+        {
+          "Id": "copper_ingot",
+          "ProductionRate": 300
+        }
+      ]
+    },
+    {
+      "Id": "electromagnetic_control_rod",
+      "Name": "Electromagnetic Control Rod",
+      "ProductionRate": 4,
+      "SinkPoints": 2560,
+      "Input": [
+        {
+          "Id": "stator",
+          "ProductionRate": 6
+        },
+        {
+          "Id": "ai_limiter",
+          "ProductionRate": 4
+        }
+      ]
+    },
+    {
+      "Id": "empty_fluid_tank",
+      "Name": "Empty Fluid Tank",
+      "ProductionRate": 60,
+      "SinkPoints": 225,
+      "Input": [
+        {
+          "Id": "aluminum_ingot",
+          "ProductionRate": 60
+        }
+      ]
+    },
+    {
+      "Id": "packaged_nitric_acid",
+      "Name": "Packaged Nitric Acid",
+      "ProductionRate": 30,
+      "SinkPoints": 412,
+      "Input": [
+        {
+          "Id": "nitric_acid",
+          "ProductionRate": 30
+        },
+        {
+          "Id": "empty_fluid_tank",
+          "ProductionRate": 30
+        }
+      ]
+    },
+    {
+      "Id": "packaged_nitrogen_gas",
+      "Name": "Packaged Nitrogen Gas",
+      "ProductionRate": 60,
+      "SinkPoints": 412,
+      "Input": [
+        {
+          "Id": "nitrogen_gas",
+          "ProductionRate": 240
+        },
+        {
+          "Id": "empty_fluid_tank",
+          "ProductionRate": 30
+        }
+      ]
+    },
+    {
+      "Id": "encased_plutonium_cell",
+      "Name": "Encased Plutonium Cell",
+      "ProductionRate": 5,
+      "SinkPoints": 0,
+      "Input": [
+        {
+          "Id": "plutonium_pellet",
+          "ProductionRate": 10
+        },
+        {
+          "Id": "concrete",
+          "ProductionRate": 20
+        }
+      ]
+    },
+    {
+      "Id": "plutonium_pellet",
+      "Name": "Plutonium Pellet",
+      "ProductionRate": 30,
+      "SinkPoints": 0,
+      "Input": [
+        {
+          "Id": "non-fissile_uranium",
+          "ProductionRate": 100
+        },
+        {
+          "Id": "uranium_waste",
+          "ProductionRate": 25
+        }
+      ]
+    },
+    {
+      "Id": "encased_uranium_cell",
+      "Name": "Encased Uranium Cell",
+      "ProductionRate": 25,
+      "SinkPoints": 147,
+      "Input": [
+        {
+          "Id": "uranium",
+          "ProductionRate": 50
+        },
+        {
+          "Id": "concrete",
+          "ProductionRate": 15
+        },
+        {
+          "Id": "sulfuric_acid",
+          "ProductionRate": 40
+        }
+      ],
+      "Byproduct": [
+        {
+          "Id": "sulfuric_acid",
+          "ProductionRate": 10
+        }
+      ]
+    },
+    {
+      "Id": "polyester_fabric",
+      "AlternateName": "Polyester Fabric",
+      "OriginalId": "fabric",
+      "Name": "Fabric",
+      "IsAlternateRecipe": true,
+      "ProductionRate": 30,
+      "SinkPoints": 140,
+      "Input": [
+        {
+          "Id": "polymer_resin",
+          "ProductionRate": 30
+        },
+        {
+          "Id": "water",
+          "ProductionRate": 30
+        }
+      ]
+    },
+    {
+      "Id": "fused_modular_frame",
+      "Name": "Fused Modular Frame",
+      "ProductionRate": 1.5,
+      "SinkPoints": 62840,
+      "Input": [
+        {
+          "Id": "heavy_modular_frame",
+          "ProductionRate": 1.5
+        },
+        {
+          "Id": "aluminum_casing",
+          "ProductionRate": 75
+        },
+        {
+          "Id": "nitrogen_gas",
+          "ProductionRate": 37.5
+        }
+      ]
+    },
+    {
+      "Id": "gas_filter",
+      "Name": "Gas Filter",
+      "ProductionRate": 7.5,
+      "SinkPoints": 830,
+      "Input": [
+        {
+          "Id": "coal",
+          "ProductionRate": 37.5
+        },
+        {
+          "Id": "rubber",
+          "ProductionRate": 15
+        },
+        {
+          "Id": "fabric",
+          "ProductionRate": 15
+        }
+      ]
+    },
+    {
+      "Id": "magnetic_field_generator",
+      "Name": "Magnetic Field Generator",
+      "ProductionRate": 71,
+      "SinkPoints": 15650,
+      "Input": [
+        {
+          "Id": "versatile_framework",
+          "ProductionRate": 2.5
+        },
+        {
+          "Id": "electromagnetic_control_rod",
+          "ProductionRate": 1
+        },
+        {
+          "Id": "battery",
+          "ProductionRate": 5
+        }
+      ]
+    },
+    {
+      "Id": "cluster_nobelisk",
+      "Name": "Cluster Nobelisk",
+      "ProductionRate": 2.5,
+      "SinkPoints": 1376,
+      "Input": [
+        {
+          "Id": "nobelisk",
+          "ProductionRate": 7.5
+        },
+        {
+          "Id": "smokeless_powder",
+          "ProductionRate": 10
+        }
+      ]
+    },
+    {
+      "Id": "gas_nobelisk",
+      "Name": "Gas Nobelisk",
+      "ProductionRate": 25,
+      "SinkPoints": 544,
+      "Input": [
+        {
+          "Id": "nobelisk",
+          "ProductionRate": 5
+        },
+        {
+          "Id": "biomass",
+          "ProductionRate": 50
+        }
+      ]
+    },
+    {
+      "Id": "nobelisk",
+      "Name": "Nobelisk",
+      "ProductionRate": 10,
+      "SinkPoints": 152,
+      "Input": [
+        {
+          "Id": "black_powder",
+          "ProductionRate": 20
+        },
+        {
+          "Id": "steel_pipe",
+          "ProductionRate": 20
+        }
+      ]
+    },
+    {
+      "Id": "nuke_nobelisk",
+      "Name": "Nuke Nobelisk",
+      "ProductionRate": 0.5,
+      "SinkPoints": 19600,
+      "Input": [
+        {
+          "Id": "nobelisk",
+          "ProductionRate": 2.5
+        },
+        {
+          "Id": "encased_uranium_cell",
+          "ProductionRate": 10
+        },
+        {
+          "Id": "smokeless_powder",
+          "ProductionRate": 5
+        },
+        {
+          "Id": "ai_limiter",
+          "ProductionRate": 3
+        }
+      ]
+    },
+    {
+      "Id": "pulse_nobelisk",
+      "Name": "Pulse Nobelisk",
+      "ProductionRate": 5,
+      "SinkPoints": 1533,
+      "Input": [
+        {
+          "Id": "nobelisk",
+          "ProductionRate": 5
+        },
+        {
+          "Id": "crystal_oscillator",
+          "ProductionRate": 1
+        }
+      ]
+    },
+    {
+      "Id": "non-fissile_uranium",
+      "Name": "Non-Fissile Uranium",
+      "ProductionRate": 100,
+      "SinkPoints": 0,
+      "Input": [
+        {
+          "Id": "uranium_waste",
+          "ProductionRate": 37.5
+        },
+        {
+          "Id": "silica",
+          "ProductionRate": 25
+        },
+        {
+          "Id": "nitric_acid",
+          "ProductionRate": 15
+        },
+        {
+          "Id": "sulfuric_acid",
+          "ProductionRate": 15
+        }
+      ],
+      "Byproduct": [
+        {
+          "Id": "water",
+          "ProductionRate": 15
+        }
+      ]
+    },
+    {
+      "Id": "nuclear_pasta",
+      "Name": "Nuclear Pasta",
+      "ProductionRate": 0.5,
+      "SinkPoints": 543424,
+      "Input": [
+        {
+          "Id": "copper_powder",
+          "ProductionRate": 100
+        },
+        {
+          "Id": "pressure_conversion_cube",
+          "ProductionRate": 0.5
+        }
+      ]
+    },
+    {
+      "Id": "packaged_alumina_solution",
+      "Name": "Packaged Alumina Solution",
+      "ProductionRate": 120,
+      "SinkPoints": 160,
+      "Input": [
+        {
+          "Id": "alumina_solution",
+          "ProductionRate": 120
+        },
+        {
+          "Id": "empty_canister",
+          "ProductionRate": 120
+        }
+      ]
+    },
+    {
+      "Id": "packaged_heavy_oil_residue",
+      "Name": "Packaged Heavy Oil Residue",
+      "ProductionRate": 30,
+      "SinkPoints": 180,
+      "Input": [
+        {
+          "Id": "heavy_oil_residue",
+          "ProductionRate": 30
+        },
+        {
+          "Id": "empty_canister",
+          "ProductionRate": 30
+        }
+      ]
+    },
+    {
+      "Id": "packaged_liquid_biofuel",
+      "Name": "Packaged Liquid Biofuel",
+      "ProductionRate": 40,
+      "SinkPoints": 370,
+      "Input": [
+        {
+          "Id": "liquid_biofuel",
+          "ProductionRate": 40
+        },
+        {
+          "Id": "empty_canister",
+          "ProductionRate": 40
+        }
+      ]
+    },
+    {
+      "Id": "liquid_biofuel",
+      "Name": "Liquid Biofuel",
+      "ProductionRate": 60,
+      "SinkPoints": 0,
+      "Input": [
+        {
+          "Id": "solid_biofuel",
+          "ProductionRate": 90
+        },
+        {
+          "Id": "water",
+          "ProductionRate": 45
+        }
+      ]
+    },
+    {
+      "Id": "solid_biofuel",
+      "Name": "Solid Biofuel",
+      "ProductionRate": 60,
+      "SinkPoints": 48,
+      "Input": [
+        {
+          "Id": "biomass",
+          "ProductionRate": 120
+        }
+      ]
+    },
+    {
+      "Id": "packaged_oil",
+      "Name": "Packaged Oil",
+      "ProductionRate": 30,
+      "SinkPoints": 180,
+      "Input": [
+        {
+          "Id": "crude_oil",
+          "ProductionRate": 30
+        },
+        {
+          "Id": "empty_canister",
+          "ProductionRate": 30
+        }
+      ]
+    },
+    {
+      "Id": "packaged_sulfuric_acid",
+      "Name": "Packaged Sulfuric Acid",
+      "ProductionRate": 40,
+      "SinkPoints": 152,
+      "Input": [
+        {
+          "Id": "sulfuric_acid",
+          "ProductionRate": 40
+        },
+        {
+          "Id": "empty_canister",
+          "ProductionRate": 40
+        }
+      ]
+    },
+    {
+      "Id": "packaged_water",
+      "Name": "Packaged Water",
+      "ProductionRate": 60,
+      "SinkPoints": 130,
+      "Input": [
+        {
+          "Id": "water",
+          "ProductionRate": 60
+        },
+        {
+          "Id": "empty_canister",
+          "ProductionRate": 60
+        }
+      ]
+    },
+    {
+      "Id": "sulfuric_acid",
+      "Name": "Sulfuric Acid",
+      "ProductionRate": 50,
+      "SinkPoints": 152,
+      "Input": [
+        {
+          "Id": "sulfur",
+          "ProductionRate": 50
+        },
+        {
+          "Id": "water",
+          "ProductionRate": 50
+        }
+      ]
+    },
+    {
+      "Id": "petroleum_coke",
+      "Name": "Petroleum Coke",
+      "ProductionRate": 120,
+      "SinkPoints": 20,
+      "Input": [
+        {
+          "Id": "heavy_oil_residue",
+          "ProductionRate": 40
+        }
+      ]
+    },
+    {
+      "Id": "plutonium_waste",
+      "Name": "Plutonium Waste",
+      "ProductionRate": 1,
+      "SinkPoints": 0,
+      "Input": [
+        {
+          "Id": "plutonium_fuel_rod",
+          "ProductionRate": 0.1
+        },
+        {
+          "Id": "water",
+          "ProductionRate": 240
+        }
+      ]
+    },
+    {
+      "Id": "plutonium_fuel_rod",
+      "Name": "Plutonium Fuel Rod",
+      "ProductionRate": 1,
+      "SinkPoints": 153184,
+      "Input": [
+        {
+          "Id": "encased_plutonium_cell",
+          "ProductionRate": 7.5
+        },
+        {
+          "Id": "steel_beam",
+          "ProductionRate": 4.5
+        },
+        {
+          "Id": "electromagnetic_control_rod",
+          "ProductionRate": 1.5
+        },
+        {
+          "Id": "heat_sink",
+          "ProductionRate": 2.5
+        }
+      ]
+    },
+    {
+      "Id": "pressure_conversion_cube",
+      "Name": "Pressure Conversion Cube",
+      "ProductionRate": 1,
+      "SinkPoints": 257312,
+      "Input": [
+        {
+          "Id": "fused_modular_frame",
+          "ProductionRate": 1
+        },
+        {
+          "Id": "radio_control_unit",
+          "ProductionRate": 2
+        }
+      ]
+    },
+    {
+      "Id": "turbo_motor",
+      "Name": "Turbo Motor",
+      "ProductionRate": 1.875,
+      "SinkPoints": 242720,
+      "Input": [
+        {
+          "Id": "cooling_system",
+          "ProductionRate": 7.5
+        },
+        {
+          "Id": "radio_control_unit",
+          "ProductionRate": 3.75
+        },
+        {
+          "Id": "motor",
+          "ProductionRate": 7.5
+        },
+        {
+          "Id": "rubber",
+          "ProductionRate": 45
+        }
+      ]
+    },
+    {
+      "Id": "radio_control_unit",
+      "Name": "Radio Control Unit",
+      "ProductionRate": 2.5,
+      "SinkPoints": 19600,
+      "Input": [
+        {
+          "Id": "aluminum_casing",
+          "ProductionRate": 40
+        },
+        {
+          "Id": "crystal_oscillator",
+          "ProductionRate": 1.25
+        },
+        {
+          "Id": "computer",
+          "ProductionRate": 1.25
+        }
+      ]
+    },
+    {
+      "Id": "alumina_solution",
+      "Name": "Alumina Solution",
+      "ProductionRate": 120,
+      "SinkPoints": 0,
+      "Input": [
+        {
+          "Id": "bauxite",
+          "ProductionRate": 120
+        },
+        {
+          "Id": "water",
+          "ProductionRate": 180
+        }
+      ],
+      "Byproduct": [
+        {
+          "Id": "silica",
+          "ProductionRate": 50
+        }
+      ]
+    },
+    {
+      "Id": "smokeless_powder",
+      "Name": "Smokeless Powder",
+      "ProductionRate": 20,
+      "SinkPoints": 58,
+      "Input": [
+        {
+          "Id": "black_powder",
+          "ProductionRate": 20
+        },
+        {
+          "Id": "heavy_oil_residue",
+          "ProductionRate": 10
+        }
+      ]
+    },
+    {
+      "Id": "thermal_propulsion_rocket",
+      "Name": "Thermal Propulsion Rocket",
+      "ProductionRate": 1,
+      "SinkPoints": 732956,
+      "Input": [
+        {
+          "Id": "modular_engine",
+          "ProductionRate": 2.5
+        },
+        {
+          "Id": "turbo_motor",
+          "ProductionRate": 1
+        },
+        {
+          "Id": "cooling_system",
+          "ProductionRate": 3
+        },
+        {
+          "Id": "fused_modular_frame",
+          "ProductionRate": 1
         }
       ]
     }

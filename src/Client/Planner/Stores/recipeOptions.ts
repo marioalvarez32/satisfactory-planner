@@ -5,7 +5,7 @@ import { useStorage } from '@vueuse/core';
 import ItemsData from '@/Client/Planner/Data/Items.json';
 
 const initialRecipeData: StoredRecipeData = {
-  enabledBaseRecipes: ItemsData.items.filter((itemData) => !itemData.isAlternateRecipe).map((itemData) => itemData.Id),
+  enabledBaseRecipes: ItemsData.Items.filter((itemData) => !itemData.IsAlternateRecipe).map((itemData) => itemData.Id),
   enabledAlternateRecipes: [],
 };
 const storedRecipeData: Ref<StoredRecipeData> = useStorage('recipe-data', initialRecipeData, localStorage, { mergeDefaults: true });

@@ -4,13 +4,12 @@ export class Item {
   Name: string;
   Input: ProductionInput[];
   ProductionRate: number;
-  Level: number;
   InputRate?: number;
   OutputRate?: number;
   AlternateName?: string;
   Byproduct: ProductionInput[];
   CanBeByproduct: boolean;
-  isAlternateRecipe?: boolean;
+  IsAlternateRecipe?: boolean;
 
   constructor(item: Item) {
     this.Id = item.Id;
@@ -18,12 +17,11 @@ export class Item {
     this.Name = item.Name;
     this.ProductionRate = item.ProductionRate;
     this.Input = item.Input.map((input) => new ProductionInput(input));
-    this.Level = item.Level;
     this.OutputRate = 0;
     this.AlternateName = item.AlternateName ?? null;
     this.Byproduct = item.Byproduct;
     this.CanBeByproduct = !!item.CanBeByproduct;
-    this.isAlternateRecipe = !!item.isAlternateRecipe;
+    this.IsAlternateRecipe = !!item.IsAlternateRecipe;
   }
 }
 

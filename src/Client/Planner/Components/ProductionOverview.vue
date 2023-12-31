@@ -43,8 +43,8 @@
 
   const { initializeNetwork, updateNetwork } = useVisualNetwork("production-overview")
 
-  const alternateRecipeIds: string[] = ItemsData.items.filter(itemData => itemData.isAlternateRecipe === true).map(itemData => itemData.Id)
-  const baseRecipeIds: string[] = ItemsData.items.filter(itemData => !itemData.isAlternateRecipe).map(itemData => itemData.Id)
+  const alternateRecipeIds: string[] = ItemsData.Items.filter(itemData => itemData.IsAlternateRecipe === true).map(itemData => itemData.Id)
+  const baseRecipeIds: string[] = ItemsData.Items.filter(itemData => !itemData.IsAlternateRecipe).map(itemData => itemData.Id)
   const { enabledAlternateRecipes, enabledBaseRecipes } = toRefs(useRecipeOptionStore())
 
   onMounted(() => {
@@ -82,7 +82,6 @@
       data: {
         id: item.Name,
         ItemId: item.Id,
-        level: item.Level,
         dom: div,
         Type: "Node",
         Name: item.AlternateName ?? item.Name,
